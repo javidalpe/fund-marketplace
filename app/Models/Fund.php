@@ -5,23 +5,21 @@ namespace App\Models;
 use Eloquent as Model;
 
 /**
- * Class Vehicle
+ * Class Fund
  * @package App\Models
  * @version July 4, 2017, 9:16 pm UTC
  */
-class Vehicle extends Model
+class Fund extends Model
 {
 
-    public $table = 'vehicles';
+    public $table = 'funds';
     
 
 
     public $fillable = [
         'name',
-        'company',
         'website',
-        'stock_value',
-        'fund_id'
+        'user_id'
     ];
 
     /**
@@ -31,10 +29,8 @@ class Vehicle extends Model
      */
     protected $casts = [
         'name' => 'string',
-        'company' => 'string',
         'website' => 'string',
-        'stock_value' => 'float',
-        'fund_id' => 'integer'
+        'user_id' => 'integer'
     ];
 
     /**
@@ -44,16 +40,14 @@ class Vehicle extends Model
      */
     public static $rules = [
         'name' => 'required|min:3',
-        'company' => 'required|min:3',
-        'website' => 'required|url',
-        'stock_value' => 'numeric'
+        'website' => 'url'
     ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function fund()
+    public function user()
     {
-        return $this->belongsTo(\App\Models\Fund::class);
+        return $this->belongsTo(\App\Models\User::class);
     }
 }

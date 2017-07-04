@@ -29,3 +29,29 @@ Route::get('/home', 'HomeController@index');
 Route::resource('vehicles', 'VehicleController');
 
 Route::resource('vehicles', 'VehicleController');
+
+Route::resource('vehicles', 'VehicleController');
+
+Route::resource('vehicles', 'VehicleController');
+
+Route::resource('vehicles', 'VehicleController');
+
+Route::resource('funds', 'FundController');
+
+Route::resource('funds', 'FundController');
+
+Route::resource('vehicles', 'VehicleController');
+
+Route::resource('funds', 'FundController');
+
+Route::resource('funds', 'FundController');
+
+Route::resource('vehicles', 'VehicleController');
+
+Route::resource('funds', 'FundController');
+
+Route::resource('vehicles', 'VehicleController');
+
+Route::resource('funds', 'FundController');
+
+Route::resource('vehicles', 'VehicleController');

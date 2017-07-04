@@ -1,16 +1,20 @@
 <table class="table table-responsive" id="vehicles-table">
     <thead>
         <th>Name</th>
+        <th>Company</th>
         <th>Website</th>
         <th>Stock Value</th>
+        <th>Fund Id</th>
         <th colspan="3">Action</th>
     </thead>
     <tbody>
     @foreach($vehicles as $vehicle)
         <tr>
             <td>{!! $vehicle->name !!}</td>
+            <td>{!! $vehicle->company !!}</td>
             <td>{!! $vehicle->website !!}</td>
             <td>{!! $vehicle->stock_value !!}</td>
+            <td>{!! $vehicle->fund_id !!}</td>
             <td>
                 {!! Form::open(['route' => ['vehicles.destroy', $vehicle->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

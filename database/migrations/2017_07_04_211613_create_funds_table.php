@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateFundsTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -17,9 +17,9 @@ class CreateFundsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('website');
-            $table->string('contact_name');
-            $table->string('contact_email');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateFundsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funds');
+        Schema::drop('funds');
     }
 }

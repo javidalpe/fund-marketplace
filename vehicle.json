@@ -1,0 +1,71 @@
+[
+    {
+        "name": "id",
+        "dbType": "increments",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "name",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "required|min:3",
+        "searchable": true
+    },
+    {
+        "name": "company",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "required|min:3",
+        "searchable": true
+    },
+    {
+        "name": "website",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "required|url",
+        "searchable": true
+    },
+    {
+        "name": "stock_value",
+        "dbType": "float",
+        "htmlType": "number",
+        "validations": "numeric",
+        "searchable": true
+    },
+    {
+        "name": "fund_id",
+        "dbType": "integer:unsigned:foreign,funds,id",
+        "htmlType": "text",
+        "relation": "mt1,Fund",
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "created_at",
+        "dbType": "timestamp",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "updated_at",
+        "dbType": "timestamp",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    }
+]

@@ -16,9 +16,12 @@ class CreateVehiclesTable extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('company');
             $table->string('website');
             $table->float('stock_value');
+            $table->integer('fund_id')->unsigned();
             $table->timestamps();
+            $table->foreign('fund_id')->references('id')->on('funds');
         });
     }
 

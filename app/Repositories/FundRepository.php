@@ -2,19 +2,17 @@
 
 namespace App\Repositories;
 
-use App\Models\Vehicle;
+use App\Models\Fund;
 use InfyOm\Generator\Common\BaseRepository;
 
-class VehicleRepository extends BaseRepository
+class FundRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
         'name',
-        'company',
-        'website',
-        'stock_value'
+        'website'
     ];
 
     /**
@@ -22,6 +20,6 @@ class VehicleRepository extends BaseRepository
      **/
     public function model()
     {
-        return Vehicle::class;
+        return Fund::class;
     }
 }

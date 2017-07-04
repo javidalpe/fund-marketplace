@@ -4,6 +4,12 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Company Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('company', 'Company:') !!}
+    {!! Form::text('company', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Website Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('website', 'Website:') !!}
@@ -14,6 +20,12 @@
 <div class="form-group col-sm-6">
     {!! Form::label('stock_value', 'Stock Value:') !!}
     {!! Form::number('stock_value', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Fund Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('fund_id', 'Fund Id:') !!}
+    {!! Form::text('fund_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
