@@ -36,7 +36,8 @@
         "dbType": "float",
         "htmlType": "number",
         "validations": "numeric",
-        "searchable": true
+        "searchable": true,
+        "inIndex": false
     },
     {
         "name": "shares_amount",
@@ -51,7 +52,8 @@
         "dbType": "string",
         "htmlType": "email",
         "validations": "email",
-        "searchable": true
+        "searchable": true,
+        "inIndex": false
     },
     {
         "name": "contact",
@@ -98,5 +100,13 @@
         "primary": false,
         "inForm": false,
         "inIndex": false
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Operation"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Offer"
     }
 ]

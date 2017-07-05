@@ -16,16 +16,34 @@
     {!! Form::text('website', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Stock Value Field -->
+<!-- Stock Price Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('stock_value', 'Stock Value:') !!}
-    {!! Form::number('stock_value', null, ['class' => 'form-control']) !!}
+    {!! Form::label('stock_price', 'Stock Price:') !!}
+    {!! Form::number('stock_price', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Fund Id Field -->
+<!-- Shares Amount Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('fund_id', 'Fund Id:') !!}
-    {!! Form::text('fund_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('shares_amount', 'Shares Amount:') !!}
+    {!! Form::number('shares_amount', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Email Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('email', 'Email:') !!}
+    {!! Form::email('email', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Contact Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('contact', 'Contact:') !!}
+    {!! Form::text('contact', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Phone Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('phone', 'Phone:') !!}
+    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

@@ -2,7 +2,6 @@
     <thead>
         <th>Name</th>
         <th>Website</th>
-        <th>User Id</th>
         <th colspan="3">Action</th>
     </thead>
     <tbody>
@@ -10,7 +9,6 @@
         <tr>
             <td>{!! $fund->name !!}</td>
             <td>{!! $fund->website !!}</td>
-            <td>{!! $fund->user_id !!}</td>
             <td>
                 {!! Form::open(['route' => ['funds.destroy', $fund->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

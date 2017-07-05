@@ -10,10 +10,22 @@
     {!! Form::text('website', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- User Id Field -->
+<!-- Email Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::text('user_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('email', 'Email:') !!}
+    {!! Form::email('email', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Contact Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('contact', 'Contact:') !!}
+    {!! Form::text('contact', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Phone Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('phone', 'Phone:') !!}
+    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

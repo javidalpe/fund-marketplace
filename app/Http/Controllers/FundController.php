@@ -8,6 +8,7 @@ use App\Repositories\FundRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Auth;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -56,6 +57,7 @@ class FundController extends AppBaseController
     public function store(CreateFundRequest $request)
     {
         $input = $request->all();
+        $input['user_id'] = Auth::user()->id;
 
         $fund = $this->fundRepository->create($input);
 

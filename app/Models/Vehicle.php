@@ -7,7 +7,7 @@ use Eloquent as Model;
 /**
  * Class Vehicle
  * @package App\Models
- * @version July 4, 2017, 9:16 pm UTC
+ * @version July 5, 2017, 2:26 pm UTC
  */
 class Vehicle extends Model
 {
@@ -20,7 +20,11 @@ class Vehicle extends Model
         'name',
         'company',
         'website',
-        'stock_value',
+        'stock_price',
+        'shares_amount',
+        'email',
+        'contact',
+        'phone',
         'fund_id'
     ];
 
@@ -33,7 +37,11 @@ class Vehicle extends Model
         'name' => 'string',
         'company' => 'string',
         'website' => 'string',
-        'stock_value' => 'float',
+        'stock_price' => 'float',
+        'shares_amount' => 'integer',
+        'email' => 'string',
+        'contact' => 'string',
+        'phone' => 'string',
         'fund_id' => 'integer'
     ];
 
@@ -46,7 +54,11 @@ class Vehicle extends Model
         'name' => 'required|min:3',
         'company' => 'required|min:3',
         'website' => 'required|url',
-        'stock_value' => 'numeric'
+        'stock_price' => 'numeric',
+        'shares_amount' => 'numeric',
+        'email' => 'email',
+        'contact' => 'min:3',
+        'phone' => 'min:3'
     ];
 
     /**
@@ -55,5 +67,21 @@ class Vehicle extends Model
     public function fund()
     {
         return $this->belongsTo(\App\Models\Fund::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function operations()
+    {
+        return $this->hasMany(\App\Models\Operation::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function offers()
+    {
+        return $this->hasMany(\App\Models\Offer::class);
     }
 }

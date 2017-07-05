@@ -2,23 +2,21 @@
 
 namespace App\Repositories;
 
-use App\Models\Vehicle;
+use App\Models\Bid;
 use InfyOm\Generator\Common\BaseRepository;
 
-class VehicleRepository extends BaseRepository
+class BidRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'name',
-        'company',
-        'website',
+        'amount',
         'stock_price',
-        'shares_amount',
-        'email',
-        'contact',
-        'phone'
+        'status',
+        'buyer_comment',
+        'seller_comment',
+        'buy_fee'
     ];
 
     /**
@@ -26,6 +24,6 @@ class VehicleRepository extends BaseRepository
      **/
     public function model()
     {
-        return Vehicle::class;
+        return Bid::class;
     }
 }

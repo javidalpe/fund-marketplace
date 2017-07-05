@@ -7,7 +7,7 @@ use Eloquent as Model;
 /**
  * Class Fund
  * @package App\Models
- * @version July 4, 2017, 9:16 pm UTC
+ * @version July 5, 2017, 2:26 pm UTC
  */
 class Fund extends Model
 {
@@ -19,6 +19,9 @@ class Fund extends Model
     public $fillable = [
         'name',
         'website',
+        'email',
+        'contact',
+        'phone',
         'user_id'
     ];
 
@@ -30,6 +33,9 @@ class Fund extends Model
     protected $casts = [
         'name' => 'string',
         'website' => 'string',
+        'email' => 'string',
+        'contact' => 'string',
+        'phone' => 'string',
         'user_id' => 'integer'
     ];
 
@@ -40,7 +46,10 @@ class Fund extends Model
      */
     public static $rules = [
         'name' => 'required|min:3',
-        'website' => 'url'
+        'website' => 'url',
+        'email' => 'email',
+        'contact' => 'min:3',
+        'phone' => 'min:3'
     ];
 
     /**
@@ -49,5 +58,21 @@ class Fund extends Model
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function users()
+    {
+        return $this->belongsToMany(\App\Models\User::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function vehicles()
+    {
+        return $this->hasMany(\App\Models\Vehicle::class);
     }
 }

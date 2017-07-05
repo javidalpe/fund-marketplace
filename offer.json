@@ -13,14 +13,14 @@
     {
         "name": "amount",
         "dbType": "integer",
-        "htmlType": "numeric",
+        "htmlType": "number",
         "validations": "required|numeric",
         "searchable": true
     },
     {
         "name": "stock_price",
         "dbType": "float",
-        "htmlType": "numeric",
+        "htmlType": "number",
         "validations": "required|numeric",
         "searchable": true
     },
@@ -29,12 +29,14 @@
         "dbType": "string",
         "htmlType": "select,Created,Cancelled,Completed,Expired",
         "validations": "required",
-        "searchable": true
+        "searchable": true,
+        "inIndex": false,
+        "inForm": false
     },
     {
         "name": "sell_fee",
         "dbType": "float",
-        "htmlType": "numeric",
+        "htmlType": "number",
         "searchable": true,
         "inForm": false,
         "inIndex": false
@@ -76,5 +78,9 @@
         "primary": false,
         "inForm": false,
         "inIndex": false
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Bid"
     }
 ]

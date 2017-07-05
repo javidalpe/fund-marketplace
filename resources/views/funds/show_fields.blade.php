@@ -16,6 +16,24 @@
     <p>{!! $fund->website !!}</p>
 </div>
 
+<!-- Email Field -->
+<div class="form-group">
+    {!! Form::label('email', 'Email:') !!}
+    <p>{!! $fund->email !!}</p>
+</div>
+
+<!-- Contact Field -->
+<div class="form-group">
+    {!! Form::label('contact', 'Contact:') !!}
+    <p>{!! $fund->contact !!}</p>
+</div>
+
+<!-- Phone Field -->
+<div class="form-group">
+    {!! Form::label('phone', 'Phone:') !!}
+    <p>{!! $fund->phone !!}</p>
+</div>
+
 <!-- User Id Field -->
 <div class="form-group">
     {!! Form::label('user_id', 'User Id:') !!}

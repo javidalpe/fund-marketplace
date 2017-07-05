@@ -13,14 +13,14 @@
     {
         "name": "amount",
         "dbType": "integer",
-        "htmlType": "numeric",
+        "htmlType": "number",
         "validations": "required|numeric",
         "searchable": true
     },
     {
         "name": "stock_price",
         "dbType": "float",
-        "htmlType": "numeric",
+        "htmlType": "number",
         "validations": "required|numeric",
         "searchable": true
     },
@@ -29,7 +29,9 @@
         "dbType": "string",
         "htmlType": "select,Created,Cancelled,Declined,Completed",
         "validations": "required",
-        "searchable": true
+        "searchable": true,
+        "inIndex": false,
+        "inForm": false
     },
     {
         "name": "buyer_comment",
@@ -50,7 +52,7 @@
     {
         "name": "buy_fee",
         "dbType": "float",
-        "htmlType": "numeric",
+        "htmlType": "number",
         "searchable": true,
         "inForm": false,
         "inIndex": false

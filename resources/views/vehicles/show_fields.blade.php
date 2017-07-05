@@ -22,10 +22,34 @@
     <p>{!! $vehicle->website !!}</p>
 </div>
 
-<!-- Stock Value Field -->
+<!-- Stock Price Field -->
 <div class="form-group">
-    {!! Form::label('stock_value', 'Stock Value:') !!}
-    <p>{!! $vehicle->stock_value !!}</p>
+    {!! Form::label('stock_price', 'Stock Price:') !!}
+    <p>{!! $vehicle->stock_price !!}</p>
+</div>
+
+<!-- Shares Amount Field -->
+<div class="form-group">
+    {!! Form::label('shares_amount', 'Shares Amount:') !!}
+    <p>{!! $vehicle->shares_amount !!}</p>
+</div>
+
+<!-- Email Field -->
+<div class="form-group">
+    {!! Form::label('email', 'Email:') !!}
+    <p>{!! $vehicle->email !!}</p>
+</div>
+
+<!-- Contact Field -->
+<div class="form-group">
+    {!! Form::label('contact', 'Contact:') !!}
+    <p>{!! $vehicle->contact !!}</p>
+</div>
+
+<!-- Phone Field -->
+<div class="form-group">
+    {!! Form::label('phone', 'Phone:') !!}
+    <p>{!! $vehicle->phone !!}</p>
 </div>
 
 <!-- Fund Id Field -->

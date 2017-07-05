@@ -55,3 +55,25 @@ Route::resource('vehicles', 'VehicleController');
 Route::resource('funds', 'FundController');
 
 Route::resource('vehicles', 'VehicleController');
+
+Route::resource('funds', 'FundController');
+
+Route::resource('funds', 'FundController');
+
+Route::resource('vehicles', 'VehicleController');
+
+Route::resource('operations', 'OperationController');
+
+Route::resource('offers', 'OfferController');
+
+Route::resource('bids', 'BidController');
+
+Route::resource('funds', 'FundController');
+
+Route::resource('vehicles', 'VehicleController');
+
+Route::resource('operations', 'OperationController');
+
+Route::resource('offers', 'OfferController');
+
+Route::resource('bids', 'BidController');

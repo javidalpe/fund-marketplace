@@ -12,7 +12,10 @@ class FundRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'name',
-        'website'
+        'website',
+        'email',
+        'contact',
+        'phone'
     ];
 
     /**
