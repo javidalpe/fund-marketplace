@@ -3,7 +3,7 @@
 </li>
 
 <li class="{{ Request::is('vehicles*') ? 'active' : '' }}">
-    <a href="{!! route('vehicles.index') !!}"><i class="fa fa-edit"></i><span>Vehicles</span></a>
+    <a href="{!! route('funds.vehicles.index') !!}"><i class="fa fa-edit"></i><span>Vehicles</span></a>
 </li>
 
 <li class="{{ Request::is('operations*') ? 'active' : '' }}">
@@ -17,4 +17,3 @@
 <li class="{{ Request::is('bids*') ? 'active' : '' }}">
     <a href="{!! route('bids.index') !!}"><i class="fa fa-edit"></i><span>Bids</span></a>
 </li>
-

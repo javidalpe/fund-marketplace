@@ -17,60 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::resource('vehicles', 'VehicleController');
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index');
 
-Route::resource('vehicles', 'VehicleController');
-
-Route::resource('vehicles', 'VehicleController');
-
-Route::resource('vehicles', 'VehicleController');
-
-Route::resource('vehicles', 'VehicleController');
-
-Route::resource('vehicles', 'VehicleController');
-
 Route::resource('funds', 'FundController');
 
-Route::resource('funds', 'FundController');
-
-Route::resource('vehicles', 'VehicleController');
-
-Route::resource('funds', 'FundController');
-
-Route::resource('funds', 'FundController');
-
-Route::resource('vehicles', 'VehicleController');
-
-Route::resource('funds', 'FundController');
-
-Route::resource('vehicles', 'VehicleController');
-
-Route::resource('funds', 'FundController');
-
-Route::resource('vehicles', 'VehicleController');
-
-Route::resource('funds', 'FundController');
-
-Route::resource('funds', 'FundController');
-
-Route::resource('vehicles', 'VehicleController');
-
-Route::resource('operations', 'OperationController');
-
-Route::resource('offers', 'OfferController');
-
-Route::resource('bids', 'BidController');
-
-Route::resource('funds', 'FundController');
-
-Route::resource('vehicles', 'VehicleController');
+Route::resource('funds.vehicles', 'VehicleController');
 
 Route::resource('operations', 'OperationController');
 
