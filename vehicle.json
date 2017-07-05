@@ -32,11 +32,42 @@
         "searchable": true
     },
     {
-        "name": "stock_value",
+        "name": "stock_price",
         "dbType": "float",
         "htmlType": "number",
         "validations": "numeric",
         "searchable": true
+    },
+    {
+        "name": "shares_amount",
+        "dbType": "integer",
+        "htmlType": "number",
+        "validations": "numeric",
+        "searchable": true,
+        "inIndex": false
+    },
+    {
+        "name": "email",
+        "dbType": "string",
+        "htmlType": "email",
+        "validations": "email",
+        "searchable": true
+    },
+    {
+        "name": "contact",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "min:3",
+        "searchable": true,
+        "inIndex": false
+    },
+    {
+        "name": "phone",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "min:3",
+        "searchable": true,
+        "inIndex": false
     },
     {
         "name": "fund_id",

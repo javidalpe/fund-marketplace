@@ -11,40 +11,56 @@
         "inIndex": false
     },
     {
-        "name": "name",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": "required|min:3",
+        "name": "amount",
+        "dbType": "integer",
+        "htmlType": "numeric",
+        "validations": "required|numeric",
         "searchable": true
     },
     {
-        "name": "website",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": "url",
+        "name": "stock_price",
+        "dbType": "float",
+        "htmlType": "numeric",
+        "validations": "required|numeric",
         "searchable": true
     },
     {
-        "name": "email",
+        "name": "status",
         "dbType": "string",
-        "htmlType": "email",
-        "validations": "email",
+        "htmlType": "select,Created,Cancelled,Declined,Completed",
+        "validations": "required",
         "searchable": true
     },
     {
-        "name": "contact",
+        "name": "buyer_comment",
         "dbType": "string",
-        "htmlType": "text",
-        "validations": "min:3",
+        "htmlType": "textarea",
+        "validations": "",
         "searchable": true,
         "inIndex": false
     },
     {
-        "name": "phone",
+        "name": "seller_comment",
         "dbType": "string",
-        "htmlType": "text",
-        "validations": "min:3",
+        "htmlType": "textarea",
+        "validations": "",
         "searchable": true,
+        "inIndex": false
+    },
+    {
+        "name": "buy_fee",
+        "dbType": "float",
+        "htmlType": "numeric",
+        "searchable": true,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "offer_id",
+        "dbType": "integer:unsigned:foreign,offers,id",
+        "htmlType": "text",
+        "relation": "mt1,Offer",
+        "inForm": false,
         "inIndex": false
     },
     {

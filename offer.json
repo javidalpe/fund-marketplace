@@ -11,40 +11,40 @@
         "inIndex": false
     },
     {
-        "name": "name",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": "required|min:3",
+        "name": "amount",
+        "dbType": "integer",
+        "htmlType": "numeric",
+        "validations": "required|numeric",
         "searchable": true
     },
     {
-        "name": "website",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": "url",
+        "name": "stock_price",
+        "dbType": "float",
+        "htmlType": "numeric",
+        "validations": "required|numeric",
         "searchable": true
     },
     {
-        "name": "email",
+        "name": "status",
         "dbType": "string",
-        "htmlType": "email",
-        "validations": "email",
+        "htmlType": "select,Created,Cancelled,Completed,Expired",
+        "validations": "required",
         "searchable": true
     },
     {
-        "name": "contact",
-        "dbType": "string",
-        "htmlType": "text",
-        "validations": "min:3",
+        "name": "sell_fee",
+        "dbType": "float",
+        "htmlType": "numeric",
         "searchable": true,
+        "inForm": false,
         "inIndex": false
     },
     {
-        "name": "phone",
-        "dbType": "string",
+        "name": "vehicle_id",
+        "dbType": "integer:unsigned:foreign,vehicles,id",
         "htmlType": "text",
-        "validations": "min:3",
-        "searchable": true,
+        "relation": "mt1,Vehicle",
+        "inForm": false,
         "inIndex": false
     },
     {
