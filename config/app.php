@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Fund Marketplace'),
 
     /*
     |--------------------------------------------------------------------------
@@ -238,4 +238,6 @@ return [
 
     ],
 
+    'sell_fee' => env('SELL_FEE', 0.04),
+    'buy_fee' => env('BUY_FEE', 0.04),
 ];

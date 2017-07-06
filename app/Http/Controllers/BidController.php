@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Offer;
+use App\Models\Bid;
+use App\User;
+use Auth;
 
 class BidController extends AppBaseController
 {
@@ -43,7 +47,14 @@ class BidController extends AppBaseController
      */
     public function create()
     {
-        return view('bids.create');
+        $offers = Offer::where('status', Offer::STATUS_CREATED)->get();
+        $users = User::where('id', '!=', Auth::user()->id)->get();
+        $data = array(
+            'offers' => array_pluck($offers, 'id', 'id'),
+            'investors' => array_pluck($users, 'name', 'id')
+        );
+
+        return view('bids.create', $data);
     }
 
     /**
@@ -56,7 +67,8 @@ class BidController extends AppBaseController
     public function store(CreateBidRequest $request)
     {
         $input = $request->all();
-
+        $input['status'] = Bid::STATUS_CREATED;
+        $input['buy_fee'] = ($request->amount * $request->stock_price) * config('app.buy_fee');
         $bid = $this->bidRepository->create($input);
 
         Flash::success('Bid saved successfully.');

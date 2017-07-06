@@ -13,8 +13,11 @@ class Offer extends Model
 {
 
     public $table = 'offers';
-    
 
+    const STATUS_CREATED = 'Created';
+    const STATUS_CANCELLED = 'Cancelled';
+    const STATUS_COMPLETED = 'Completed';
+    const STATUS_EXPIRED = 'Expired';
 
     public $fillable = [
         'amount',
@@ -46,9 +49,13 @@ class Offer extends Model
      */
     public static $rules = [
         'amount' => 'required|numeric',
-        'stock_price' => 'required|numeric',
-        'status' => 'required'
+        'stock_price' => 'required|numeric'
     ];
+
+    public function scopeCreated($query)
+    {
+        return $query->where('status', self::STATUS_CREATED);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

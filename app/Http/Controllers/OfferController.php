@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Auth;
+use App\User;
+use App\Models\Offer;
 
 class OfferController extends AppBaseController
 {
@@ -43,7 +46,13 @@ class OfferController extends AppBaseController
      */
     public function create()
     {
-        return view('offers.create');
+        $vehicles = Auth::user()->vehicles;
+        $users = User::where('id', '!=', Auth::user()->id)->get();
+        $data = array(
+            'vehicles' => array_pluck($vehicles, 'name', 'id'),
+            'investors' => array_pluck($users, 'name', 'id')
+        );
+        return view('offers.create', $data);
     }
 
     /**
@@ -56,6 +65,9 @@ class OfferController extends AppBaseController
     public function store(CreateOfferRequest $request)
     {
         $input = $request->all();
+
+        $input['status'] = Offer::STATUS_CREATED;
+        $input['sell_fee'] = ($request->amount * $request->stock_price) * config('app.sell_fee');
 
         $offer = $this->offerRepository->create($input);
 

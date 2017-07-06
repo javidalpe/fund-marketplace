@@ -13,8 +13,11 @@ class Bid extends Model
 {
 
     public $table = 'bids';
-    
 
+    const STATUS_CREATED = 'Created';
+    const STATUS_CANCELLED = 'Cancelled';
+    const STATUS_COMPLETED = 'Completed';
+    const STATUS_DECLINED = 'Declined';
 
     public $fillable = [
         'amount',
@@ -50,8 +53,7 @@ class Bid extends Model
      */
     public static $rules = [
         'amount' => 'required|numeric',
-        'stock_price' => 'required|numeric',
-        'status' => 'required'
+        'stock_price' => 'required|numeric'
     ];
 
     /**

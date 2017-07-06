@@ -18,8 +18,8 @@ class CreateBidsTable extends Migration
             $table->integer('amount');
             $table->float('stock_price');
             $table->string('status');
-            $table->string('buyer_comment');
-            $table->string('seller_comment');
+            $table->string('buyer_comment')->nullable();
+            $table->string('seller_comment')->nullable();
             $table->float('buy_fee');
             $table->integer('offer_id')->unsigned();
             $table->integer('user_id')->unsigned();
