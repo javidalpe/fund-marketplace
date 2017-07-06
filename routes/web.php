@@ -21,10 +21,12 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('funds', 'FundController');
 
-Route::resource('funds.vehicles', 'VehicleController');
+Route::resource('vehicles', 'VehicleController');
 
 Route::resource('operations', 'OperationController');
 
 Route::resource('offers', 'OfferController');
 
 Route::resource('bids', 'BidController');
+
+Route::resource('users', 'UserController');

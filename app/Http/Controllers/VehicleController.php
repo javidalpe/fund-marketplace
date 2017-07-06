@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Auth;
 
 class VehicleController extends AppBaseController
 {
@@ -43,7 +44,11 @@ class VehicleController extends AppBaseController
      */
     public function create()
     {
-        return view('vehicles.create');
+        $funds = Auth::user()->funds;
+        $data = array(
+            'funds' => array_pluck($funds, 'name', 'id'),
+        );
+        return view('vehicles.create', $data);
     }
 
     /**

@@ -26,4 +26,27 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'name' => 'required|min:3',
+        'email' => 'required|email',
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function funds()
+    {
+        return $this->hasMany(\App\Models\Fund::class);
+    }
+
+    public function vehicles()
+    {
+        return $this->hasManyThrough(\App\Models\Vehicle::class, \App\Models\Fund::class);
+    }
 }

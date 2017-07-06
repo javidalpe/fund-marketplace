@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Auth;
+use App\User;
 
 class OperationController extends AppBaseController
 {
@@ -43,7 +45,13 @@ class OperationController extends AppBaseController
      */
     public function create()
     {
-        return view('operations.create');
+        $vehicles = Auth::user()->vehicles;
+        $users = User::where('id', '!=', Auth::user()->id)->get();
+        $data = array(
+            'vehicles' => array_pluck($vehicles, 'name', 'id'),
+            'investors' => array_pluck($users, 'name', 'id')
+        );
+        return view('operations.create', $data);
     }
 
     /**
