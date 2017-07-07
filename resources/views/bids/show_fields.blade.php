@@ -37,7 +37,7 @@
 <!-- Buy Fee Field -->
 <div class="form-group">
     {!! Form::label('buy_fee', 'Buy Fee:') !!}
-    <p>{!! $bid->buy_fee !!}</p>
+    <p>@money($bid->buy_fee)</p>
 </div>
 
 <!-- Offer Id Field -->
@@ -48,7 +48,7 @@
 
 <!-- User Id Field -->
 <div class="form-group">
-    {!! Form::label('user_id', 'User Id:') !!}
+    {!! Form::label('user_id', 'Id Inversor:') !!}
     <p>{!! $bid->user_id !!}</p>
 </div>
 

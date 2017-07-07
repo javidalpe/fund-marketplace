@@ -25,7 +25,7 @@
 <!-- Sell Fee Field -->
 <div class="form-group">
     {!! Form::label('sell_fee', 'Sell Fee:') !!}
-    <p>{!! $offer->sell_fee !!}</p>
+    <p>@money($offer->sell_fee)</p>
 </div>
 
 <!-- Vehicle Id Field -->
@@ -36,7 +36,7 @@
 
 <!-- User Id Field -->
 <div class="form-group">
-    {!! Form::label('user_id', 'User Id:') !!}
+    {!! Form::label('user_id', 'Id Inversor:') !!}
     <p>{!! $offer->user_id !!}</p>
 </div>
 
@@ -51,4 +51,3 @@
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{!! $offer->updated_at !!}</p>
 </div>
-

@@ -36,7 +36,7 @@
 
 <!-- User Id Field -->
 <div class="form-group">
-    {!! Form::label('user_id', 'User Id:') !!}
+    {!! Form::label('user_id', 'Id Inversor:') !!}
     <p>{!! $operation->user_id !!}</p>
 </div>
 

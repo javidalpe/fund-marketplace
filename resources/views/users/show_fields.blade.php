@@ -6,13 +6,13 @@
 
 <!-- Name Field -->
 <div class="form-group">
-    {!! Form::label('amount', 'Name:') !!}
+    {!! Form::label('name', 'Nombre:') !!}
     <p>{!! $user->name !!}</p>
 </div>
 
-<!-- Email Price Field -->
+<!-- Stock Price Field -->
 <div class="form-group">
-    {!! Form::label('stock_price', 'Email Price:') !!}
+    {!! Form::label('email', 'Email:') !!}
     <p>{!! $user->email !!}</p>
 </div>
 
