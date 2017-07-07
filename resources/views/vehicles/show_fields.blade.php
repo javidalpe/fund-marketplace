@@ -25,7 +25,7 @@
 <!-- Stock Price Field -->
 <div class="form-group">
     {!! Form::label('stock_price', 'Stock Price:') !!}
-    <p>{!! $vehicle->stock_price !!}</p>
+    <p>@money($vehicle->stock_price)</p>
 </div>
 
 <!-- Shares Amount Field -->

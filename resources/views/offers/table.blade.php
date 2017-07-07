@@ -8,7 +8,7 @@
     @foreach($offers as $offer)
         <tr>
             <td>{!! $offer->amount !!}</td>
-            <td>{!! $offer->stock_price !!}</td>
+            <td>@money($offer->stock_price)</td>
             <td>
                 {!! Form::open(['route' => ['offers.destroy', $offer->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

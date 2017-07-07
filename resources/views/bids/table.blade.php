@@ -8,7 +8,7 @@
     @foreach($bids as $bid)
         <tr>
             <td>{!! $bid->amount !!}</td>
-            <td>{!! $bid->stock_price !!}</td>
+            <td>@money($bid->stock_price)</td>
             <td>
                 {!! Form::open(['route' => ['bids.destroy', $bid->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

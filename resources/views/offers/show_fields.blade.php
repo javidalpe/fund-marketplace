@@ -13,7 +13,7 @@
 <!-- Stock Price Field -->
 <div class="form-group">
     {!! Form::label('stock_price', 'Stock Price:') !!}
-    <p>{!! $offer->stock_price !!}</p>
+    <p>@money($offer->stock_price)</p>
 </div>
 
 <!-- Status Field -->

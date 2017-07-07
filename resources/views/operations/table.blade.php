@@ -11,7 +11,7 @@
         <tr>
             <td>{!! $operation->type !!}</td>
             <td>{!! $operation->amount !!}</td>
-            <td>{!! $operation->stock_price !!}</td>
+            <td>@money($operation->stock_price)</td>
             <td>{!! $operation->completed_at !!}</td>
             <td>
                 {!! Form::open(['route' => ['operations.destroy', $operation->id], 'method' => 'delete']) !!}

@@ -19,7 +19,10 @@
 <!-- Stock Price Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('stock_price', 'Stock Price:') !!}
-    {!! Form::number('stock_price', null, ['class' => 'form-control']) !!}
+    <div class="input-group">
+      {!! Form::number('stock_price', null, ['class' => 'form-control']) !!}
+      <div class="input-group-addon">€</div>
+</div>
 </div>
 
 <!-- Shares Amount Field -->
