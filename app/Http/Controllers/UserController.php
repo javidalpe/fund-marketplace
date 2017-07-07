@@ -12,6 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Auth;
 use App\User;
+use App\Notifications\YouHaveBeenSignedUp;
 
 class UserController extends AppBaseController
 {
@@ -66,6 +67,8 @@ class UserController extends AppBaseController
         $input = $request->all();
         $input['password'] = 'tochange';
         $user = $this->userRepository->create($input);
+
+        $user->notify(new YouHaveBeenSignedUp($user, Auth::user()));
 
         Flash::success('User saved successfully.');
 

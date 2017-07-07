@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/confirm/{id}', ['uses' => 'HomeController@confirm', 'as' => 'confirm']);
 
 Route::resource('funds', 'FundController');
 
