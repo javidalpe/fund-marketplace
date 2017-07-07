@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'manager'
     ];
 
     /**
@@ -48,5 +48,25 @@ class User extends Authenticatable
     public function vehicles()
     {
         return $this->hasManyThrough(\App\Models\Vehicle::class, \App\Models\Fund::class);
+    }
+
+    public function isManager()
+    {
+        return $this->manager;
+    }
+
+    public function isInvestor()
+    {
+        return $this->manager;
+    }
+
+    public function scopeInvestor($query)
+    {
+        return $query->where('manager', false);
+    }
+
+    public function scopeManager($query)
+    {
+        return $query->where('manager', true);
     }
 }
