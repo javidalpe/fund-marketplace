@@ -65,7 +65,7 @@ class UserController extends AppBaseController
     public function store(CreateUserRequest $request)
     {
         $input = $request->all();
-        $input['password'] = 'tochange';
+        $input['password'] = User::PASSWORD_TO_CHANGE;
         $user = $this->userRepository->create($input);
 
         $user->notify(new YouHaveBeenSignedUp($user, Auth::user()));

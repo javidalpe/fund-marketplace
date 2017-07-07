@@ -6,6 +6,10 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\ConfirmSignUp;
+use Illuminate\Support\Facades\Hash;
+use Flash;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -68,5 +72,30 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'manager' => true,
         ]);
+    }
+
+    public function confirm($id)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->password != User::PASSWORD_TO_CHANGE) return redirect('/');
+
+        return view('auth.confirm')->with('user', $user);
+    }
+
+    public function confirmStore($id, ConfirmSignUp $request)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->password != User::PASSWORD_TO_CHANGE) return redirect('/');
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        Auth::login($user);
+
+        Flash::success('Registro finalizado satisfactoriamente.');
+
+        return redirect('/');
     }
 }

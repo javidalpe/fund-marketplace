@@ -9,6 +9,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const PASSWORD_TO_CHANGE = 'tochange';
+
     /**
      * The attributes that are mass assignable.
      *

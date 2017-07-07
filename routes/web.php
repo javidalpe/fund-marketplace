@@ -17,17 +17,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-Route::get('/confirm/{id}', ['uses' => 'HomeController@confirm', 'as' => 'confirm']);
+Route::get('/confirm/{id}', ['uses' => 'Auth\RegisterController@confirm', 'as' => 'confirm']);
+Route::post('/confirm/{id}', ['uses' => 'Auth\RegisterController@confirmStore', 'as' => 'confirmStore']);
 
-Route::resource('funds', 'FundController');
+Route::middleware(['auth'])->group( function() {
+    Route::get('/home', 'HomeController@index');
 
-Route::resource('vehicles', 'VehicleController');
+    Route::resource('funds', 'FundController');
 
-Route::resource('operations', 'OperationController');
+    Route::resource('vehicles', 'VehicleController');
 
-Route::resource('offers', 'OfferController');
+    Route::resource('operations', 'OperationController');
 
-Route::resource('bids', 'BidController');
+    Route::resource('offers', 'OfferController');
 
-Route::resource('users', 'UserController');
+    Route::resource('bids', 'BidController');
+
+    Route::resource('users', 'UserController');
+});
