@@ -45,9 +45,29 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\Fund::class);
     }
 
+    public function operations()
+    {
+        return $this->hasMany(\App\Models\Operation::class);
+    }
+
+    public function bids()
+    {
+        return $this->hasMany(\App\Models\Bid::class);
+    }
+
+    public function clubs()
+    {
+        return $this->belongsToMany(\App\Models\Fund::class);
+    }
+
     public function vehicles()
     {
         return $this->hasManyThrough(\App\Models\Vehicle::class, \App\Models\Fund::class);
+    }
+
+    public function companies()
+    {
+        return $this->hasManyThrough(\App\Models\Vehicle::class, \App\Models\Operation::class);
     }
 
     public function isManager()
@@ -57,7 +77,7 @@ class User extends Authenticatable
 
     public function isInvestor()
     {
-        return $this->manager;
+        return !$this->manager;
     }
 
     public function scopeInvestor($query)

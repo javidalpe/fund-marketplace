@@ -10,6 +10,11 @@ class BidPolicy
 {
     use HandlesAuthorization;
 
+    public function before($user, $ability)
+    {
+        return $user->isManager();
+    }
+
     /**
      * Determine whether the user can view the bid.
      *

@@ -31,7 +31,13 @@ class VehicleController extends AppBaseController
     public function index(Request $request)
     {
         $this->vehicleRepository->pushCriteria(new RequestCriteria($request));
-        $vehicles = $this->vehicleRepository->all();
+
+        $user = Auth::user();
+        if ($user->isManager()) {
+            $vehicles = $user->vehicles;
+        } else {
+            $vehicles = $user->companies;
+        }
 
         return view('vehicles.index')
             ->with('vehicles', $vehicles);

@@ -32,7 +32,13 @@ class OperationController extends AppBaseController
     public function index(Request $request)
     {
         $this->operationRepository->pushCriteria(new RequestCriteria($request));
-        $operations = $this->operationRepository->all();
+
+        $user = Auth::user();
+        if ($user->isManager()) {
+            $operations = $this->operationRepository->findWhereIn('vehicle_id', array_pluck(Auth::user()->vehicles, 'id'));
+        } else {
+            $operations = $user->operations;
+        }
 
         return view('operations.index')
             ->with('operations', $operations);
@@ -46,7 +52,7 @@ class OperationController extends AppBaseController
     public function create()
     {
         $vehicles = Auth::user()->vehicles;
-        $users = User::where('id', '!=', Auth::user()->id)->get();
+        $users = User::investor()->get();
         $data = array(
             'vehicles' => array_pluck($vehicles, 'name', 'id'),
             'investors' => array_pluck($users, 'name', 'id')

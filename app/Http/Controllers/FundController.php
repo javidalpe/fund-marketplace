@@ -31,7 +31,13 @@ class FundController extends AppBaseController
     public function index(Request $request)
     {
         $this->fundRepository->pushCriteria(new RequestCriteria($request));
-        $funds = $this->fundRepository->all();
+
+        $user = Auth::user();
+        if ($user->isManager()) {
+            $funds = $user->funds;
+        } else {
+            $funds = $user->clubs;
+        }
 
         return view('funds.index')
             ->with('funds', $funds);

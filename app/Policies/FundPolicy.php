@@ -10,6 +10,11 @@ class FundPolicy
 {
     use HandlesAuthorization;
 
+    public function before($user, $ability)
+    {
+        return $user->isManager();
+    }
+
     /**
      * Determine whether the user can view the fund.
      *
@@ -30,7 +35,7 @@ class FundPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->isManager();
     }
 
     /**
