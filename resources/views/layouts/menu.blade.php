@@ -18,6 +18,8 @@
     <a href="{!! route('bids.index') !!}"><i class="fa fa-money"></i><span>Bids</span></a>
 </li>
 
-<li class="{{ Request::is('users*') ? 'active' : '' }}">
-    <a href="{!! route('users.index') !!}"><i class="fa fa-users"></i><span>Investors</span></a>
-</li>
+@can('create', App\User::class)
+    <li class="{{ Request::is('users*') ? 'active' : '' }}">
+        <a href="{!! route('users.index') !!}"><i class="fa fa-users"></i><span>Investors</span></a>
+    </li>
+@endcan
