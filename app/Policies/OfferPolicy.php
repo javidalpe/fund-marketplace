@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\User;
-use App\Offer;
+use App\Models\Offer;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class OfferPolicy
@@ -47,7 +47,7 @@ class OfferPolicy
      */
     public function update(User $user, Offer $offer)
     {
-        //
+        return $user->id == $offer->user_id && $offer->status == Offer::STATUS_CREATED;
     }
 
     /**
@@ -59,6 +59,6 @@ class OfferPolicy
      */
     public function delete(User $user, Offer $offer)
     {
-        //
+        return $user->id == $offer->user_id && $offer->status == Offer::STATUS_CREATED;
     }
 }

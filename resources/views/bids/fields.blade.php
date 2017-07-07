@@ -8,66 +8,9 @@
 <div class="form-group col-sm-6">
     {!! Form::label('stock_price', 'Stock Price:') !!}
     <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
-      <div class="input-group">
       {!! Form::number('stock_price', null, ['class' => 'form-control']) !!}
       <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
-      <div class="input-group-addon">€</div>
-</div>
+    </div>
 </div>
 
 <!-- Buyer Comment Field -->

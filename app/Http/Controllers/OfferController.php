@@ -33,7 +33,13 @@ class OfferController extends AppBaseController
     public function index(Request $request)
     {
         $this->offerRepository->pushCriteria(new RequestCriteria($request));
-        $offers = $this->offerRepository->all();
+
+        $user = Auth::user();
+        if ($user->isManager()) {
+            $offers = $this->offerRepository->findWhereIn('vehicle_id', array_pluck($user->vehicles, 'id'));
+        } else {
+            $offers = $user->operations;
+        }
 
         return view('offers.index')
             ->with('offers', $offers);
@@ -46,8 +52,15 @@ class OfferController extends AppBaseController
      */
     public function create()
     {
-        $vehicles = Auth::user()->vehicles;
-        $users = User::where('id', '!=', Auth::user()->id)->get();
+        $user = Auth::user();
+        if ($user->isManager()) {
+            $vehicles = $user->vehicles;
+            $users = User::investor()->get();
+        } else {
+            $vehicles = $user->companies;
+            $users = [$user];
+        }
+
         $data = array(
             'vehicles' => array_pluck($vehicles, 'name', 'id'),
             'investors' => array_pluck($users, 'name', 'id')

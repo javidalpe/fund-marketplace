@@ -13,10 +13,10 @@
                 {!! Form::open(['route' => ['funds.destroy', $fund->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
                     <a href="{!! route('funds.show', [$fund->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    @can('edit', App\Models\Fund::class)
+                    @can('update', $fund)
                         <a href="{!! route('funds.edit', [$fund->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     @endcan
-                    @can('delete', App\Models\Fund::class)
+                    @can('delete', $fund)
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     @endcan
                 </div>

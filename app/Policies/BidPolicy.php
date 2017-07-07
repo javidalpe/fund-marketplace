@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\User;
-use App\Bid;
+use App\Models\Bid;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class BidPolicy
@@ -47,7 +47,7 @@ class BidPolicy
      */
     public function update(User $user, Bid $bid)
     {
-        //
+        return $user->id == $bid->user_id && $bid->status == Offer::STATUS_CREATED;
     }
 
     /**
@@ -59,6 +59,6 @@ class BidPolicy
      */
     public function delete(User $user, Bid $bid)
     {
-        //
+        return $user->id == $bid->user_id && $bid->status == Offer::STATUS_CREATED;
     }
 }

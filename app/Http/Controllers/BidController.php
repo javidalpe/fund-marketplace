@@ -34,7 +34,13 @@ class BidController extends AppBaseController
     public function index(Request $request)
     {
         $this->bidRepository->pushCriteria(new RequestCriteria($request));
-        $bids = $this->bidRepository->all();
+        $user = Auth::user();
+        if ($user->isManager()) {
+            $offers = Offer::where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
+            $bids = $this->bidRepository->findWhereIn('offer_id', array_pluck($offers, 'id'));
+        } else {
+            $bids = $user->bids;
+        }
 
         return view('bids.index')
             ->with('bids', $bids);
@@ -47,8 +53,15 @@ class BidController extends AppBaseController
      */
     public function create()
     {
-        $offers = Offer::where('status', Offer::STATUS_CREATED)->get();
-        $users = User::where('id', '!=', Auth::user()->id)->get();
+        $user = Auth::user();
+        if ($user->isManager()) {
+            $offers = Offer::where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
+            $users = User::investor()->get();
+        } else {
+            $offers = $user->companies;
+            $users = [$user];
+        }
+
         $data = array(
             'offers' => array_pluck($offers, 'id', 'id'),
             'investors' => array_pluck($users, 'name', 'id')
