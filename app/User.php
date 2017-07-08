@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Vehicle;
 
 class User extends Authenticatable
 {
@@ -69,7 +70,8 @@ class User extends Authenticatable
 
     public function companies()
     {
-        return $this->hasManyThrough(\App\Models\Vehicle::class, \App\Models\Operation::class);
+        $ids = array_pluck($this->operations, 'vehicle_id');
+        return Vehicle::whereIn('id', $ids);
     }
 
     public function isManager()

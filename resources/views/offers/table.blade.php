@@ -1,5 +1,7 @@
 <table class="table table-responsive" id="offers-table">
     <thead>
+        <th>Investor</th>
+        <th>Company</th>
         <th>Amount</th>
         <th>Stock Price</th>
         <th colspan="3">Action</th>
@@ -7,6 +9,8 @@
     <tbody>
     @foreach($offers as $offer)
         <tr>
+            <td>{{ $offer->user->name }}</td>
+            <td>{{ $offer->vehicle->company }}</td>
             <td>{!! $offer->amount !!}</td>
             <td>@money($offer->stock_price)</td>
             <td>

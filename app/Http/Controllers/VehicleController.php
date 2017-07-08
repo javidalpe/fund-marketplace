@@ -36,7 +36,7 @@ class VehicleController extends AppBaseController
         if ($user->isManager()) {
             $vehicles = $user->vehicles;
         } else {
-            $vehicles = $user->companies;
+            $vehicles = $user->companies()->get();
         }
 
         return view('vehicles.index')

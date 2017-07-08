@@ -36,9 +36,9 @@ class OfferController extends AppBaseController
 
         $user = Auth::user();
         if ($user->isManager()) {
-            $offers = $this->offerRepository->findWhereIn('vehicle_id', array_pluck($user->vehicles, 'id'));
+            $offers = $this->offerRepository->with('user')->with('vehicle')->findWhereIn('vehicle_id', array_pluck($user->vehicles, 'id'));
         } else {
-            $offers = $user->operations;
+            $offers = $user->operations()->with('user')->with('vehicle')->get();
         }
 
         return view('offers.index')
@@ -57,7 +57,7 @@ class OfferController extends AppBaseController
             $vehicles = $user->vehicles;
             $users = User::investor()->get();
         } else {
-            $vehicles = $user->companies;
+            $vehicles = $user->companies()->get();
             $users = [$user];
         }
 

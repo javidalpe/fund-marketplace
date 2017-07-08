@@ -13,7 +13,7 @@ class Fund extends Model
 {
 
     public $table = 'funds';
-    
+
 
 
     public $fillable = [
@@ -57,7 +57,7 @@ class Fund extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\User::class);
     }
 
     /**
@@ -65,7 +65,7 @@ class Fund extends Model
      **/
     public function users()
     {
-        return $this->belongsToMany(\App\Models\User::class);
+        return $this->belongsToMany(\App\User::class);
     }
 
     /**

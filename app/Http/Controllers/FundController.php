@@ -11,6 +11,7 @@ use Flash;
 use Auth;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\User;
 
 class FundController extends AppBaseController
 {
@@ -89,7 +90,14 @@ class FundController extends AppBaseController
             return redirect(route('funds.index'));
         }
 
-        return view('funds.show')->with('fund', $fund);
+        $users = User::investor()->get();
+
+        $data = [
+            'fund' => $fund,
+            'users' => $fund->users,
+            'investors' => array_pluck($users, 'name', 'id')
+        ];
+        return view('funds.show', $data);
     }
 
     /**

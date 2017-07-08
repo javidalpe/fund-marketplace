@@ -58,7 +58,7 @@ class BidController extends AppBaseController
             $offers = Offer::where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
             $users = User::investor()->get();
         } else {
-            $offers = $user->companies;
+            $offers = Offer::where('user_id', '!=', $user->id)->where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
             $users = [$user];
         }
 
