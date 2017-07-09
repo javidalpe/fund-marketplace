@@ -6,7 +6,7 @@
 
 <!-- Type Field -->
 <div class="form-group">
-    {!! Form::label('type', 'Type:') !!}
+    {!! Form::label('type', 'Tipo:') !!}
     <p>{!! $operation->type !!}</p>
 </div>
 
@@ -16,9 +16,9 @@
     <p>{!! $operation->amount !!}</p>
 </div>
 
-<!-- Stock Price Field -->
+<!-- Precio de la acción Field -->
 <div class="form-group">
-    {!! Form::label('stock_price', 'Stock Price:') !!}
+    {!! Form::label('stock_price', 'Precio de la acción:') !!}
     <p>@money($operation->stock_price)</p>
 </div>
 
@@ -42,13 +42,13 @@
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Fecha de creación:') !!}
     <p>{!! $operation->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
+    {!! Form::label('updated_at', 'Última actualización:') !!}
     <p>{!! $operation->updated_at !!}</p>
 </div>
 

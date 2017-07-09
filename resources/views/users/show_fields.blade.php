@@ -10,21 +10,21 @@
     <p>{!! $user->name !!}</p>
 </div>
 
-<!-- Stock Price Field -->
+<!-- Precio de la acción Field -->
 <div class="form-group">
-    {!! Form::label('email', 'Email:') !!}
+    {!! Form::label('email', 'Email de contacto:') !!}
     <p>{!! $user->email !!}</p>
 </div>
 
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Fecha de creación:') !!}
     <p>{!! $user->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
+    {!! Form::label('updated_at', 'Última actualización:') !!}
     <p>{!! $user->updated_at !!}</p>
 </div>

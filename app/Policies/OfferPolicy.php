@@ -47,7 +47,7 @@ class OfferPolicy
      */
     public function update(User $user, Offer $offer)
     {
-        return $user->id == $offer->user_id && $offer->status == Offer::STATUS_CREATED;
+        return $user->id == $offer->user_id;// && $offer->status == Offer::STATUS_CREATED;
     }
 
     /**

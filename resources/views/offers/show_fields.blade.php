@@ -10,9 +10,9 @@
     <p>{!! $offer->amount !!}</p>
 </div>
 
-<!-- Stock Price Field -->
+<!-- Precio de la acción Field -->
 <div class="form-group">
-    {!! Form::label('stock_price', 'Stock Price:') !!}
+    {!! Form::label('stock_price', 'Precio de la acción:') !!}
     <p>@money($offer->stock_price)</p>
 </div>
 
@@ -42,12 +42,12 @@
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Fecha de creación:') !!}
     <p>{!! $offer->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
+    {!! Form::label('updated_at', 'Última actualización:') !!}
     <p>{!! $offer->updated_at !!}</p>
 </div>

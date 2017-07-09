@@ -55,15 +55,15 @@ class BidController extends AppBaseController
     {
         $user = Auth::user();
         if ($user->isManager()) {
-            $offers = Offer::where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
+            $offers = Offer::where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->with('user')->get();
             $users = User::investor()->get();
         } else {
-            $offers = Offer::where('user_id', '!=', $user->id)->where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
+            $offers = Offer::where('user_id', '!=', $user->id)->where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->companies()->get(), 'id'))->with('user')->get();
             $users = [$user];
         }
 
         $data = array(
-            'offers' => array_pluck($offers, 'id', 'id'),
+            'offers' => array_pluck($offers, 'user.name', 'id'),
             'investors' => array_pluck($users, 'name', 'id')
         );
 

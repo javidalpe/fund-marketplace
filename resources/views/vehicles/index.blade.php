@@ -6,7 +6,7 @@
 
         @can('create', App\Models\Vehicle::class)
             <h1 class="pull-right">
-               <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('vehicles.create') !!}">Add New</a>
+               <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('vehicles.create') !!}">Añadir</a>
             </h1>
         @endcan
         

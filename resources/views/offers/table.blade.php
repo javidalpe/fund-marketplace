@@ -1,10 +1,10 @@
 <table class="table table-responsive" id="offers-table">
     <thead>
         <th>Investor</th>
-        <th>Company</th>
+        <th>Nombre de la compañía</th>
         <th>Amount</th>
-        <th>Stock Price</th>
-        <th colspan="3">Action</th>
+        <th>Precio de la acción</th>
+        <th colspan="3">Accciones</th>
     </thead>
     <tbody>
     @foreach($offers as $offer)

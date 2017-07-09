@@ -1,14 +1,16 @@
 <table class="table table-responsive" id="operations-table">
     <thead>
-        <th>Type</th>
+        <th>Nombre de la compañía</th>
+        <th>Tipo</th>
         <th>Amount</th>
-        <th>Stock Price</th>
+        <th>Precio de la acción</th>
         <th>Completed At</th>
-        <th colspan="3">Action</th>
+        <th colspan="3">Accciones</th>
     </thead>
     <tbody>
     @foreach($operations as $operation)
         <tr>
+            <td>{!! $operation->vehicle->company !!}</td>
             <td>{!! $operation->type !!}</td>
             <td>{!! $operation->amount !!}</td>
             <td>@money($operation->stock_price)</td>

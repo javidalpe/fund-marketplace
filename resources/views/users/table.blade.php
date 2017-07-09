@@ -1,8 +1,8 @@
 <table class="table table-responsive" id="users-table">
     <thead>
-        <th>Name</th>
+        <th>Nombre</th>
         <th>Email</th>
-        <th colspan="3">Action</th>
+        <th colspan="3">Accciones</th>
     </thead>
     <tbody>
     @foreach($users as $user)

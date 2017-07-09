@@ -6,49 +6,49 @@
 
 <!-- Name Field -->
 <div class="form-group">
-    {!! Form::label('name', 'Nombre:') !!}
+    {!! Form::label('name', 'Denominación del vehículo:') !!}
     <p>{!! $vehicle->name !!}</p>
 </div>
 
-<!-- Company Field -->
+<!-- Nombre de la compañía Field -->
 <div class="form-group">
-    {!! Form::label('company', 'Company:') !!}
+    {!! Form::label('company', 'Nombre de la compañía:') !!}
     <p>{!! $vehicle->company !!}</p>
 </div>
 
 <!-- Website Field -->
 <div class="form-group">
-    {!! Form::label('website', 'Website:') !!}
+    {!! Form::label('website', 'Sitio web:') !!}
     <p>{!! $vehicle->website !!}</p>
 </div>
 
-<!-- Stock Price Field -->
+<!-- Precio de la acción Field -->
 <div class="form-group">
-    {!! Form::label('stock_price', 'Stock Price:') !!}
+    {!! Form::label('stock_price', 'Precio de la acción:') !!}
     <p>@money($vehicle->stock_price)</p>
 </div>
 
-<!-- Shares Amount Field -->
+<!-- Número de acciones Field -->
 <div class="form-group">
-    {!! Form::label('shares_amount', 'Shares Amount:') !!}
+    {!! Form::label('shares_amount', 'Número de acciones:') !!}
     <p>{!! $vehicle->shares_amount !!}</p>
 </div>
 
 <!-- Email Field -->
 <div class="form-group">
-    {!! Form::label('email', 'Email:') !!}
+    {!! Form::label('email', 'Email de contacto:') !!}
     <p>{!! $vehicle->email !!}</p>
 </div>
 
 <!-- Contact Field -->
 <div class="form-group">
-    {!! Form::label('contact', 'Contact:') !!}
+    {!! Form::label('contact', 'Persona de contacto:') !!}
     <p>{!! $vehicle->contact !!}</p>
 </div>
 
 <!-- Phone Field -->
 <div class="form-group">
-    {!! Form::label('phone', 'Phone:') !!}
+    {!! Form::label('phone', 'Teléfono de contacto:') !!}
     <p>{!! $vehicle->phone !!}</p>
 </div>
 
@@ -60,13 +60,12 @@
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Fecha de creación:') !!}
     <p>{!! $vehicle->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
+    {!! Form::label('updated_at', 'Última actualización:') !!}
     <p>{!! $vehicle->updated_at !!}</p>
 </div>
-

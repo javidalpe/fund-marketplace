@@ -1,8 +1,8 @@
 <table class="table table-responsive" id="bids-table">
     <thead>
         <th>Amount</th>
-        <th>Stock Price</th>
-        <th colspan="3">Action</th>
+        <th>Precio de la acción</th>
+        <th colspan="3">Accciones</th>
     </thead>
     <tbody>
     @foreach($bids as $bid)

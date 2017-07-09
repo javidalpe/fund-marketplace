@@ -35,9 +35,9 @@ class OperationController extends AppBaseController
 
         $user = Auth::user();
         if ($user->isManager()) {
-            $operations = $this->operationRepository->findWhereIn('vehicle_id', array_pluck(Auth::user()->vehicles, 'id'));
+            $operations = $this->operationRepository->with('vehicle')->findWhereIn('vehicle_id', array_pluck(Auth::user()->vehicles, 'id'));
         } else {
-            $operations = $user->operations;
+            $operations = $user->operations()->with('vehicle')->get();
         }
 
         return view('operations.index')

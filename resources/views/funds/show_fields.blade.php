@@ -12,25 +12,25 @@
 
 <!-- Website Field -->
 <div class="form-group">
-    {!! Form::label('website', 'Website:') !!}
+    {!! Form::label('website', 'Sitio web:') !!}
     <p>{!! $fund->website !!}</p>
 </div>
 
 <!-- Email Field -->
 <div class="form-group">
-    {!! Form::label('email', 'Email:') !!}
+    {!! Form::label('email', 'Email de contacto:') !!}
     <p>{!! $fund->email !!}</p>
 </div>
 
 <!-- Contact Field -->
 <div class="form-group">
-    {!! Form::label('contact', 'Contact:') !!}
+    {!! Form::label('contact', 'Persona de contacto:') !!}
     <p>{!! $fund->contact !!}</p>
 </div>
 
 <!-- Phone Field -->
 <div class="form-group">
-    {!! Form::label('phone', 'Phone:') !!}
+    {!! Form::label('phone', 'Teléfono de contacto:') !!}
     <p>{!! $fund->phone !!}</p>
 </div>
 
@@ -42,13 +42,13 @@
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Fecha de creación:') !!}
     <p>{!! $fund->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
+    {!! Form::label('updated_at', 'Última actualización:') !!}
     <p>{!! $fund->updated_at !!}</p>
 </div>
 

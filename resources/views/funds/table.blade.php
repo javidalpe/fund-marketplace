@@ -1,8 +1,8 @@
 <table class="table table-responsive" id="funds-table">
     <thead>
-        <th>Name</th>
-        <th>Website</th>
-        <th colspan="3">Action</th>
+        <th>Nombre</th>
+        <th>Sitio web</th>
+        <th colspan="3">Accciones</th>
     </thead>
     <tbody>
     @foreach($funds as $fund)

@@ -10,10 +10,10 @@ class BidPolicy
 {
     use HandlesAuthorization;
 
-    public function before($user, $ability)
+    /*public function before($user, $ability)
     {
         return $user->isManager();
-    }
+    }*/
 
     /**
      * Determine whether the user can view the bid.
@@ -59,6 +59,7 @@ class BidPolicy
      */
     public function delete(User $user, Bid $bid)
     {
+        dd($bid);
         return $user->id == $bid->user_id && $bid->status == Offer::STATUS_CREATED;
     }
 }
