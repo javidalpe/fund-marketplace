@@ -13,8 +13,27 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
+        'App\Events\OfferCreated' => [
+            'App\Listeners\OfferCreatedListener',
+        ],
+        'App\Events\OfferUpdated' => [
+            'App\Listeners\OfferUpdatedListener',
+        ],
+        'App\Events\OfferDeleted' => [
+            'App\Listeners\OfferDeletedListener',
+        ],
+        'App\Events\OfferFinished' => [
+            'App\Listeners\OfferFinishedListener',
+        ],
+
+        'App\Events\BidCreated' => [
+            'App\Listeners\BidCreatedListener',
+        ],
+        'App\Events\BidUpdatedd' => [
+            'App\Listeners\BidUpdateddListener',
+        ],
+        'App\Events\BidDeleted' => [
+            'App\Listeners\BidDeletedListener',
         ],
     ];
 

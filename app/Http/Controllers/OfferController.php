@@ -84,6 +84,8 @@ class OfferController extends AppBaseController
 
         $offer = $this->offerRepository->create($input);
 
+        event(new OfferCreated($offer));
+
         Flash::success('Offer saved successfully.');
 
         return redirect(route('offers.index'));
