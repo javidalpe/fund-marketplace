@@ -8,11 +8,12 @@ use App\Repositories\OfferRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Auth;
+use Prettus\Repository\Criteria\RequestCriteria;
 use App\User;
 use App\Models\Offer;
+use App\Events\OfferCreated;
 
 class OfferController extends AppBaseController
 {

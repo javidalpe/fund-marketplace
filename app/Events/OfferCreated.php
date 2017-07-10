@@ -14,7 +14,7 @@ class OfferCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private $offer;
+    public $offer;
 
     /**
      * Create a new event instance.

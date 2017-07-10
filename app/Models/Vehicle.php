@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use App\User;
 
 /**
  * Class Vehicle
@@ -13,7 +14,7 @@ class Vehicle extends Model
 {
 
     public $table = 'vehicles';
-    
+
 
 
     public $fillable = [
@@ -75,6 +76,17 @@ class Vehicle extends Model
     public function operations()
     {
         return $this->hasMany(\App\Models\Operation::class);
+    }
+
+    public function investors()
+    {
+        $user_ids = $this->operations()
+                ->select('user_id')
+                ->groupBy('user_id')
+                ->havingRaw('SUM(amount) > 0')
+                ->get();
+        $ids = array_pluck($user_ids, 'user_id');
+        return User::whereIn('id',$ids);
     }
 
     /**

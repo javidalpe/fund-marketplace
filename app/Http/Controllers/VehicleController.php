@@ -85,7 +85,7 @@ class VehicleController extends AppBaseController
     public function show($id)
     {
         $vehicle = $this->vehicleRepository->findWithoutFail($id);
-
+        $vehicle->investors();
         if (empty($vehicle)) {
             Flash::error('Vehicle not found');
 
