@@ -4,9 +4,9 @@
     <p>{!! $offer->id !!}</p>
 </div>
 
-<!-- Amount Field -->
+<!-- Número de acciones Field -->
 <div class="form-group">
-    {!! Form::label('amount', 'Amount:') !!}
+    {!! Form::label('amount', 'Número de acciones:') !!}
     <p>{!! $offer->amount !!}</p>
 </div>
 

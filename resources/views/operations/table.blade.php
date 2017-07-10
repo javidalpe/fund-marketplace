@@ -2,9 +2,9 @@
     <thead>
         <th>Nombre de la compañía</th>
         <th>Tipo</th>
-        <th>Amount</th>
+        <th>Número de acciones</th>
         <th>Precio de la acción</th>
-        <th>Completed At</th>
+        <th>Fecha de la operación</th>
         <th colspan="3">Accciones</th>
     </thead>
     <tbody>

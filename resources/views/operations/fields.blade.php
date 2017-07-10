@@ -4,9 +4,9 @@
     {!! Form::select('type', ['Buy' => 'Buy', 'Sell' => 'Sell'], null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Amount Field -->
+<!-- Número de acciones Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('amount', 'Amount:') !!}
+    {!! Form::label('amount', 'Número de acciones:') !!}
     {!! Form::number('amount', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -19,9 +19,9 @@
 </div>
 </div>
 
-<!-- Completed At Field -->
+<!-- Fecha de la operación Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('completed_at', 'Completed At:') !!}
+    {!! Form::label('completed_at', 'Fecha de la operación:') !!}
     {!! Form::date('completed_at', null, ['class' => 'form-control']) !!}
 </div>
 

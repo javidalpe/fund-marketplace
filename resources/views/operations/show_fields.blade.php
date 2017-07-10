@@ -10,9 +10,9 @@
     <p>{!! $operation->type !!}</p>
 </div>
 
-<!-- Amount Field -->
+<!-- Número de acciones Field -->
 <div class="form-group">
-    {!! Form::label('amount', 'Amount:') !!}
+    {!! Form::label('amount', 'Número de acciones:') !!}
     <p>{!! $operation->amount !!}</p>
 </div>
 
@@ -22,9 +22,9 @@
     <p>@money($operation->stock_price)</p>
 </div>
 
-<!-- Completed At Field -->
+<!-- Fecha de la operación Field -->
 <div class="form-group">
-    {!! Form::label('completed_at', 'Completed At:') !!}
+    {!! Form::label('completed_at', 'Fecha de la operación:') !!}
     <p>{!! $operation->completed_at !!}</p>
 </div>
 

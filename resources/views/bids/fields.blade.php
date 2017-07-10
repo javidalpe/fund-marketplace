@@ -1,6 +1,6 @@
-<!-- Amount Field -->
+<!-- Número de acciones Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('amount', 'Amount:') !!}
+    {!! Form::label('amount', 'Número de acciones:') !!}
     {!! Form::number('amount', null, ['class' => 'form-control']) !!}
 </div>
 
