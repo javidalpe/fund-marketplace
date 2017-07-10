@@ -25,7 +25,7 @@
 <!-- Fecha de la operación Field -->
 <div class="form-group">
     {!! Form::label('completed_at', 'Fecha de la operación:') !!}
-    <p>{!! $operation->completed_at !!}</p>
+    <p>{!! $operation->completed_at->format('d M. Y') !!}</p>
 </div>
 
 <!-- Vehicle Id Field -->
@@ -43,12 +43,12 @@
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Fecha de creación:') !!}
-    <p>{!! $operation->created_at !!}</p>
+    <p>{!! $operation->created_at->format('d M. Y') !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
     {!! Form::label('updated_at', 'Última actualización:') !!}
-    <p>{!! $operation->updated_at !!}</p>
+    <p>{!! $operation->updated_at->format('d M. Y') !!}</p>
 </div>
 

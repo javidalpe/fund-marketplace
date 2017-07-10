@@ -14,7 +14,7 @@
             <td>{!! $operation->type !!}</td>
             <td>{!! $operation->amount !!}</td>
             <td>@money($operation->stock_price)</td>
-            <td>{!! $operation->completed_at !!}</td>
+            <td>{!! $operation->completed_at->format('d M. Y') !!}</td>
             <td>
                 {!! Form::open(['route' => ['operations.destroy', $operation->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

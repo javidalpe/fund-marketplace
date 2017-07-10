@@ -43,12 +43,12 @@
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Fecha de creación:') !!}
-    <p>{!! $fund->created_at !!}</p>
+    <p>{!! $fund->created_at->format('d M. Y') !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
     {!! Form::label('updated_at', 'Última actualización:') !!}
-    <p>{!! $fund->updated_at !!}</p>
+    <p>{!! $fund->updated_at->format('d M. Y') !!}</p>
 </div>
 

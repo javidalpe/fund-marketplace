@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\Operation::class);
     }
 
+    public function offers()
+    {
+        return $this->hasMany(\App\Models\Offer::class);
+    }
+
     public function bids()
     {
         return $this->hasMany(\App\Models\Bid::class);

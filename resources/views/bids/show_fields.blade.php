@@ -55,11 +55,11 @@
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Fecha de creación:') !!}
-    <p>{!! $bid->created_at !!}</p>
+    <p>{!! $bid->created_at->format('d M. Y') !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
     {!! Form::label('updated_at', 'Última actualización:') !!}
-    <p>{!! $bid->updated_at !!}</p>
+    <p>{!! $bid->updated_at->format('d M. Y') !!}</p>
 </div>

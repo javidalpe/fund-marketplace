@@ -20,11 +20,11 @@
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Fecha de creación:') !!}
-    <p>{!! $user->created_at !!}</p>
+    <p>{!! $user->created_at->format('d M. Y') !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
     {!! Form::label('updated_at', 'Última actualización:') !!}
-    <p>{!! $user->updated_at !!}</p>
+    <p>{!! $user->updated_at->format('d M. Y') !!}</p>
 </div>

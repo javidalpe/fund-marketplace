@@ -96,6 +96,6 @@ class RegisterController extends Controller
 
         Flash::success('Registro finalizado satisfactoriamente.');
 
-        return redirect('/');
+        return redirect('/home');
     }
 }

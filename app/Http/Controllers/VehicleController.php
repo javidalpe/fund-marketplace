@@ -92,7 +92,20 @@ class VehicleController extends AppBaseController
             return redirect(route('vehicles.index'));
         }
 
-        return view('vehicles.show')->with('vehicle', $vehicle);
+        $user = Auth::user();
+
+        if ($user->isManager()) {
+            $operations = $vehicle->operations;
+        } else {
+            $operations = $vehicle->operations()->where('user_id', $user->id)->get();
+        }
+
+        $data = [
+            'vehicle' => $vehicle,
+            'operations' => $operations
+        ];
+
+        return view('vehicles.show', $data);
     }
 
     /**

@@ -48,6 +48,7 @@ class YouHaveBeenSignedUp extends Notification
         $url = route('confirm', $this->user->id);
 
         return (new MailMessage)
+                    ->subject('Bienvenido a ' . config('app.name'))
                     ->greeting('Hola ' . $this->user->name . '!')
                     ->line('Bienvenido a ' . config('app.name') . '.')
                     ->line(config('app.name') . ' es un marketplace de compraventa de acciones. Te

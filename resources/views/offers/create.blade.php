@@ -18,10 +18,15 @@
                             {!! Form::label('vehicle_id', 'Vehicle:') !!}
                             {!! Form::select('vehicle_id', $vehicles, null, ['class' => 'form-control']) !!}
                         </div>
-                        <div class="form-group col-sm-6">
-                            {!! Form::label('user_id', 'Investor:') !!}
-                            {!! Form::select('user_id', $investors, null, ['class' => 'form-control']) !!}
-                        </div>
+
+                        @if (Auth::user()->isManager())
+                            <div class="form-group col-sm-6">
+                                {!! Form::label('user_id', 'Investor:') !!}
+                                {!! Form::select('user_id', $investors, null, ['class' => 'form-control']) !!}
+                            </div>
+                        @else
+                            {!! Form::hidden('user_id', Auth::user()->id) !!}
+                        @endif
 
                         @include('offers.fields')
 

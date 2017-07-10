@@ -10,11 +10,6 @@ class OfferPolicy
 {
     use HandlesAuthorization;
 
-    public function before($user, $ability)
-    {
-        return $user->isManager();
-    }
-
     /**
      * Determine whether the user can view the offer.
      *
@@ -47,7 +42,7 @@ class OfferPolicy
      */
     public function update(User $user, Offer $offer)
     {
-        return $user->id == $offer->user_id;// && $offer->status == Offer::STATUS_CREATED;
+        return $user->isManager() || ($user->id == $offer->user_id && $offer->status == Offer::STATUS_CREATED);
     }
 
     /**
@@ -59,6 +54,6 @@ class OfferPolicy
      */
     public function delete(User $user, Offer $offer)
     {
-        return $user->id == $offer->user_id && $offer->status == Offer::STATUS_CREATED;
+        return $user->isManager() || ($user->id == $offer->user_id && $offer->status == Offer::STATUS_CREATED);
     }
 }
