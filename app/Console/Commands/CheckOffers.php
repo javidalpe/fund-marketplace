@@ -49,8 +49,7 @@ class CheckOffers extends Command
 
             if ($days == 8) {
                 $this->handleWeekOffer($offer);
-            } else if ($days == 8) {
-                dd($offer);
+            } else if ($days == 15) {
                 $this->handleTwoWeeksOffer($offer);
             }
         }

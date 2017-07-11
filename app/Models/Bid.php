@@ -71,4 +71,9 @@ class Bid extends Model
     {
         return $this->belongsTo(\App\User::class);
     }
+
+    public function scopeCreated($query)
+    {
+        return $query->where('status', self::STATUS_CREATED);
+    }
 }

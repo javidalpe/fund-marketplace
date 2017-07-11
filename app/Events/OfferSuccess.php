@@ -14,14 +14,16 @@ class OfferSuccess
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $offer;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(\App\Models\Offer $offer)
     {
-        //
+        $this->offer = $offer;
     }
 
     /**
