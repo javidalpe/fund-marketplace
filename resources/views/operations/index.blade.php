@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Operations</h1>
+        <h1 class="pull-left">Operaciones</h1>
 
         @can('create', App\Models\Operation::class)
             <h1 class="pull-right">

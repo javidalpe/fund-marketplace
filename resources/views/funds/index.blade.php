@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Funds</h1>
+        <h1 class="pull-left">Clubs</h1>
 
         @can('create', App\Models\Fund::class)
             <h1 class="pull-right">
