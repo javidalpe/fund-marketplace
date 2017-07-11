@@ -82,6 +82,7 @@ class OfferController extends AppBaseController
             'stock_amount' => $stock_amount,
             'stock_price' => $stock_price
         );
+
         return view('offers.create', $data);
     }
 
@@ -94,6 +95,15 @@ class OfferController extends AppBaseController
      */
     public function store(CreateOfferRequest $request)
     {
+        if (!$request->confirm) {
+            $vehicle = Vehicle::find($request->vehicle_id);
+            $data = [
+                'vehicle' => $vehicle
+            ];
+            return view('offers.confirm', $data);
+        }
+
+
         $input = $request->all();
 
         $input['status'] = Offer::STATUS_CREATED;
