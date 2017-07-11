@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Vehicle;
 use App\Models\Offer;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -84,10 +85,19 @@ class User extends Authenticatable
         return Vehicle::whereIn('id', $ids);
     }
 
-    public function companiesOffers()
+    public function offersAvailable()
     {
-        $ids = array_pluck($this->companies()->get(), 'id');
-        return Offer::whereIn('id', $ids)->created();
+        $companiesIds = array_pluck($this->companies()->get(), 'id');
+        $fundsIds = array_pluck($this->clubs()
+            ->select('vehicles.id')
+            ->join('vehicles', 'funds.id', '=', 'vehicles.fund_id')
+            ->get(), 'id');
+        return Offer::whereIn('vehicle_id', $companiesIds)
+            ->orWhere(function ($query) use($fundsIds) {
+                $query->whereIn('vehicle_id', $fundsIds)
+                      ->where('updated_at', '<', Carbon::now()->addDays(-7));
+            })
+            ->created();
     }
 
     public function isManager()

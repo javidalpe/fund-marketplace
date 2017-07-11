@@ -47,7 +47,7 @@ class BidPolicy
      */
     public function update(User $user, Bid $bid)
     {
-        return $user->id == $bid->user_id && $bid->status == Offer::STATUS_CREATED;
+        return $user->isManager() || ($user->id == $bid->user_id && $bid->status == Bid::STATUS_CREATED);
     }
 
     /**
@@ -59,7 +59,6 @@ class BidPolicy
      */
     public function delete(User $user, Bid $bid)
     {
-        dd($bid);
-        return $user->id == $bid->user_id && $bid->status == Offer::STATUS_CREATED;
+        return $user->isManager() || ($user->id == $bid->user_id && $bid->status == Bid::STATUS_CREATED);
     }
 }

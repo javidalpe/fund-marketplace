@@ -39,7 +39,7 @@ class OfferController extends AppBaseController
         if ($user->isManager()) {
             $offers = $this->offerRepository->with('user')->with('vehicle')->findWhereIn('vehicle_id', array_pluck($user->vehicles, 'id'));
         } else {
-            $offers = $user->companiesOffers()->with('user')->with('vehicle')->get();
+            $offers = $user->offersAvailable()->with('user')->with('vehicle')->get();
         }
 
         return view('offers.index')
@@ -109,7 +109,12 @@ class OfferController extends AppBaseController
             return redirect(route('offers.index'));
         }
 
-        return view('offers.show')->with('offer', $offer);
+        $data = [
+            'offer' => $offer,
+            'bids' => $offer->bids()->with('user')->get()
+        ];
+
+        return view('offers.show', $data);
     }
 
     /**

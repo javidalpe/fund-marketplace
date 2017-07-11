@@ -16,6 +16,12 @@
                     @endcan
                     <a href="{!! route('offers.index') !!}" class="btn btn-default">Atrás</a>
                 </div>
+
+                @if(count($bids) > 0)
+                    <h4>Pujas</h4>
+                    @include('bids.table')
+                @endif
+
             </div>
         </div>
     </div>

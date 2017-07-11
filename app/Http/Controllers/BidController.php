@@ -36,10 +36,10 @@ class BidController extends AppBaseController
         $this->bidRepository->pushCriteria(new RequestCriteria($request));
         $user = Auth::user();
         if ($user->isManager()) {
-            $offers = Offer::where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
-            $bids = $this->bidRepository->findWhereIn('offer_id', array_pluck($offers, 'id'));
+            $offers = Offer::created()->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
+            $bids = $this->bidRepository->findWhereIn('offer_id', array_pluck($offers, 'id'))->with('user');
         } else {
-            $bids = $user->bids;
+            $bids = $user->bids()->with('user')->get();
         }
 
         return view('bids.index')
@@ -51,19 +51,26 @@ class BidController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $user = Auth::user();
         if ($user->isManager()) {
-            $offers = Offer::where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->with('user')->get();
+            $offers = Offer::created()->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->with('user')->get();
             $users = User::investor()->get();
         } else {
-            $offers = Offer::where('user_id', '!=', $user->id)->where('status', Offer::STATUS_CREATED)->whereIn('vehicle_id', array_pluck($user->companies()->get(), 'id'))->with('user')->get();
+            $offers = $user->offersAvailable()->with('user')->get();
             $users = [$user];
+        }
+
+        if ($request->has('offer')) {
+            $offer = Offer::find($request->get('offer'));
+        } else {
+            $offer = false;
         }
 
         $data = array(
             'offers' => array_pluck($offers, 'user.name', 'id'),
+            'offer' => $offer,
             'investors' => array_pluck($users, 'name', 'id')
         );
 

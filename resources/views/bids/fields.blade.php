@@ -15,14 +15,8 @@
 
 <!-- Buyer Comment Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('buyer_comment', 'Buyer Comment:') !!}
+    {!! Form::label('buyer_comment', 'Comentarios para el vendedor:') !!}
     {!! Form::textarea('buyer_comment', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Seller Comment Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('seller_comment', 'Seller Comment:') !!}
-    {!! Form::textarea('seller_comment', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

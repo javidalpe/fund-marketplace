@@ -66,6 +66,8 @@ class OfferPolicy
 
         if ($user->id == $offer->user_id) return false;
 
+        if ($user->bids()->where('offer_id', $offer->id)->first()) return false;
+
         $isMate = $user->companies()->find($offer->vehicle_id);
         $isAvailableForClubs = $offer->updated_at < Carbon::now()->addDays(-7);
         $isSameClub = $user->clubs()->find($offer->vehicle->fund->id);
