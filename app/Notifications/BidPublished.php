@@ -6,19 +6,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use App\Models\Bid;
+
 
 class BidPublished extends Notification
 {
     use Queueable;
+
+    private $bid;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Bid $bid)
     {
-        //
+        $this->bid = $bid;
     }
 
     /**
@@ -40,10 +44,19 @@ class BidPublished extends Notification
      */
     public function toMail($notifiable)
     {
+        $bid = $this->bid;
+        $url = route('bids.show', $bid);
+
+        $offer = $bid->offer;
+        $vehicle = $offer->vehicle;
+
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('Puja publicada')
+                    ->greeting("$bid->amount acciones de $vehicle->company")
+                    ->line('Se acaba de publicar una puja para comprar ' . $bid->amount . ' acciones
+                    de la empresa ' . $vehicle->company . ' por valor de ' . $bid->stock_price . '€
+                    por acción (' . $bid->amount*$bid->stock_price . '€).')
+                    ->action('Ir a la puja', $url);
     }
 
     /**

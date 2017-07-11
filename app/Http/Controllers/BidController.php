@@ -12,6 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\Offer;
 use App\Models\Bid;
+use App\Events\BidCreated;
 use App\User;
 use Auth;
 
@@ -91,6 +92,7 @@ class BidController extends AppBaseController
         $input['buy_fee'] = ($request->amount * $request->stock_price) * config('app.buy_fee');
         $bid = $this->bidRepository->create($input);
 
+        event(new BidCreated($bid));
         Flash::success('Bid saved successfully.');
 
         return redirect(route('bids.index'));

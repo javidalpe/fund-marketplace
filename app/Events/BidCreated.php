@@ -14,7 +14,7 @@ class BidCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private $bid;
+    public $bid;
 
     /**
      * Create a new event instance.
