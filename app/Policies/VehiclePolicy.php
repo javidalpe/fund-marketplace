@@ -3,17 +3,12 @@
 namespace App\Policies;
 
 use App\User;
-use App\Vehicle;
+use App\Models\Vehicle;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class VehiclePolicy
 {
     use HandlesAuthorization;
-
-    public function before($user, $ability)
-    {
-        return $user->isManager();
-    }
 
     /**
      * Determine whether the user can view the vehicle.
@@ -35,7 +30,7 @@ class VehiclePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->isManager();
     }
 
     /**
@@ -47,7 +42,7 @@ class VehiclePolicy
      */
     public function update(User $user, Vehicle $vehicle)
     {
-        //
+        return $user->isManager();
     }
 
     /**
@@ -59,6 +54,12 @@ class VehiclePolicy
      */
     public function delete(User $user, Vehicle $vehicle)
     {
-        //
+        return $user->isManager();
+    }
+
+    public function offer(User $user, Vehicle $vehicle)
+    {
+        $stock_amount = $vehicle->operations()->where('user_id', $user->id)->sum('amount');
+        return $stock_amount > 0;
     }
 }

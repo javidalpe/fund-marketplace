@@ -3,10 +3,24 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Vehicle
+            {{ $vehicle->company }}
         </h1>
     </section>
     <div class="content">
+        @if(Auth::user()->isInvestor())
+            <h4>Posición</h4>
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="row" style="padding-left: 20px">
+                        @include('vehicles.position')
+                        @can('offer', $vehicle)
+                            <a href="{!! route('offers.create', ['vehicle' => $vehicle->id]) !!}" class="btn btn-primary">Publicar oferta de venta de acciones</a>
+                        @endcan
+                    </div>
+                </div>
+            </div>
+        @endif
+        <h4>Información general</h4>
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">

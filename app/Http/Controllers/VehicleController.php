@@ -11,6 +11,7 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Auth;
+use DB;
 
 class VehicleController extends AppBaseController
 {
@@ -96,13 +97,24 @@ class VehicleController extends AppBaseController
 
         if ($user->isManager()) {
             $operations = $vehicle->operations;
+            $position = false;
         } else {
             $operations = $vehicle->operations()->where('user_id', $user->id)->get();
+            $stock_amount = $vehicle->operations()->where('user_id', $user->id)->sum('amount');
+            $stock_price = $stock_amount * $vehicle->stock_price;
+            $cost = $vehicle->operations()->where('user_id', $user->id)->where('amount', '>', 0)->sum(DB::raw('amount*stock_price'));
+            $position = [
+                'stock_amount' => $stock_amount,
+                'stock_price' => $stock_price,
+                'stock_cost' => $cost,
+                'profitability' => $stock_price/$cost,
+            ];
         }
 
         $data = [
             'vehicle' => $vehicle,
-            'operations' => $operations
+            'operations' => $operations,
+            'position' => $position,
         ];
 
         return view('vehicles.show', $data);
