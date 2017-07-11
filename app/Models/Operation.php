@@ -13,7 +13,7 @@ class Operation extends Model
 {
 
     public $table = 'operations';
-    
+
 
 
     public $fillable = [
@@ -45,7 +45,6 @@ class Operation extends Model
      * @var array
      */
     public static $rules = [
-        'type' => 'required',
         'amount' => 'required|numeric',
         'stock_price' => 'required|numeric',
         'completed_at' => 'required'

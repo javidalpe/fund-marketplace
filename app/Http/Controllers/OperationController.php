@@ -71,6 +71,12 @@ class OperationController extends AppBaseController
     {
         $input = $request->all();
 
+        if ($request->amount > 0) {
+            $input['type'] = 'Buy';
+        } else {
+            $input['type'] = 'Sell';
+        }
+
         $operation = $this->operationRepository->create($input);
 
         Flash::success('Operation saved successfully.');
