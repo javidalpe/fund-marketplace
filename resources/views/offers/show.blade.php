@@ -7,6 +7,17 @@
         </h1>
     </section>
     <div class="content">
+        @if(count($bids) > 0)
+            <h4>Pujas</h4>
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="row" style="padding-left: 20px">
+                        @include('bids.table')
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
@@ -16,12 +27,6 @@
                     @endcan
                     <a href="{!! route('offers.index') !!}" class="btn btn-default">Atrás</a>
                 </div>
-
-                @if(count($bids) > 0)
-                    <h4>Pujas</h4>
-                    @include('bids.table')
-                @endif
-
             </div>
         </div>
     </div>

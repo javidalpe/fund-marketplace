@@ -63,8 +63,14 @@ class OfferController extends AppBaseController
             $users = [$user];
         }
 
+        $stock_amount = false;
+        $stock_price = false;
         if ($request->has('vehicle')) {
             $vehicle = Vehicle::find($request->get('vehicle'));
+            $stock_price = $vehicle->stock_price;
+            if ($user->isInvestor()) {
+                $stock_amount = $vehicle->operations()->where('user_id', $user->id)->sum('amount');
+            }
         } else {
             $vehicle = false;
         }
@@ -72,7 +78,9 @@ class OfferController extends AppBaseController
         $data = array(
             'vehicles' => array_pluck($vehicles, 'name', 'id'),
             'vehicle' => $vehicle,
-            'investors' => array_pluck($users, 'name', 'id')
+            'investors' => array_pluck($users, 'name', 'id'),
+            'stock_amount' => $stock_amount,
+            'stock_price' => $stock_price
         );
         return view('offers.create', $data);
     }

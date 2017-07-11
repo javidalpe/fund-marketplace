@@ -63,8 +63,12 @@ class BidController extends AppBaseController
             $users = [$user];
         }
 
+        $stock_amount = false;
+        $stock_price = false;
         if ($request->has('offer')) {
             $offer = Offer::find($request->get('offer'));
+            $stock_price = $offer->stock_price;
+            $stock_amount = $offer->amount;
         } else {
             $offer = false;
         }
@@ -72,7 +76,9 @@ class BidController extends AppBaseController
         $data = array(
             'offers' => array_pluck($offers, 'user.name', 'id'),
             'offer' => $offer,
-            'investors' => array_pluck($users, 'name', 'id')
+            'investors' => array_pluck($users, 'name', 'id'),
+            'stock_amount' => $stock_amount,
+            'stock_price' => $stock_price
         );
 
         return view('bids.create', $data);

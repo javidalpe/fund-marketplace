@@ -89,7 +89,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © 2017 <a href="#">{{ config('app.name') }}</a>.</strong> All rights reserved.
+            <strong>Copyright © 2017 <a href="#">{{ config('app.name') }}</a>.</strong> All rights reserved. Make with <i class="fa fa-heart"></i> by <a href="https://twitter.com/javidalpe">Javidalpe</a>
         </footer>
 
     </div>

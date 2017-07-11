@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1 class="pull-left">Pujas</h1>
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('bids.create') !!}">Añadir</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('bids.create') !!}">Pujar por una oferta</a>
         </h1>
     </section>
     <div class="content">
@@ -20,4 +20,3 @@
         </div>
     </div>
 @endsection
-

@@ -1,14 +1,14 @@
 <!-- Número de acciones Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('amount', 'Número de acciones:') !!}
-    {!! Form::number('amount', null, ['class' => 'form-control']) !!}
+    {!! Form::number('amount', isset($stock_amount) ? $stock_amount:null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Precio de la acción Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('stock_price', 'Precio de la acción:') !!}
     <div class="input-group">
-      {!! Form::number('stock_price', null, ['class' => 'form-control']) !!}
+      {!! Form::number('stock_price', isset($stock_price) ? $stock_price:null, ['class' => 'form-control']) !!}
       <div class="input-group-addon">€</div>
 </div>
 </div>
