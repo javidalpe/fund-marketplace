@@ -195,6 +195,7 @@ class OfferController extends AppBaseController
             return redirect(route('offers.index'));
         }
 
+        $offer->bids()->delete();
         $this->offerRepository->delete($id);
 
         Flash::success('Offer deleted successfully.');

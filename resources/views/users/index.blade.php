@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Investors</h1>
+        <h1 class="pull-left">Inversores</h1>
 
         @can('create', App\User::class)
             <h1 class="pull-right">

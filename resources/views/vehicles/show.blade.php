@@ -20,12 +20,21 @@
                 </div>
             </div>
         @endif
+
+        <h4>Operaciones</h4>
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row" style="padding-left: 20px">
+                    @include('operations.table')
+                </div>
+            </div>
+        </div>
+
         <h4>Información general</h4>
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('vehicles.show_fields')
-                    @include('operations.table')
                     <a href="{!! route('vehicles.index') !!}" class="btn btn-default">Atrás</a>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <table class="table table-responsive" id="offers-table">
     <thead>
-        <th>Investor</th>
+        <th>Inversor</th>
         <th>Nombre de la compañía</th>
         <th>Número de acciones</th>
         <th>Precio de la acción</th>
@@ -9,10 +9,10 @@
     <tbody>
     @foreach($offers as $offer)
         <tr>
-            <td>{{ $offer->user->name }}</td>
             <td>{{ $offer->vehicle->company }}</td>
             <td>{!! $offer->amount !!}</td>
             <td>@money($offer->stock_price)</td>
+            <td>{{ $offer->user->name }}</td>
             <td>
                 {!! Form::open(['route' => ['offers.destroy', $offer->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

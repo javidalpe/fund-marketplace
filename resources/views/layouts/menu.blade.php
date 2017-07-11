@@ -20,6 +20,6 @@
 
 @can('create', App\User::class)
     <li class="{{ Request::is('users*') ? 'active' : '' }}">
-        <a href="{!! route('users.index') !!}"><i class="fa fa-users"></i><span>Investors</span></a>
+        <a href="{!! route('users.index') !!}"><i class="fa fa-users"></i><span>Inversores</span></a>
     </li>
 @endcan
