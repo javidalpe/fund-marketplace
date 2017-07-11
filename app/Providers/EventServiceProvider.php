@@ -22,8 +22,11 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\OfferDeleted' => [
             'App\Listeners\OfferDeletedListener',
         ],
-        'App\Events\OfferFinished' => [
-            'App\Listeners\OfferFinishedListener',
+        'App\Events\OfferSuccess' => [
+            'App\Listeners\OfferSuccessListener',
+        ],
+        'App\Events\OfferExpired' => [
+            'App\Listeners\OfferExpiredListener',
         ],
 
         'App\Events\BidCreated' => [

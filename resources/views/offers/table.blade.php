@@ -1,9 +1,10 @@
 <table class="table table-responsive" id="offers-table">
     <thead>
-        <th>Inversor</th>
-        <th>Nombre de la compañía</th>
+        <th>Compañía</th>
         <th>Número de acciones</th>
         <th>Precio de la acción</th>
+        <th>Antigüedad</th>
+        <th>Inversor</th>
         <th colspan="3">Accciones</th>
     </thead>
     <tbody>
@@ -12,6 +13,7 @@
             <td>{{ $offer->vehicle->company }}</td>
             <td>{!! $offer->amount !!}</td>
             <td>@money($offer->stock_price)</td>
+            <td>{!! $offer->updated_at->diffForHumans() !!}</td>
             <td>{{ $offer->user->name }}</td>
             <td>
                 {!! Form::open(['route' => ['offers.destroy', $offer->id], 'method' => 'delete']) !!}

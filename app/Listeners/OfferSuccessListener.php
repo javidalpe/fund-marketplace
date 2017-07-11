@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\OfferFinished;
+use App\Events\OfferSuccess;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class OfferFinishedListener
+class OfferSuccessListener
 {
     /**
      * Create the event listener.
@@ -21,10 +21,10 @@ class OfferFinishedListener
     /**
      * Handle the event.
      *
-     * @param  OfferFinished  $event
+     * @param  OfferSuccess  $event
      * @return void
      */
-    public function handle(OfferFinished $event)
+    public function handle(OfferSuccess $event)
     {
         //
     }

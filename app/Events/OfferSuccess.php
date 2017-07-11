@@ -10,20 +10,18 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class OfferFinished
+class OfferSuccess
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    private $offer;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(\App\Models\Offer $offer)
+    public function __construct()
     {
-        $this->offer = $offer;
+        //
     }
 
     /**
