@@ -13,7 +13,7 @@
 <!-- Website Field -->
 <div class="form-group">
     {!! Form::label('website', 'Sitio web:') !!}
-    <p>{!! $fund->website !!}</p>
+    <p><a href="{!! $fund->website !!}" target="_blank">{!! $fund->website !!}</a></p>
 </div>
 
 <!-- Email Field -->
@@ -51,4 +51,3 @@
     {!! Form::label('updated_at', 'Última actualización:') !!}
     <p>{!! $fund->updated_at->format('d M. Y') !!}</p>
 </div>
-

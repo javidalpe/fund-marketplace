@@ -13,6 +13,7 @@ use Auth;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\User;
 use App\Models\Offer;
+use App\Models\Vehicle;
 use App\Events\OfferCreated;
 
 class OfferController extends AppBaseController
@@ -51,7 +52,7 @@ class OfferController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $user = Auth::user();
         if ($user->isManager()) {
@@ -62,8 +63,15 @@ class OfferController extends AppBaseController
             $users = [$user];
         }
 
+        if ($request->has('vehicle')) {
+            $vehicle = Vehicle::find($request->get('vehicle'));
+        } else {
+            $vehicle = false;
+        }
+
         $data = array(
             'vehicles' => array_pluck($vehicles, 'name', 'id'),
+            'vehicle' => $vehicle,
             'investors' => array_pluck($users, 'name', 'id')
         );
         return view('offers.create', $data);

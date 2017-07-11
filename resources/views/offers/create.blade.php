@@ -14,10 +14,15 @@
                 <div class="row">
                     {!! Form::open(['route' => 'offers.store']) !!}
 
-                        <div class="form-group col-sm-6">
-                            {!! Form::label('vehicle_id', 'Vehicle:') !!}
-                            {!! Form::select('vehicle_id', $vehicles, null, ['class' => 'form-control']) !!}
-                        </div>
+                        @if (!Request::has('vehicle'))
+                            <div class="form-group col-sm-6">
+                                {!! Form::label('vehicle_id', 'Vehicle:') !!}
+                                {!! Form::select('vehicle_id', $vehicles, null, ['class' => 'form-control']) !!}
+                            </div>
+                        @else
+                            {!! Form::hidden('vehicle_id', Request::get('vehicle')) !!}
+                        @endif
+
 
                         @if (Auth::user()->isManager())
                             <div class="form-group col-sm-6">

@@ -8,7 +8,7 @@
     @foreach($funds as $fund)
         <tr>
             <td>{!! $fund->name !!}</td>
-            <td>{!! $fund->website !!}</td>
+            <td><a href="{!! $fund->website !!}" target="_blank">{!! $fund->website !!}</a></td>
             <td>
                 {!! Form::open(['route' => ['funds.destroy', $fund->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

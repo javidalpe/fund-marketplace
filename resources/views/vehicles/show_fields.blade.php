@@ -19,7 +19,7 @@
 <!-- Website Field -->
 <div class="form-group">
     {!! Form::label('website', 'Sitio web:') !!}
-    <p>{!! $vehicle->website !!}</p>
+    <p><a href="{!! $vehicle->website !!}" target="_blank">{!! $vehicle->website !!}</a></p>
 </div>
 
 <!-- Precio de la acción Field -->
