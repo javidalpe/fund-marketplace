@@ -11,7 +11,10 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('offers.show_fields')
-                    <a href="{!! route('offers.index') !!}" class="btn btn-default">Back</a>
+                    @can('bid', $offer)
+                        <a href="{!! route('bids.create', ['offer' => $offer->id]) !!}" class="btn btn-primary">Pujar por estas acciones</a>
+                    @endcan
+                    <a href="{!! route('offers.index') !!}" class="btn btn-default">Atrás</a>
                 </div>
             </div>
         </div>

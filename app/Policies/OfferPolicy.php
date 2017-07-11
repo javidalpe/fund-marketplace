@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use App\Models\Offer;
+use Carbon\Carbon;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class OfferPolicy
@@ -55,5 +56,20 @@ class OfferPolicy
     public function delete(User $user, Offer $offer)
     {
         return $user->isManager() || ($user->id == $offer->user_id && $offer->status == Offer::STATUS_CREATED);
+    }
+
+    public function bid(User $user, Offer $offer)
+    {
+        if (!$offer->status == Offer::STATUS_CREATED) return false;
+
+        if ($user->isManager()) return true;
+
+        if ($user->id == $offer->user_id) return false;
+
+        $isMate = $user->companies()->find($offer->vehicle_id);
+        $isAvailableForClubs = $offer->updated_at < Carbon::now()->addDays(-7);
+        $isSameClub = $user->clubs()->find($offer->vehicle->fund->id);
+
+        return $isMate || ($isSameClub && $isAvailableForClubs);
     }
 }

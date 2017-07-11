@@ -39,7 +39,7 @@ class OfferController extends AppBaseController
         if ($user->isManager()) {
             $offers = $this->offerRepository->with('user')->with('vehicle')->findWhereIn('vehicle_id', array_pluck($user->vehicles, 'id'));
         } else {
-            $offers = $user->offers()->with('user')->with('vehicle')->get();
+            $offers = $user->companiesOffers()->with('user')->with('vehicle')->get();
         }
 
         return view('offers.index')

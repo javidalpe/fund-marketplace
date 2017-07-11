@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Vehicle;
+use App\Models\Offer;
 
 class User extends Authenticatable
 {
@@ -75,8 +76,18 @@ class User extends Authenticatable
 
     public function companies()
     {
-        $ids = array_pluck($this->operations, 'vehicle_id');
+        $ids = array_pluck($this->operations()
+            ->select('vehicle_id')
+            ->groupBy('vehicle_id')
+            ->havingRaw('SUM(amount) > 0')
+            ->get(), 'vehicle_id');
         return Vehicle::whereIn('id', $ids);
+    }
+
+    public function companiesOffers()
+    {
+        $ids = array_pluck($this->companies()->get(), 'id');
+        return Offer::whereIn('id', $ids)->created();
     }
 
     public function isManager()

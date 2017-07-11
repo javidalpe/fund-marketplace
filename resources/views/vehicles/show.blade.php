@@ -12,7 +12,7 @@
                 <div class="row" style="padding-left: 20px">
                     @include('vehicles.show_fields')
                     @include('operations.table')
-                    <a href="{!! route('vehicles.index') !!}" class="btn btn-default">Back</a>
+                    <a href="{!! route('vehicles.index') !!}" class="btn btn-default">Atrás</a>
                 </div>
             </div>
         </div>
