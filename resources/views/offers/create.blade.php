@@ -3,10 +3,11 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Offer
+            Crear oferta de venta de acciones
         </h1>
     </section>
     <div class="content">
+        @include('flash::message')
         @include('adminlte-templates::common.errors')
         <div class="box box-primary">
 

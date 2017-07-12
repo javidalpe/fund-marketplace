@@ -93,6 +93,14 @@ class BidController extends AppBaseController
      */
     public function store(CreateBidRequest $request)
     {
+        $offer = Offer::find($request->offer_id);
+        $user = Auth::user();
+
+        if ($offer->amount < $request->amount) {
+            Flash::error('No puedes compras más acciones de las que se ofrecen.');
+            return back();
+        }
+
         $input = $request->all();
         $input['status'] = Bid::STATUS_CREATED;
         $input['buy_fee'] = ($request->amount * $request->stock_price) * config('app.buy_fee');
@@ -161,6 +169,15 @@ class BidController extends AppBaseController
 
             return redirect(route('bids.index'));
         }
+
+        $offer = $bid->offer;
+        $user = Auth::user();
+
+        if ($offer->amount < $request->amount) {
+            Flash::error('No puedes compras más acciones de las que se ofrecen.');
+            return back();
+        }
+
 
         $bid = $this->bidRepository->update($request->all(), $id);
 

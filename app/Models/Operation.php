@@ -46,7 +46,7 @@ class Operation extends Model
      */
     public static $rules = [
         'amount' => 'required|numeric',
-        'stock_price' => 'required|numeric',
+        'stock_price' => 'required|numeric|min:0',
         'completed_at' => 'required'
     ];
 

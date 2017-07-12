@@ -95,14 +95,21 @@ class OfferController extends AppBaseController
      */
     public function store(CreateOfferRequest $request)
     {
+        $vehicle = Vehicle::find($request->vehicle_id);
+        $user = Auth::user();
+
+        $stock_amount = $vehicle->operations()->where('user_id', $user->id)->sum('amount');
+        if ($stock_amount < $request->amount) {
+            Flash::error('No puedes ofrecer más acciones de las que dispones.');
+            return back();
+        }
+
         if (!$request->confirm) {
-            $vehicle = Vehicle::find($request->vehicle_id);
             $data = [
                 'vehicle' => $vehicle
             ];
             return view('offers.confirm', $data);
         }
-
 
         $input = $request->all();
 
@@ -180,6 +187,15 @@ class OfferController extends AppBaseController
             Flash::error('Offer not found');
 
             return redirect(route('offers.index'));
+        }
+
+        $vehicle = $offer->vehicle;
+        $user = Auth::user();
+
+        $stock_amount = $vehicle->operations()->where('user_id', $user->id)->sum('amount');
+        if ($stock_amount < $request->amount) {
+            Flash::error('No puedes ofrecer más acciones de las que dispones.');
+            return back();
         }
 
         $offer = $this->offerRepository->update($request->all(), $id);

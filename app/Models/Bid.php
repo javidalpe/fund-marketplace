@@ -52,8 +52,8 @@ class Bid extends Model
      * @var array
      */
     public static $rules = [
-        'amount' => 'required|numeric',
-        'stock_price' => 'required|numeric'
+        'amount' => 'required|numeric|min:0',
+        'stock_price' => 'required|numeric|min:0'
     ];
 
     /**
