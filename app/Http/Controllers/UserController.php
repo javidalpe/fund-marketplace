@@ -94,7 +94,14 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.show')->with('user', $user);
+        $data = [
+            'user' => $user,
+            'operations' => $user->operations,
+            'vehicles' => $user->companies()->get(),
+            'funds' => $user->clubs,
+        ];
+
+        return view('users.show', $data);
     }
 
     /**
