@@ -6,7 +6,7 @@
 
         @can('create', App\Models\Fund::class)
             <h1 class="pull-right">
-               <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('funds.create') !!}">Añadir</a>
+               <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('funds.create') !!}">Crear club</a>
             </h1>
         @endcan
 

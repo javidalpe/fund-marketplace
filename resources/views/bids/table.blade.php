@@ -1,12 +1,14 @@
 <table class="table table-responsive" id="bids-table">
     <thead>
-        <th>Número de acciones</th>
-        <th>Precio de la acción</th>
+        <th>Oferta</th>
+        <th>N. acciones</th>
+        <th>Precio acción</th>
         <th colspan="3">Accciones</th>
     </thead>
     <tbody>
     @foreach($bids as $bid)
         <tr>
+            <td>{!! $bid->offer->vehicle->company !!} ({!! $bid->user->name !!})</td>
             <td>{!! $bid->amount !!}</td>
             <td>@money($bid->stock_price)</td>
             <td>

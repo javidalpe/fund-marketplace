@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Fund
+            Crear club de inversión
         </h1>
     </section>
     <div class="content">

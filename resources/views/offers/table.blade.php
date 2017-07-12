@@ -1,8 +1,8 @@
 <table class="table table-responsive" id="offers-table">
     <thead>
         <th>Compañía</th>
-        <th>Número de acciones</th>
-        <th>Precio de la acción</th>
+        <th>N. acciones</th>
+        <th>Precio acción</th>
         <th>Antigüedad</th>
         <th>Inversor</th>
         <th colspan="3">Accciones</th>

@@ -1,9 +1,3 @@
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $fund->id !!}</p>
-</div>
-
 <!-- Name Field -->
 <div class="form-group">
     {!! Form::label('name', 'Nombre:') !!}
@@ -34,20 +28,22 @@
     <p>{!! $fund->phone !!}</p>
 </div>
 
-<!-- User Id Field -->
-<div class="form-group">
-    {!! Form::label('user_id', 'Id Inversor:') !!}
-    <p>{!! $fund->user_id !!}</p>
-</div>
+@if (Auth::user()->isManager())
+    <!-- Id Field -->
+    <div class="form-group">
+        {!! Form::label('id', 'Id:') !!}
+        <p>{!! $fund->id !!}</p>
+    </div>
 
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Fecha de creación:') !!}
-    <p>{!! $fund->created_at->format('d M. Y') !!}</p>
-</div>
+    <!-- Created At Field -->
+    <div class="form-group">
+        {!! Form::label('created_at', 'Fecha de creación:') !!}
+        <p>{!! $fund->created_at->format('d M. Y') !!}</p>
+    </div>
 
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Última actualización:') !!}
-    <p>{!! $fund->updated_at->format('d M. Y') !!}</p>
-</div>
+    <!-- Updated At Field -->
+    <div class="form-group">
+        {!! Form::label('updated_at', 'Última actualización:') !!}
+        <p>{!! $fund->updated_at->format('d M. Y') !!}</p>
+    </div>
+@endif

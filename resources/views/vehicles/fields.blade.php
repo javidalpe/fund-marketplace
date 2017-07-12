@@ -16,18 +16,18 @@
     {!! Form::text('website', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Precio de la acción Field -->
+<!-- Precio acción Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('stock_price', 'Precio de la acción:') !!}
+    {!! Form::label('stock_price', 'Precio acción:') !!}
     <div class="input-group">
       {!! Form::number('stock_price', null, ['class' => 'form-control']) !!}
       <div class="input-group-addon">€</div>
 </div>
 </div>
 
-<!-- Número de acciones Field -->
+<!-- N. acciones Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('shares_amount', 'Número de acciones:') !!}
+    {!! Form::label('shares_amount', 'N. acciones:') !!}
     {!! Form::number('shares_amount', null, ['class' => 'form-control']) !!}
 </div>
 

@@ -4,15 +4,15 @@
     <p>{!! $offer->id !!}</p>
 </div>
 
-<!-- Número de acciones Field -->
+<!-- N. acciones Field -->
 <div class="form-group">
-    {!! Form::label('amount', 'Número de acciones:') !!}
+    {!! Form::label('amount', 'N. acciones:') !!}
     <p>{!! $offer->amount !!}</p>
 </div>
 
-<!-- Precio de la acción Field -->
+<!-- Precio acción Field -->
 <div class="form-group">
-    {!! Form::label('stock_price', 'Precio de la acción:') !!}
+    {!! Form::label('stock_price', 'Precio acción:') !!}
     <p>@money($offer->stock_price)</p>
 </div>
 

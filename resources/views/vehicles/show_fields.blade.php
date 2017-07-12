@@ -1,9 +1,3 @@
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $vehicle->id !!}</p>
-</div>
-
 <!-- Name Field -->
 <div class="form-group">
     {!! Form::label('name', 'Denominación del vehículo:') !!}
@@ -22,15 +16,15 @@
     <p><a href="{!! $vehicle->website !!}" target="_blank">{!! $vehicle->website !!}</a></p>
 </div>
 
-<!-- Precio de la acción Field -->
+<!-- Precio acción Field -->
 <div class="form-group">
-    {!! Form::label('stock_price', 'Precio de la acción:') !!}
+    {!! Form::label('stock_price', 'Precio acción:') !!}
     <p>@money($vehicle->stock_price)</p>
 </div>
 
-<!-- Número de acciones Field -->
+<!-- N. acciones Field -->
 <div class="form-group">
-    {!! Form::label('shares_amount', 'Número de acciones:') !!}
+    {!! Form::label('shares_amount', 'N. acciones:') !!}
     <p>{!! $vehicle->shares_amount !!}</p>
 </div>
 
@@ -52,20 +46,30 @@
     <p>{!! $vehicle->phone !!}</p>
 </div>
 
-<!-- Fund Id Field -->
-<div class="form-group">
-    {!! Form::label('fund_id', 'Fund Id:') !!}
-    <p>{!! $vehicle->fund_id !!}</p>
-</div>
+@if (Auth::user()->isManager())
 
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Fecha de creación:') !!}
-    <p>{!! $vehicle->created_at->format('d M. Y') !!}</p>
-</div>
+    <!-- Id Field -->
+    <div class="form-group">
+        {!! Form::label('id', 'Id:') !!}
+        <p>{!! $vehicle->id !!}</p>
+    </div>
 
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Última actualización:') !!}
-    <p>{!! $vehicle->updated_at->format('d M. Y') !!}</p>
-</div>
+
+    <!-- Fund Id Field -->
+    <div class="form-group">
+        {!! Form::label('fund_id', 'Fund Id:') !!}
+        <p>{!! $vehicle->fund_id !!}</p>
+    </div>
+
+    <!-- Created At Field -->
+    <div class="form-group">
+        {!! Form::label('created_at', 'Fecha de creación:') !!}
+        <p>{!! $vehicle->created_at->format('d M. Y') !!}</p>
+    </div>
+
+    <!-- Updated At Field -->
+    <div class="form-group">
+        {!! Form::label('updated_at', 'Última actualización:') !!}
+        <p>{!! $vehicle->updated_at->format('d M. Y') !!}</p>
+    </div>
+@endif

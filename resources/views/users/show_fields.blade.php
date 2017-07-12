@@ -10,7 +10,7 @@
     <p>{!! $user->name !!}</p>
 </div>
 
-<!-- Precio de la acción Field -->
+<!-- Precio acción Field -->
 <div class="form-group">
     {!! Form::label('email', 'Email de contacto:') !!}
     <p>{!! $user->email !!}</p>
