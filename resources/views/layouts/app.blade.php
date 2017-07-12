@@ -43,7 +43,7 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">{!! Auth::user()->name !!}</span>
+                                <span class="hidden-xs">{!! Auth::user()->name !!} ({!! Auth::user()->email !!})</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->

@@ -34,7 +34,7 @@ class BidCreatedListener
         $fund = $vehicle->fund;
         $manager = $fund->user;
 
-        $bid->user->notify(new BidPublished($bid));
+        $offer->user->notify(new BidPublished($bid));
         $manager->notify(new BidPublished($bid));
     }
 }

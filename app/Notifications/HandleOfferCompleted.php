@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use App\Models\Offer;
 
 class HandleOfferCompleted extends Notification
 {
@@ -55,7 +56,7 @@ class HandleOfferCompleted extends Notification
             $investor = $bid->user;
             $mailMessage = $mailMessage->line("$investor->name: $bid->amount acciones por " . $bid->amount*$bid->stock_price . "€ (" . $bid->stock_price . "€ por acción)");
         }
-        
+
         return $mailMessage;
     }
 

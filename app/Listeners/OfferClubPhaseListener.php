@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\OfferClubPhase;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Notifications\OfferAvailable;
 
 class OfferClubPhaseListener
 {
@@ -31,7 +32,7 @@ class OfferClubPhaseListener
         $fund = $vehicle->fund;
         $vehicleInvestors = $vehicle->investors()->where('id', '!=', $offer->user_id)->get();
 
-        $investors = $fund->users()->whereNotIn('id', array_pluck($vehicleInvestors, 'id'))->get();
+        $investors = $fund->users()->whereNotIn('users.id', array_pluck($vehicleInvestors, 'id'))->get();
 
         foreach ($investors as $key => $investor) {
             $investor->notify(new OfferAvailable($offer));

@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Models\Offer;
 use App\Notifications\OfferAvailable;
 use App\Events\OfferExpired;
+use App\Events\OfferClubPhase;
 use App\Events\OfferSuccess;
 
 class CheckOffers extends Command
@@ -47,7 +48,7 @@ class CheckOffers extends Command
         foreach ($created as $key => $offer) {
             $days = $now->diffInDays($offer->updated_at);
 
-            if ($days == 8) {
+            if ($days > 7) {
                 $this->handleWeekOffer($offer);
             }
         }
@@ -56,7 +57,7 @@ class CheckOffers extends Command
         foreach ($created as $key => $offer) {
             $days = $now->diffInDays($offer->updated_at);
 
-            if ($days == 15) {
+            if ($days > 14) {
                 $this->handleTwoWeeksOffer($offer);
             }
         }

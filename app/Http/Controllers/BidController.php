@@ -38,7 +38,7 @@ class BidController extends AppBaseController
         $user = Auth::user();
         if ($user->isManager()) {
             $offers = Offer::whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
-            $bids = $this->bidRepository->findWhereIn('offer_id', array_pluck($offers, 'id'))->with('user');
+            $bids = $this->bidRepository->with('user')->findWhereIn('offer_id', array_pluck($offers, 'id'));
         } else {
             $bids = $user->bids()->with('user')->get();
         }
