@@ -137,6 +137,7 @@ class OfferController extends AppBaseController
 
         $data = [
             'offer' => $offer,
+            'vehicle' => $offer->vehicle,
             'bids' => $offer->bids()->with('user')->get()
         ];
 

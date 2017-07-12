@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\OfferSuccess;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Notifications\OfferHasBeenCompleted;
+use App\Notifications\YourOfferHasBeenCompleted;
 
 class OfferSuccessListener
 {
@@ -32,7 +32,7 @@ class OfferSuccessListener
         $manager = $vehicle->fund->user;
         $user = $offer->user;
 
-        $manager->notify(new OfferHasBeenCompleted($offer));
-        $user->notify(new OfferHasBeenCompleted($offer));
+        $manager->notify(new YourOfferHasBeenCompleted($offer));
+        $user->notify(new YourOfferHasBeenCompleted($offer));
     }
 }

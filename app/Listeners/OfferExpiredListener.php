@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\OfferExpired;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Notifications\OfferNotSuccess;
+use App\Notifications\YourOfferHasNotSuccess;
 
 class OfferExpiredListener
 {
@@ -32,7 +32,7 @@ class OfferExpiredListener
         $manager = $vehicle->fund->user;
         $user = $offer->user;
 
-        $manager->notify(new OfferNotSuccess($offer));
-        $user->notify(new OfferNotSuccess($offer));
+        $manager->notify(new YourOfferHasNotSuccess($offer));
+        $user->notify(new YourOfferHasNotSuccess($offer));
     }
 }

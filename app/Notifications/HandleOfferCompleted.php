@@ -6,9 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Models\Offer;
 
-class OfferHasBeenCompleted extends Notification
+class HandleOfferCompleted extends Notification
 {
     use Queueable;
 
@@ -23,6 +22,7 @@ class OfferHasBeenCompleted extends Notification
     {
         $this->offer = $offer;
     }
+
     /**
      * Get the notification's delivery channels.
      *
@@ -43,19 +43,19 @@ class OfferHasBeenCompleted extends Notification
     public function toMail($notifiable)
     {
         $offer = $this->offer;
+        $investor = $offer->user;
         $vehicle = $offer->vehicle;
 
         $mailMessage = (new MailMessage)
-                    ->subject('Oferta en trámite')
-                    ->greeting("La oferta de acciones de $vehicle->company está siendo tramitada")
-                    ->line("Tu oferta de venta de $offer->amount ha recibido las siguientes ofertas de compra:");
+                    ->subject('Oferta para tramitar')
+                    ->greeting("La oferta de acciones de $vehicle->company debe ser tramitada")
+                    ->line("La oferta de venta de $investor->name de $offer->amount acciones de $vehicle->company ha recibido las siguientes ofertas de compra:");
 
         foreach ($offer->bids as $key => $bid) {
-            $mailMessage = $mailMessage->line("$bid->amount acciones por " . $bid->amount*$bid->stock_price . "€ (" . $bid->stock_price . "€ por acción)");
+            $investor = $bid->user;
+            $mailMessage = $mailMessage->line("$investor->name: $bid->amount acciones por " . $bid->amount*$bid->stock_price . "€ (" . $bid->stock_price . "€ por acción)");
         }
-
-        $mailMessage = $mailMessage->line("El equipo gestor procederá ahora a tramitar las órdenes de compra/venta, para lo que se pondrán en contacto contigo.");
-
+        
         return $mailMessage;
     }
 

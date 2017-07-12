@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Models\Offer;
 
-class OfferNotSuccess extends Notification
+class YourOfferHasBeenCompleted extends Notification
 {
     use Queueable;
 
@@ -23,7 +23,6 @@ class OfferNotSuccess extends Notification
     {
         $this->offer = $offer;
     }
-
     /**
      * Get the notification's delivery channels.
      *
@@ -46,12 +45,18 @@ class OfferNotSuccess extends Notification
         $offer = $this->offer;
         $vehicle = $offer->vehicle;
 
-        return (new MailMessage)
-                    ->subject('Oferta expirada')
-                    ->greeting("La oferta de acciones de $vehicle->company ha expirado")
-                    ->line("Sentimos comunicarte que tras 14 días de publicación en el
-                    marketplace, tu oferta de venta de $offer->amount acciones ha sido
-                    retirada ya que no no ha recibido ninguna puja.");
+        $mailMessage = (new MailMessage)
+                    ->subject('Oferta en trámite')
+                    ->greeting("La oferta de acciones de $vehicle->company está siendo tramitada")
+                    ->line("Tu oferta de venta de $offer->amount acciones de $vehicle->company ha recibido las siguientes ofertas de compra:");
+
+        foreach ($offer->bids as $key => $bid) {
+            $mailMessage = $mailMessage->line("$bid->amount acciones por " . $bid->amount*$bid->stock_price . "€ (" . $bid->stock_price . "€ por acción)");
+        }
+
+        $mailMessage = $mailMessage->line("El equipo gestor procederá ahora a tramitar las órdenes de compra/venta, para lo que se pondrán en contacto contigo.");
+
+        return $mailMessage;
     }
 
     /**
