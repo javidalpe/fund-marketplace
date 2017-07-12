@@ -92,12 +92,15 @@ class User extends Authenticatable
             ->select('vehicles.id')
             ->join('vehicles', 'funds.id', '=', 'vehicles.fund_id')
             ->get(), 'id');
-        return Offer::whereIn('vehicle_id', $companiesIds)
+
+        return Offer::where(function($query) use($companiesIds, $fundsIds) {
+                $query->whereIn('vehicle_id', $companiesIds)
+                    ->status(Offer::STATUS_VEHICLE_PHASE);
+            })
             ->orWhere(function ($query) use($fundsIds) {
                 $query->whereIn('vehicle_id', $fundsIds)
-                      ->where('updated_at', '<', Carbon::now()->addDays(-7));
-            })
-            ->created();
+                      ->status(Offer::STATUS_CLUB_PHASE);
+            });
     }
 
     public function isManager()

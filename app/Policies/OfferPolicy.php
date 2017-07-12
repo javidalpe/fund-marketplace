@@ -43,7 +43,7 @@ class OfferPolicy
      */
     public function update(User $user, Offer $offer)
     {
-        return $user->isManager() || ($user->id == $offer->user_id && $offer->status == Offer::STATUS_CREATED);
+        return $user->isManager() || ($user->id == $offer->user_id && $offer->status == Offer::STATUS_VEHICLE_PHASE);
     }
 
     /**
@@ -55,12 +55,12 @@ class OfferPolicy
      */
     public function delete(User $user, Offer $offer)
     {
-        return $user->isManager() || ($user->id == $offer->user_id && $offer->status == Offer::STATUS_CREATED);
+        return $user->isManager() || ($user->id == $offer->user_id && $offer->status == Offer::STATUS_VEHICLE_PHASE);
     }
 
     public function bid(User $user, Offer $offer)
     {
-        if (!$offer->status == Offer::STATUS_CREATED) return false;
+        if (!$offer->status == Offer::STATUS_VEHICLE_PHASE && !$offer->status == Offer::STATUS_CLUB_PHASE) return false;
 
         if ($user->isManager()) return true;
 
@@ -68,10 +68,10 @@ class OfferPolicy
 
         if ($user->bids()->where('offer_id', $offer->id)->first()) return false;
 
-        $isMate = $user->companies()->find($offer->vehicle_id);
-        $isAvailableForClubs = $offer->updated_at < Carbon::now()->addDays(-7);
+        $isVehicleMate = $user->companies()->find($offer->vehicle_id);
+        $isAvailableForClubs = $offer->status == Offer::STATUS_CLUB_PHASE;
         $isSameClub = $user->clubs()->find($offer->vehicle->fund->id);
 
-        return $isMate || ($isSameClub && $isAvailableForClubs);
+        return $isVehicleMate || ($isSameClub && $isAvailableForClubs);
     }
 }

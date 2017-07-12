@@ -43,13 +43,20 @@ class CheckOffers extends Command
     public function handle()
     {
         $now = Carbon::now();
-        $created = Offer::whereNotNull('amount')->created()->get();
+        $created = Offer::whereNotNull('amount')->status(Offer::STATUS_VEHICLE_PHASE)->get();
         foreach ($created as $key => $offer) {
             $days = $now->diffInDays($offer->updated_at);
 
             if ($days == 8) {
                 $this->handleWeekOffer($offer);
-            } else if ($days == 15) {
+            }
+        }
+
+        $created = Offer::whereNotNull('amount')->status(Offer::STATUS_CLUB_PHASE)->get();
+        foreach ($created as $key => $offer) {
+            $days = $now->diffInDays($offer->updated_at);
+
+            if ($days == 15) {
                 $this->handleTwoWeeksOffer($offer);
             }
         }
@@ -59,17 +66,8 @@ class CheckOffers extends Command
     {
         if ($offer->bids()->created()->count() > 0) {
             $this->completeOffer($offer);
-            return;
-        }
-
-        $vehicle = $offer->vehicle;
-        $fund = $vehicle->fund;
-        $vehicleInvestors = $vehicle->investors()->where('id', '!=', $offer->user_id)->get();
-
-        $investors = $fund->users()->whereNotIn('id', array_pluck($vehicleInvestors, 'id'))->get();
-
-        foreach ($investors as $key => $investor) {
-            $investor->notify(new OfferAvailable($offer));
+        } else {
+            $this->clubPhaseOffer($offer);
         }
     }
 
@@ -80,6 +78,14 @@ class CheckOffers extends Command
         } else {
             $this->expireOffer($offer);
         }
+    }
+
+    public function clubPhaseOffer(Offer $offer)
+    {
+        $offer->status = Offer::STATUS_CLUB_PHASE;
+        $offer->save();
+
+        event(new OfferClubPhase($offer));
     }
 
     public function expireOffer(Offer $offer)

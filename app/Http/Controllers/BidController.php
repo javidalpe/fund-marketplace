@@ -37,7 +37,7 @@ class BidController extends AppBaseController
         $this->bidRepository->pushCriteria(new RequestCriteria($request));
         $user = Auth::user();
         if ($user->isManager()) {
-            $offers = Offer::created()->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
+            $offers = Offer::whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
             $bids = $this->bidRepository->findWhereIn('offer_id', array_pluck($offers, 'id'))->with('user');
         } else {
             $bids = $user->bids()->with('user')->get();
@@ -56,7 +56,7 @@ class BidController extends AppBaseController
     {
         $user = Auth::user();
         if ($user->isManager()) {
-            $offers = Offer::created()->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->with('user')->get();
+            $offers = Offer::available()->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->with('user')->get();
             $users = User::investor()->get();
         } else {
             $offers = $user->offersAvailable()->with('user')->get();

@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\OfferCreated' => [
             'App\Listeners\OfferCreatedListener',
         ],
+        'App\Events\OfferClubPhase' => [
+            'App\Listeners\OfferClubPhaseListener',
+        ],
         'App\Events\OfferUpdated' => [
             'App\Listeners\OfferUpdatedListener',
         ],

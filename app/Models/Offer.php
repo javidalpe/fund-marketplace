@@ -14,7 +14,9 @@ class Offer extends Model
 
     public $table = 'offers';
 
-    const STATUS_CREATED = 'Created';
+    const STATUS_VEHICLE_PHASE = 'Vehicle';
+    const STATUS_CLUB_PHASE = 'Club';
+
     const STATUS_CANCELLED = 'Cancelled';
     const STATUS_COMPLETED = 'Completed';
     const STATUS_EXPIRED = 'Expired';
@@ -52,10 +54,19 @@ class Offer extends Model
         'stock_price' => 'required|numeric'
     ];
 
-    public function scopeCreated($query)
+    public function scopeStatus($query, $status)
     {
-        return $query->where('status', self::STATUS_CREATED);
+        return $query->where('status', $status);
     }
+
+    public function scopeAvailable($query)
+    {
+        return $query->where(function($query) {
+            $query->where('status', self::STATUS_VEHICLE_PHASE)
+                ->orWhere('status', self::STATUS_CLUB_PHASE);
+        });
+    }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

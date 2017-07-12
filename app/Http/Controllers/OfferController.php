@@ -106,7 +106,7 @@ class OfferController extends AppBaseController
 
         $input = $request->all();
 
-        $input['status'] = Offer::STATUS_CREATED;
+        $input['status'] = Offer::STATUS_VEHICLE_PHASE;
         $input['sell_fee'] = ($request->amount * $request->stock_price) * config('app.sell_fee');
 
         $offer = $this->offerRepository->create($input);
