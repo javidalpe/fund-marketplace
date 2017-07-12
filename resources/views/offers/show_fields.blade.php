@@ -1,9 +1,3 @@
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $offer->id !!}</p>
-</div>
-
 <!-- N. acciones Field -->
 <div class="form-group">
     {!! Form::label('amount', 'N. acciones:') !!}
@@ -35,6 +29,12 @@
 </div>
 
 @if (Auth::user()->isManager())
+    <!-- Id Field -->
+    <div class="form-group">
+        {!! Form::label('id', 'Id:') !!}
+        <p>{!! $offer->id !!}</p>
+    </div>
+
     <!-- Vehicle Id Field -->
     <div class="form-group">
         {!! Form::label('vehicle_id', 'Vehicle Id:') !!}
