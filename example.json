@@ -1,0 +1,72 @@
+[
+    {
+        "name": "title",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "title",
+        "dbType": "boolean",
+        "htmlType": "textarea",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "title",
+        "dbType": "string",
+        "htmlType": "email",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "title",
+        "dbType": "string",
+        "htmlType": "date",
+        "validations": "required"
+    },
+
+    {
+        "name": "title",
+        "dbType": "string",
+        "htmlType": "number",
+        "validations": "required"
+    },
+    {
+        "name": "title",
+        "dbType": "string",
+        "htmlType": "password",
+        "validations": "required"
+    },
+    {
+        "name": "title",
+        "dbType": "string",
+        "htmlType": "file",
+        "validations": "required"
+    },
+    {
+        "name": "title",
+        "dbType": "string",
+        "htmlType": "select,Daily,Weekly,Monthly",
+        "validations": "required"
+    },
+    {
+        "name": "title",
+        "dbType": "string",
+        "htmlType": "checkbox",
+        "validations": "required"
+    }
+]
