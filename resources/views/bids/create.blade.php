@@ -16,7 +16,7 @@
                     {!! Form::open(['route' => 'bids.store']) !!}
 
                         @if (!Request::has('offer'))
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-6 col-md-4">
                                 {!! Form::label('offer_id', 'Oferta de venta:') !!}
                                 {!! Form::select('offer_id', $offers, null, ['class' => 'form-control']) !!}
                             </div>
@@ -32,7 +32,7 @@
                         @endif
 
                         @if (Auth::user()->isManager())
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-6 col-md-4">
                                 {!! Form::label('user_id', 'Investor:') !!}
                                 {!! Form::select('user_id', $investors, null, ['class' => 'form-control']) !!}
                             </div>

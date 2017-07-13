@@ -1,4 +1,4 @@
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-6 col-md-4">
     {!! Form::label('user_id', 'Investor:') !!}
     {!! Form::select('user_id', $investors, null, ['class' => 'form-control']) !!}
 </div>

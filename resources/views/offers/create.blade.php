@@ -16,9 +16,10 @@
                     {!! Form::open(['route' => 'offers.store']) !!}
 
                         @if (!Request::has('vehicle'))
-                            <div class="form-group col-sm-6">
-                                {!! Form::label('vehicle_id', 'Vehicle:') !!}
+                            <div class="form-group col-sm-6 col-md-4">
+                                {!! Form::label('vehicle_id', 'Vehículo:') !!}
                                 {!! Form::select('vehicle_id', $vehicles, null, ['class' => 'form-control']) !!}
+                                <p class="help-block small">Vehículo de inversión del que se quieres vender participaciones.</p>
                             </div>
                         @else
                             {!! Form::hidden('vehicle_id', Request::get('vehicle')) !!}
@@ -26,9 +27,10 @@
 
 
                         @if (Auth::user()->isManager())
-                            <div class="form-group col-sm-6">
-                                {!! Form::label('user_id', 'Investor:') !!}
+                            <div class="form-group col-sm-6 col-md-4">
+                                {!! Form::label('user_id', 'Vendedor:') !!}
                                 {!! Form::select('user_id', $investors, null, ['class' => 'form-control']) !!}
+                                <p class="help-block small">Inversor que quiere vender participaciones.</p>
                             </div>
                         @else
                             {!! Form::hidden('user_id', Auth::user()->id) !!}

@@ -13,13 +13,15 @@
             <div class="box-body">
                 <div class="row">
                     {!! Form::open(['route' => 'operations.store']) !!}
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6 col-md-4">
                             {!! Form::label('vehicle_id', 'Vehículo:') !!}
                             {!! Form::select('vehicle_id', $vehicles, null, ['class' => 'form-control']) !!}
+                            <p class="help-block small">Vehículo sobre el que se realiza la operación.</p>
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6 col-md-4">
                             {!! Form::label('user_id', 'Comprador/Vendedor:') !!}
                             {!! Form::select('user_id', $investors, null, ['class' => 'form-control']) !!}
+                            <p class="help-block small">Inversor involucrado en la operación.</p>
                         </div>
                         @include('operations.fields')
 

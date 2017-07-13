@@ -15,7 +15,7 @@
                 <td>
                     {!! Form::open(['route' => ['funds.users.destroy', $fund->id, $user->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('¿Estás seguro de querer borrarlo?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>
