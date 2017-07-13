@@ -94,7 +94,6 @@ class BidController extends AppBaseController
     public function store(CreateBidRequest $request)
     {
         $offer = Offer::find($request->offer_id);
-        $user = Auth::user();
 
         if ($offer->amount < $request->amount) {
             Flash::error('No puedes compras más acciones de las que se ofrecen.');
@@ -171,7 +170,6 @@ class BidController extends AppBaseController
         }
 
         $offer = $bid->offer;
-        $user = Auth::user();
 
         if ($offer->amount < $request->amount) {
             Flash::error('No puedes compras más acciones de las que se ofrecen.');

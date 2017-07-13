@@ -96,7 +96,7 @@ class OfferController extends AppBaseController
     public function store(CreateOfferRequest $request)
     {
         $vehicle = Vehicle::find($request->vehicle_id);
-        $user = Auth::user();
+        $user = User::find($request->user_id);
 
         $stock_amount = $vehicle->operations()->where('user_id', $user->id)->sum('amount');
         if ($stock_amount < $request->amount) {
@@ -190,7 +190,7 @@ class OfferController extends AppBaseController
         }
 
         $vehicle = $offer->vehicle;
-        $user = Auth::user();
+        $user = User::find($request->user_id);
 
         $stock_amount = $vehicle->operations()->where('user_id', $user->id)->sum('amount');
         if ($stock_amount < $request->amount) {
