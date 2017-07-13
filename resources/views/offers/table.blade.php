@@ -5,7 +5,7 @@
         <th>Precio acción</th>
         <th>Antigüedad</th>
         <th>Inversor</th>
-        <th colspan="3">Accciones</th>
+        <th colspan="3">Gestionar</th>
     </thead>
     <tbody>
     @foreach($offers as $offer)

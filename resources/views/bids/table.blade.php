@@ -3,7 +3,7 @@
         <th>Oferta</th>
         <th>N. acciones</th>
         <th>Precio acción</th>
-        <th colspan="3">Accciones</th>
+        <th colspan="3">Gestionar</th>
     </thead>
     <tbody>
     @foreach($bids as $bid)

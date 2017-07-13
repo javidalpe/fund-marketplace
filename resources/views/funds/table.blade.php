@@ -2,7 +2,7 @@
     <thead>
         <th>Nombre</th>
         <th>Sitio web</th>
-        <th colspan="3">Accciones</th>
+        <th colspan="3">Gestionar</th>
     </thead>
     <tbody>
     @foreach($funds as $fund)

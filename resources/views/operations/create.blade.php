@@ -14,11 +14,11 @@
                 <div class="row">
                     {!! Form::open(['route' => 'operations.store']) !!}
                         <div class="form-group col-sm-6">
-                            {!! Form::label('vehicle_id', 'Vehicle:') !!}
+                            {!! Form::label('vehicle_id', 'Vehículo:') !!}
                             {!! Form::select('vehicle_id', $vehicles, null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group col-sm-6">
-                            {!! Form::label('user_id', 'Investor:') !!}
+                            {!! Form::label('user_id', 'Comprador/Vendedor:') !!}
                             {!! Form::select('user_id', $investors, null, ['class' => 'form-control']) !!}
                         </div>
                         @include('operations.fields')

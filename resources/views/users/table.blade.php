@@ -2,7 +2,7 @@
     <thead>
         <th>Nombre</th>
         <th>Email</th>
-        <th colspan="3">Accciones</th>
+        <th colspan="3">Gestionar</th>
     </thead>
     <tbody>
     @foreach($users as $user)

@@ -3,7 +3,7 @@
         <th>Nombre</th>
         <th>Email</th>
         @can('update', $fund)
-            <th colspan="3">Accciones</th>
+            <th colspan="3">Gestionar</th>
         @endcan
     </thead>
     <tbody>
