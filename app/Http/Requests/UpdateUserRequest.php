@@ -25,6 +25,8 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        return User::$rules;
+        $rules = User::$rules;
+        $rules['email'] = $rules['email'] . ',id,' . $this->get('id');
+        return $rules;
     }
 }
