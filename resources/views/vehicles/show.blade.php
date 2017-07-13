@@ -8,45 +8,40 @@
     </section>
     <div class="content">
         @if(Auth::user()->isInvestor())
-            <h4>Posición</h4>
-            <div class="box box-primary">
-                <div class="box-body">
-                    <div class="row" style="padding-left: 20px">
-                        @include('vehicles.position')
-                        @can('offer', $vehicle)
-                            <a href="{!! route('offers.create', ['vehicle' => $vehicle->id]) !!}" class="btn btn-primary">Publicar oferta de venta de acciones</a>
-                        @endcan
-                    </div>
-                </div>
-            </div>
+            @if (count($operations) > 0)
+                @component('components.box')
+                    @slot('title')
+                        Posición según el precio de venta actual
+                    @endslot
+                    @include('vehicles.position')
+                    @can('offer', $vehicle)
+                        <a href="{!! route('offers.create', ['vehicle' => $vehicle->id]) !!}" class="btn btn-primary">Publicar oferta de venta de acciones</a>
+                    @endcan
+                @endcomponent
+            @endif
         @else
-            <h4>Socios</h4>
-            <div class="box box-primary">
-                <div class="box-body">
-                    <div class="row" style="padding-left: 20px">
-                        @include('vehicles.users.table')
-                    </div>
-                </div>
-            </div>
+            @component('components.box')
+                @slot('title')
+                    Socios
+                @endslot
+                @include('vehicles.users.table')
+            @endcomponent
         @endif
 
-        <h4>Operaciones</h4>
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row" style="padding-left: 20px">
-                    @include('operations.table')
-                </div>
-            </div>
-        </div>
+        @component('components.box')
+            @slot('title')
+                Operaciones
+            @endslot
+            @include('operations.table')
+        @endcomponent
 
-        <h4>Información general</h4>
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row" style="padding-left: 20px">
-                    @include('vehicles.show_fields')
-                    <a href="{!! route('vehicles.index') !!}" class="btn btn-default">Atrás</a>
-                </div>
-            </div>
-        </div>
+        @component('components.box')
+            @slot('title')
+                Información general
+            @endslot
+            @include('vehicles.show_fields')
+            <a href="{!! route('vehicles.index') !!}" class="btn btn-default">Atrás</a>
+        @endcomponent
+        
     </div>
 @endsection

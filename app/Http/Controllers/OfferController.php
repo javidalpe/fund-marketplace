@@ -15,6 +15,7 @@ use App\User;
 use App\Models\Offer;
 use App\Models\Vehicle;
 use App\Events\OfferCreated;
+use App\Services\FinService;
 
 class OfferController extends AppBaseController
 {
@@ -105,7 +106,9 @@ class OfferController extends AppBaseController
         }
 
         if (!$request->confirm) {
+            $operations = $vehicle->operations()->where('user_id', $user->id)->get();
             $data = [
+                'position' => FinService::getPositionForOperations($operations, $request->amount, $request->stock_price),
                 'vehicle' => $vehicle
             ];
             return view('offers.confirm', $data);
