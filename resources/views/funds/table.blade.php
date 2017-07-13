@@ -7,14 +7,13 @@
     <tbody>
     @foreach($funds as $fund)
         <tr>
-            <td>{!! $fund->name !!}</td>
+            <td><a href="{!! route('funds.show', [$fund->id]) !!}">{!! $fund->name !!}</a></td>
             <td><a href="{!! $fund->website !!}" target="_blank">{!! $fund->website !!}</a></td>
             <td>
                 {!! Form::open(['route' => ['funds.destroy', $fund->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('funds.show', [$fund->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                     @can('update', $fund)
-                        <a href="{!! route('funds.edit', [$fund->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{!! route('funds.edit', [$fund->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i> Editar</a>
                     @endcan
                     @can('delete', $fund)
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}

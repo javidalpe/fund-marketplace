@@ -1,3 +1,15 @@
+<!-- Id Field -->
+<div class="form-group">
+    {!! Form::label('id', 'Identificador de la puja:') !!}
+    <p>#{!! $bid->id !!}</p>
+</div>
+
+<!-- Offer Id Field -->
+<div class="form-group">
+    {!! Form::label('offer_id', 'Identificador de la oferta:') !!}
+    <p><a href="{{ route('offers.show', $bid->offer) }}">#{!! $bid->offer->id !!}</a></p>
+</div>
+
 <!-- N. acciones Field -->
 <div class="form-group">
     {!! Form::label('amount', 'N. acciones:') !!}
@@ -34,24 +46,12 @@
     <p>@money($bid->buy_fee)</p>
 </div>
 
-@if (Auth::user()->isManager())
-
-    <!-- Id Field -->
-    <div class="form-group">
-        {!! Form::label('id', 'Id:') !!}
-        <p>{!! $bid->id !!}</p>
-    </div>
-
-    <!-- Offer Id Field -->
-    <div class="form-group">
-        {!! Form::label('offer_id', 'Offer Id:') !!}
-        <p>{!! $bid->offer_id !!}</p>
-    </div>
+@if (Auth::user()->isManager() || Auth::user()->id == $bid->user_id)
 
     <!-- User Id Field -->
     <div class="form-group">
-        {!! Form::label('user_id', 'Id Inversor:') !!}
-        <p>{!! $bid->user_id !!}</p>
+        {!! Form::label('user_id', 'Inversor (oculto):') !!}
+        <p>{!! $bid->user->name !!}</p>
     </div>
 
     <!-- Created At Field -->

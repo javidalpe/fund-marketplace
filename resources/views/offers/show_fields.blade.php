@@ -1,3 +1,16 @@
+<!-- Id Field -->
+<div class="form-group">
+    {!! Form::label('id', 'Identificador:') !!}
+    <p>#{!! $offer->id !!}</p>
+</div>
+
+<!-- Vehicle Id Field -->
+<div class="form-group">
+    {!! Form::label('vehicle_id', 'Compañía:') !!}
+    <p><a href="{{ route('vehicles.show', $offer->vehicle )}}">{!! $offer->vehicle->company !!}</a></p>
+</div>
+
+
 <!-- N. acciones Field -->
 <div class="form-group">
     {!! Form::label('amount', 'N. acciones:') !!}
@@ -24,27 +37,15 @@
 
 <!-- Sell Fee Field -->
 <div class="form-group">
-    {!! Form::label('sell_fee', 'Sell Fee:') !!}
-    <p>@money($offer->sell_fee)</p>
+    {!! Form::label('sell_fee', 'Comisión por venta:') !!}
+    <p>@fee($offer->sell_fee)</p>
 </div>
 
-@if (Auth::user()->isManager())
-    <!-- Id Field -->
-    <div class="form-group">
-        {!! Form::label('id', 'Id:') !!}
-        <p>{!! $offer->id !!}</p>
-    </div>
-
-    <!-- Vehicle Id Field -->
-    <div class="form-group">
-        {!! Form::label('vehicle_id', 'Vehicle Id:') !!}
-        <p>{!! $offer->vehicle_id !!}</p>
-    </div>
-
+@if (Auth::user()->isManager() || Auth::user()->id ==$offer->user_id )
     <!-- User Id Field -->
     <div class="form-group">
-        {!! Form::label('user_id', 'Id Inversor:') !!}
-        <p>{!! $offer->user_id !!}</p>
+        {!! Form::label('user_id', 'Inversor (oculto):') !!}
+        <p><a href="{{route('users.show', $offer->user)}}"></a> {!! $offer->user->name !!}</p>
     </div>
 @endif
 

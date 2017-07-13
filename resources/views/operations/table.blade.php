@@ -11,7 +11,7 @@
     <tbody>
     @foreach($operations as $operation)
         <tr>
-            <td><a href="{{route('vehicles.show', $operation->vehicle)}}">{!! $operation->vehicle->company !!}</a></td>
+            <td><a href="{{route('vehicles.show', $operation->vehicle)}}">{!! $operation->vehicle->name !!}</a></td>
             <td><a href="{{route('users.show', $operation->user)}}">{!! $operation->user->name !!}</a></td>
             <td>{!! $operation->type !!}</td>
             <td>{!! $operation->amount !!}</td>
@@ -20,9 +20,8 @@
             <td>
                 {!! Form::open(['route' => ['operations.destroy', $operation->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('operations.show', [$operation->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                     @can('update', $operation)
-                        <a href="{!! route('operations.edit', [$operation->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{!! route('operations.edit', [$operation->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i> Editar</a>
                     @endcan
                     @can('delete', $operation)
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}

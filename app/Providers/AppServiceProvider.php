@@ -25,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('profitability', function ($percentaje) {
             return "<?php echo(number_format($percentaje*100-100, 1, ',', '.') .'% (x'.number_format($percentaje, 0, ',', '.').')'); ?>";
         });
+
+        Blade::directive('fee', function ($percentaje) {
+            return "<?php echo(number_format($percentaje*100, 0, ',', '.') .'%'); ?>";
+        });
     }
 
     /**
