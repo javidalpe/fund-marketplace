@@ -14,6 +14,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::directive('stock', function ($amount) {
+            return "<?php echo(number_format($amount, 9, ',', '.') .'€'); ?>";
+        });
+
         Blade::directive('money', function ($amount) {
             return "<?php echo(number_format($amount, 2, ',', '.') .'€'); ?>";
         });

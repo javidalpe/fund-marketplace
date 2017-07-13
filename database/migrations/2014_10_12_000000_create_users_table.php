@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->boolean('manager')->default(false);
             $table->string('nif')->nullable();
-            $table->string('name')->nullable();
+            $table->string('civil_status')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
 

@@ -16,7 +16,7 @@ class CreateOffersTable extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('amount');
-            $table->float('stock_price');
+            $table->double('stock_price', 15, 9);
             $table->string('status');
             $table->float('sell_fee');
             $table->integer('vehicle_id')->unsigned();

@@ -7,7 +7,7 @@
 <!-- Precio acción Field -->
 <div class="form-group">
     {!! Form::label('stock_price', 'Precio acción:') !!}
-    <p>@money($bid->stock_price)</p>
+    <p>@stock($bid->stock_price)</p>
 </div>
 
 <!-- Status Field -->

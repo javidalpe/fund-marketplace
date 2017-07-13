@@ -18,14 +18,26 @@
 
 <!-- Precio acción Field -->
 <div class="form-group">
-    {!! Form::label('stock_price', 'Precio acción:') !!}
-    <p>@money($vehicle->stock_price)</p>
+    {!! Form::label('stock_price', 'Precio acción vehículo:') !!}
+    <p>@stock($vehicle->stock_price)</p>
 </div>
 
 <!-- N. acciones Field -->
 <div class="form-group">
-    {!! Form::label('shares_amount', 'N. acciones:') !!}
+    {!! Form::label('shares_amount', 'N. acciones vehículo:') !!}
     <p>{!! $vehicle->shares_amount !!}</p>
+</div>
+
+<!-- Precio acción Field -->
+<div class="form-group">
+    {!! Form::label('company_stock_price', 'Precio acción compañía:') !!}
+    <p>@stock($vehicle->company_stock_price)</p>
+</div>
+
+<!-- N. acciones Field -->
+<div class="form-group">
+    {!! Form::label('company_shares_amount', 'N. acciones compañía:') !!}
+    <p>{!! $vehicle->company_shares_amount !!}</p>
 </div>
 
 <!-- Email Field -->

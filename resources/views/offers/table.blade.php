@@ -12,7 +12,7 @@
         <tr>
             <td>{{ $offer->vehicle->company }}</td>
             <td>{!! $offer->amount !!}</td>
-            <td>@money($offer->stock_price)</td>
+            <td>@stock($offer->stock_price)</td>
             <td>{!! $offer->updated_at->diffForHumans() !!}</td>
             <td>{{ $offer->user->name }}</td>
             <td>

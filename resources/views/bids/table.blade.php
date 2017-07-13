@@ -10,7 +10,7 @@
         <tr>
             <td>{!! $bid->offer->vehicle->company !!} ({!! $bid->user->name !!})</td>
             <td>{!! $bid->amount !!}</td>
-            <td>@money($bid->stock_price)</td>
+            <td>@stock($bid->stock_price)</td>
             <td>
                 {!! Form::open(['route' => ['bids.destroy', $bid->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

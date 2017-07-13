@@ -8,7 +8,7 @@
 <div class="form-group col-sm-6">
     {!! Form::label('stock_price', 'Precio acción:') !!}
     <div class="input-group">
-      {!! Form::number('stock_price', null, ['class' => 'form-control']) !!}
+      {!! Form::number('stock_price', null, ['class' => 'form-control', 'step' => '0.000000001']) !!}
       <div class="input-group-addon">€</div>
 </div>
 </div>

@@ -18,8 +18,10 @@ class CreateVehiclesTable extends Migration
             $table->string('name');
             $table->string('company');
             $table->string('website');
-            $table->float('stock_price');
+            $table->double('stock_price', 15, 9);
             $table->integer('shares_amount');
+            $table->double('company_stock_price', 15, 9);
+            $table->integer('company_shares_amount');
             $table->string('email');
             $table->string('contact');
             $table->string('phone');

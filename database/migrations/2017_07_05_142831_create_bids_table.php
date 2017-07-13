@@ -16,7 +16,7 @@ class CreateBidsTable extends Migration
         Schema::create('bids', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('amount');
-            $table->float('stock_price');
+            $table->double('stock_price', 15, 9);
             $table->string('status');
             $table->string('buyer_comment')->nullable();
             $table->string('seller_comment')->nullable();

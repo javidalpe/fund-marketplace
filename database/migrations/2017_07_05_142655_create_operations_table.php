@@ -17,7 +17,7 @@ class CreateOperationsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->integer('amount');
-            $table->float('stock_price');
+            $table->double('stock_price', 15, 9);
             $table->date('completed_at');
             $table->integer('vehicle_id')->unsigned();
             $table->integer('user_id')->unsigned();
