@@ -65,7 +65,7 @@ class CheckOffers extends Command
 
     public function handleWeekOffer(Offer $offer)
     {
-        if ($offer->bids()->created()->count() > 0) {
+        if ($offer->bids()->created()->sum('amount') > $offer->amount) {
             $this->completeOffer($offer);
         } else {
             $this->clubPhaseOffer($offer);
@@ -74,7 +74,7 @@ class CheckOffers extends Command
 
     public function handleTwoWeeksOffer(Offer $offer)
     {
-        if ($offer->bids()->created()->count() > 0) {
+        if ($offer->bids()->created()->sum('amount') > $offer->amount) {
             $this->completeOffer($offer);
         } else {
             $this->expireOffer($offer);

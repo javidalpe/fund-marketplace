@@ -35,6 +35,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\BidCreated' => [
             'App\Listeners\BidCreatedListener',
         ],
+        'App\Events\BidDeclined' => [
+            'App\Listeners\BidDeclinedListener',
+        ],
         'App\Events\BidUpdatedd' => [
             'App\Listeners\BidUpdateddListener',
         ],

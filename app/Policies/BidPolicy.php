@@ -47,7 +47,7 @@ class BidPolicy
      */
     public function update(User $user, Bid $bid)
     {
-        return $user->isManager() || ($user->id == $bid->user_id && $bid->status == Bid::STATUS_CREATED);
+        return $bid->status != Bid::STATUS_DECLINED && ($user->isManager() || $user->id == $bid->user_id);
     }
 
     /**
@@ -60,5 +60,17 @@ class BidPolicy
     public function delete(User $user, Bid $bid)
     {
         return $user->isManager() || ($user->id == $bid->user_id && $bid->status == Bid::STATUS_CREATED);
+    }
+
+    /**
+     * Determine whether the user can decline the bid.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Bid  $bid
+     * @return mixed
+     */
+    public function decline(User $user, Bid $bid)
+    {
+        return $bid->status == Bid::STATUS_CREATED && ($user->isManager() || $user->id == $bid->offer->user_id);
     }
 }

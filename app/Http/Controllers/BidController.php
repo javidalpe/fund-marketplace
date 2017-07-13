@@ -56,10 +56,10 @@ class BidController extends AppBaseController
     {
         $user = Auth::user();
         if ($user->isManager()) {
-            $offers = Offer::available()->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->with('user')->get();
+            $offers = Offer::available()->whereIn('vehicle_id', array_pluck($user->vehicles, 'id'))->get();
             $users = User::investor()->get();
         } else {
-            $offers = $user->offersAvailable()->with('user')->get();
+            $offers = $user->offersAvailable()->get();
             $users = [$user];
         }
 
@@ -74,7 +74,7 @@ class BidController extends AppBaseController
         }
 
         $data = array(
-            'offers' => array_pluck($offers, 'user.name', 'id'),
+            'offers' => array_pluck($offers, 'id', 'id'),
             'offer' => $offer,
             'investors' => array_pluck($users, 'name', 'id'),
             'stock_amount' => $stock_amount,
@@ -162,7 +162,6 @@ class BidController extends AppBaseController
     public function update($id, UpdateBidRequest $request)
     {
         $bid = $this->bidRepository->findWithoutFail($id);
-
         if (empty($bid)) {
             Flash::error('Bid not found');
 
@@ -171,7 +170,7 @@ class BidController extends AppBaseController
 
         $offer = $bid->offer;
 
-        if ($offer->amount < $request->amount) {
+        if ($offer->amount && $offer->amount < $request->amount) {
             Flash::error('No puedes compras más acciones de las que se ofrecen.');
             return back();
         }
@@ -180,6 +179,22 @@ class BidController extends AppBaseController
         $bid = $this->bidRepository->update($request->all(), $id);
 
         Flash::success('Bid updated successfully.');
+
+        return redirect(route('bids.index'));
+    }
+
+    public function decline($id)
+    {
+        $bid = $this->bidRepository->findWithoutFail($id);
+        if (empty($bid)) {
+            Flash::error('Bid not found');
+
+            return redirect(route('bids.index'));
+        }
+
+        $bid = $this->bidRepository->update(['status' => Bid::STATUS_DECLINED], $id);
+
+        Flash::success('Oferta rechazada.');
 
         return redirect(route('bids.index'));
     }

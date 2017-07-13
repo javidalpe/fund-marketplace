@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group( function() {
     Route::resource('offers', 'OfferController');
 
     Route::resource('bids', 'BidController');
+    Route::get('/bids/{id}/decline', ['uses' => 'BidController@decline', 'as' => 'bids.decline']);
 
     Route::resource('users', 'UserController');
 });
