@@ -28,6 +28,6 @@ class BidDeclinedListener
     public function handle(BidDeclined $event)
     {
         $bid = $event->bid;
-        $bid->user->notify(new YourBidHasBeenDeclined ($bid));
+        $bid->user->notify(new YourBidHasBeenDeclined($bid));
     }
 }

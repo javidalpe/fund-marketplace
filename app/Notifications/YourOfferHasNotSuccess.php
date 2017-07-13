@@ -51,7 +51,9 @@ class YourOfferHasNotSuccess extends Notification
                     ->greeting("La oferta de acciones de $vehicle->company ha expirado")
                     ->line("Sentimos comunicarte que tras 14 días de publicación en el
                     marketplace, tu oferta de venta de $offer->amount acciones ha sido
-                    retirada ya que no no ha recibido ninguna puja.");
+                    retirada ya que no no ha recibido ninguna puja.")
+                    ->line("Si tienes alguna duda contacta con $vehicle->contact en el teléfono
+                    $vehicle->phone o en el correo $vehicle->email.");
     }
 
     /**

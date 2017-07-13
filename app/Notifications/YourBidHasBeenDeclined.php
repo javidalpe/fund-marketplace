@@ -50,7 +50,9 @@ class YourBidHasBeenDeclined extends Notification
                     ->subject('Oferta de compra rechazada')
                     ->greeting("La oferta de compra de acciones de $vehicle->company ha sido rechazada")
                     ->line("Sentimos comunicarte que el vendedor de acciones de $vehicle->company ha rechazado
-                    tu oferta de compra de $bid->amount acciones por " . $bid->stock_price . "€ por acción.");
+                    tu oferta de compra de $bid->amount acciones por " . $bid->stock_price . "€ por acción.")
+                    ->line("Si tienes alguna duda contacta con $vehicle->contact en el teléfono
+                    $vehicle->phone o en el correo $vehicle->email");
     }
 
     /**

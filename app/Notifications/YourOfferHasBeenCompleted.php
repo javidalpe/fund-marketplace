@@ -54,7 +54,9 @@ class YourOfferHasBeenCompleted extends Notification
             $mailMessage = $mailMessage->line("$bid->amount acciones por " . $bid->amount*$bid->stock_price . "€ (" . $bid->stock_price . "€ por acción)");
         }
 
-        $mailMessage = $mailMessage->line("El equipo gestor procederá ahora a tramitar las órdenes de compra/venta, para lo que se pondrán en contacto contigo.");
+        $mailMessage = $mailMessage->line("El equipo gestor procederá ahora a tramitar las órdenes de compra/venta, para lo que se pondrán en contacto contigo.")
+            ->line("Si tienes alguna duda contacta con $vehicle->contact en el teléfono
+            $vehicle->phone o en el correo $vehicle->email.");
 
         return $mailMessage;
     }

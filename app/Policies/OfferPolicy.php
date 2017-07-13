@@ -31,7 +31,7 @@ class OfferPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->isManager() || $user->companies()->count() > 0;
     }
 
     /**

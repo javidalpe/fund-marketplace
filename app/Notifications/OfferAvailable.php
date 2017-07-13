@@ -53,7 +53,9 @@ class OfferAvailable extends Notification
                     ->line('Se acaba de publicar una oferta de venta de ' . $this->offer->amount . ' acciones
                     de la empresa ' . $vehicle->company . ' por valor de ' . $this->offer->stock_price . '€
                     por acción (' . $this->offer->amount*$this->offer->stock_price . '€).')
-                    ->action('Ir a la oferta', $url);
+                    ->action('Ir a la oferta', $url)
+                    ->line("Si tienes alguna duda contacta con $vehicle->contact en el teléfono
+                    $vehicle->phone o en el correo $vehicle->email.");
     }
 
     /**

@@ -56,7 +56,9 @@ class BidPublished extends Notification
                     ->line('Se acaba de publicar una puja para comprar ' . $bid->amount . ' acciones
                     de la empresa ' . $vehicle->company . ' por valor de ' . $bid->stock_price . '€
                     por acción (' . $bid->amount*$bid->stock_price . '€).')
-                    ->action('Ir a la puja', $url);
+                    ->action('Ir a la puja', $url)
+                    ->line("Si tienes alguna duda contacta con $vehicle->contact en el teléfono
+                    $vehicle->phone o en el correo $vehicle->email.");
     }
 
     /**
