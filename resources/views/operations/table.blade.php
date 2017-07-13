@@ -1,6 +1,7 @@
 <table class="table table-responsive" id="operations-table">
     <thead>
         <th>Nombre de la compañía</th>
+        <th>Inversor</th>
         <th>Tipo</th>
         <th>N. acciones</th>
         <th>Precio acción</th>
@@ -10,7 +11,8 @@
     <tbody>
     @foreach($operations as $operation)
         <tr>
-            <td>{!! $operation->vehicle->company !!}</td>
+            <td><a href="{{route('vehicles.show', $operation->vehicle)}}">{!! $operation->vehicle->company !!}</a></td>
+            <td><a href="{{route('users.show', $operation->user)}}">{!! $operation->user->name !!}</a></td>
             <td>{!! $operation->type !!}</td>
             <td>{!! $operation->amount !!}</td>
             <td>@stock($operation->stock_price)</td>

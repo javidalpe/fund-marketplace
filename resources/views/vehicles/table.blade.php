@@ -8,7 +8,7 @@
     <tbody>
     @foreach($vehicles as $vehicle)
         <tr>
-            <td>{!! $vehicle->name !!}</td>
+            <td><a href="{{route('vehicles.show', $vehicle)}}">{!! $vehicle->name !!}</a></td>
             <td>{!! $vehicle->company !!}</td>
             <td><a href="{!! $vehicle->website !!}" target="_blank">{!! $vehicle->website !!}</a></td>
             <td>

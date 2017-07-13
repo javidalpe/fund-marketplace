@@ -98,20 +98,29 @@ class VehicleController extends AppBaseController
         if ($user->isManager()) {
             $operations = $vehicle->operations;
             $position = false;
+            $users = $vehicle->operations()
+                    ->select('user_id', DB::raw('SUM(amount) as amount'))
+                    ->groupBy('user_id')
+                    ->havingRaw('SUM(amount) > 0')
+                    ->with('user')
+                    ->get();
         } else {
             $operations = $vehicle->operations()->where('user_id', $user->id)->get();
             $stock_amount = $vehicle->operations()->where('user_id', $user->id)->sum('amount');
             $stock_price = $stock_amount * $vehicle->stock_price;
             $cost = $vehicle->operations()->where('user_id', $user->id)->where('amount', '>', 0)->sum(DB::raw('amount*stock_price'));
             $position = [
+
                 'stock_amount' => $stock_amount,
                 'stock_price' => $stock_price,
                 'stock_cost' => $cost,
                 'profitability' => $stock_price/$cost,
             ];
+            $users = [];
         }
 
         $data = [
+            'users' => $users,
             'vehicle' => $vehicle,
             'operations' => $operations,
             'position' => $position,

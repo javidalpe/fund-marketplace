@@ -19,6 +19,15 @@
                     </div>
                 </div>
             </div>
+        @else
+            <h4>Socios</h4>
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="row" style="padding-left: 20px">
+                        @include('vehicles.users.table')
+                    </div>
+                </div>
+            </div>
         @endif
 
         <h4>Operaciones</h4>
