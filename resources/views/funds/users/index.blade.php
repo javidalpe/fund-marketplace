@@ -1,5 +1,5 @@
 
-    <h4 class="">Inversores</h4>
+    <h4 class="">Inversores miembros del club</h4>
 
     <div class="box box-primary">
         <div class="box-body">
