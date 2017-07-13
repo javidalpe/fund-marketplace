@@ -59,6 +59,8 @@ class VehiclePolicy
 
     public function offer(User $user, Vehicle $vehicle)
     {
+        if ($user->isManager()) return true;
+        
         $stock_amount = $vehicle->operations()->where('user_id', $user->id)->sum('amount');
         return $stock_amount > 0;
     }

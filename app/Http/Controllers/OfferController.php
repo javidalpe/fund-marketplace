@@ -107,8 +107,10 @@ class OfferController extends AppBaseController
 
         if (!$request->confirm) {
             $operations = $vehicle->operations()->where('user_id', $user->id)->get();
+            $position = FinService::getPositionForOperations($operations, $request->amount, $request->stock_price);
             $data = [
-                'position' => FinService::getPositionForOperations($operations, $request->amount, $request->stock_price),
+                'position' => $position,
+                'resume' => FinService::getResumeForPosition($position),
                 'vehicle' => $vehicle
             ];
             return view('offers.confirm', $data);

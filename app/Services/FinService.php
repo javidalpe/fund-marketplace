@@ -52,8 +52,22 @@ class FinService {
             'amount' => $number,
             'stock_price' => $sellPrice,
             'profitability' => $profitability,
-            'total_price' => $total * $sellPrice,
+            'total_price' => $number * $sellPrice,
             'stocks' => $stocks
+        ];
+    }
+
+    public static function getResumeForPosition($position)
+    {
+        $amount = $position['total_price'];
+        $fee = $amount * 0.17;
+        $vat = $fee * 0.21;
+
+        return [
+            'amount' => $amount,
+            'fee' => $fee,
+            'vat' => $vat,
+            'total_amount' => $amount - $fee - $vat
         ];
     }
 
