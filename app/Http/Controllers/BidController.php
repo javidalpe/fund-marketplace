@@ -13,6 +13,7 @@ use Response;
 use App\Models\Offer;
 use App\Models\Bid;
 use App\Events\BidCreated;
+use App\Events\BidDeclined;
 use App\User;
 use Auth;
 
@@ -193,6 +194,8 @@ class BidController extends AppBaseController
         }
 
         $bid = $this->bidRepository->update(['status' => Bid::STATUS_DECLINED], $id);
+
+        event(new BidDeclined($bid));
 
         Flash::success('Oferta rechazada.');
 

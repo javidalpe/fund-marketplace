@@ -14,14 +14,16 @@ class BidDeclined
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $bid;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(\App\Models\Bid $bid)
     {
-        //
+        $this->bid = $bid;
     }
 
     /**

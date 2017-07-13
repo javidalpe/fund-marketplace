@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\BidDeclined;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Notifications\YourBidHasBeenDeclined;
 
 class BidDeclinedListener
 {
@@ -26,6 +27,7 @@ class BidDeclinedListener
      */
     public function handle(BidDeclined $event)
     {
-        //
+        $bid = $event->bid;
+        $bid->user->notify(new YourBidHasBeenDeclined ($bid));
     }
 }
