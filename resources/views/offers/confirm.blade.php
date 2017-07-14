@@ -11,14 +11,14 @@
 
         @component('components.box')
             @slot('title')
-                Resumen de operación para {{ $position['amount'] }} acciones a @stock($position['stock_price']) por acción
+                Cálculo de venta de {{ $position['amount'] }} acciones a @stock($position['stock_price']) por acción
             @endslot
             @include('vehicles.position')
 
         @endcomponent
         @component('components.box')
             @slot('title')
-                Desglose final
+                Desglose final de la operación
             @endslot
             @include('offers.resume')
 

@@ -31,15 +31,17 @@ class FinService {
         }
 
         $profitability = 0;
+        $totalBuyPrice = 0;
         $left = $number;
         foreach ($stocks as $key => $stock) {
             $amount = min($left, $stock['amount']);
             $left = $left - $amount;
             $operationPrice = $stock['stock_price'];
             $profit = $amount == 0 ? 0:($sellPrice / $operationPrice);
-
+            $buyPrice = $amount * $operationPrice;
+            $totalBuyPrice = $totalBuyPrice + $buyPrice;
             $stocks[$key]['stock_amount'] = $amount;
-            $stocks[$key]['buy_price'] = $amount * $operationPrice;
+            $stocks[$key]['buy_price'] = $buyPrice;
             $stocks[$key]['sell_price'] = $amount * $sellPrice;
             $stocks[$key]['profitability'] = $profit;
 
@@ -52,6 +54,7 @@ class FinService {
             'amount' => $number,
             'stock_price' => $sellPrice,
             'profitability' => $profitability,
+            'total_buy_price' => $totalBuyPrice,
             'total_price' => $number * $sellPrice,
             'stocks' => $stocks
         ];
@@ -60,11 +63,15 @@ class FinService {
     public static function getResumeForPosition($position)
     {
         $amount = $position['total_price'];
-        $fee = $amount * 0.17;
+        $totalBuyPrice = $position['total_buy_price'];
+        $profit = $amount - $totalBuyPrice;
+        $fee = $profit * 0.17;
         $vat = $fee * 0.21;
 
         return [
             'amount' => $amount,
+            'total_buy_price' => $totalBuyPrice,
+            'profit' => $profit,
             'fee' => $fee,
             'vat' => $vat,
             'total_amount' => $amount - $fee - $vat
