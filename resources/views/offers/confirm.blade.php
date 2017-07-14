@@ -11,7 +11,7 @@
 
         @component('components.box')
             @slot('title')
-                Resumen de operación para {{ $position['amount'] }} acciones a @money($position['stock_price']) por acción
+                Resumen de operación para {{ $position['amount'] }} acciones a @stock($position['stock_price']) por acción
             @endslot
             @include('vehicles.position')
 
@@ -31,8 +31,8 @@
                 {!! Form::hidden('stock_price', old('stock_price')) !!}
                 <!-- Submit Field -->
                 <div class="form-group col-sm-12">
-                    {!! Form::submit('Publicar oferta', ['class' => 'btn btn-primary']) !!}
-                    <a href="{!! route('vehicles.show', $vehicle) !!}" class="btn btn-default">Cancelar</a>
+                    {!! Form::submit('Publicar oferta', ['class' => 'btn btn-primary hidden-print']) !!}
+                    <a href="{!! route('vehicles.show', $vehicle) !!}" class="btn btn-default hidden-print">Cancelar</a>
                 </div>
             {!! Form::close() !!}
         @endcomponent

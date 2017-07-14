@@ -23,6 +23,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('bids.index') !!}" class="btn btn-default">Cancelar</a>
+    {!! Form::submit('Guardar', ['class' => 'btn btn-primary hidden-print']) !!}
+    <a href="{!! route('bids.index') !!}" class="btn btn-default hidden-print">Cancelar</a>
 </div>

@@ -147,7 +147,12 @@ class OfferController extends AppBaseController
             return redirect(route('offers.index'));
         }
 
+        $vehicle = $offer->vehicle;
+        $operations = $vehicle->operations()->where('user_id', $offer->user_id)->get();
+        $position = FinService::getPositionForOperations($operations, $offer->amount, $offer->stock_price);
         $data = [
+            'position' => $position,
+            'resume' => FinService::getResumeForPosition($position),
             'offer' => $offer,
             'vehicle' => $offer->vehicle,
             'bids' => $offer->bids()->with('user')->get()

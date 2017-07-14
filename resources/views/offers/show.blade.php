@@ -8,14 +8,12 @@
     </section>
     <div class="content">
         @if(count($bids) > 0)
-            <h4>Pujas</h4>
-            <div class="box box-primary">
-                <div class="box-body">
-                    <div class="row" style="padding-left: 20px">
-                        @include('bids.table')
-                    </div>
-                </div>
-            </div>
+            @component('components.box')
+                @slot('title')
+                    Pujas
+                @endslot
+                @include('bids.table')
+            @endcomponent
         @endif
 
         <div class="box box-primary">
@@ -29,5 +27,21 @@
                 </div>
             </div>
         </div>
+
+        @can('view', $offer)
+            @component('components.box')
+                @slot('title')
+                    Resumen de operación para {{ $position['amount'] }} acciones a @money($position['stock_price']) por acción
+                @endslot
+                @include('vehicles.position')
+
+            @endcomponent
+            @component('components.box')
+                @slot('title')
+                    Desglose final
+                @endslot
+                @include('offers.resume')
+            @endcomponent
+        @endcan
     </div>
 @endsection

@@ -83,7 +83,7 @@
         </div>
 
         <!-- Main Footer -->
-        <footer class="main-footer" style="max-height: 100px;text-align: center">
+        <footer class="hidden-print main-footer" style="max-height: 100px;text-align: center">
             Make with <img draggable="false" style="height:13px" class="emoji" alt="❤️" src="https://s.w.org/images/core/emoji/2.3/svg/2764.svg"> by <a href="https://twitter.com/javidalpe">Javidalpe</a>
         </footer>
 

@@ -20,7 +20,7 @@ class OfferPolicy
      */
     public function view(User $user, Offer $offer)
     {
-        //
+        return $user->isManager() || $user->id == $offer->user_id;
     }
 
     /**

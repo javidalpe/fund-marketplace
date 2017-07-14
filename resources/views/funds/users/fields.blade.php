@@ -4,5 +4,5 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-4">
-    {!! Form::submit('Añadir', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Añadir', ['class' => 'btn btn-primary hidden-print']) !!}
 </div>

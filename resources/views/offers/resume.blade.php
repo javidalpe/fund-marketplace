@@ -1,10 +1,4 @@
 <table class="table table-responsive" id="resume-table">
-    <thead>
-        <tr>
-            <th>Linea</th>
-            <th>Precio</th>
-        </tr>
-    </thead>
     <tbody>
         <tr>
             <td>Precio de venta</td>
