@@ -34,6 +34,11 @@ class OfferPolicy
         return $user->isManager() || $user->companies()->count() > 0;
     }
 
+    public function seeProfit(User $user)
+    {
+        return $user->isManager();
+    }
+
     /**
      * Determine whether the user can update the offer.
      *

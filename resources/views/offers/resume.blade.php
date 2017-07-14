@@ -55,3 +55,6 @@
         </table>
     </div>
 </div>
+@can('seeProfit', App\Models\Offer::class)
+    @include('offers.profit')
+@endcan

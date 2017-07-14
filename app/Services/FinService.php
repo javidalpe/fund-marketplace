@@ -68,14 +68,30 @@ class FinService {
         $fee = $profit * 0.17;
         $vat = $fee * 0.21;
 
+        $exitFee = $fee + $vat;
+        $buyFee = self::getBuyFee($amount);
+        $managementFee = 100;
+        $notaryFee = 250;
+
         return [
             'amount' => $amount,
             'total_buy_price' => $totalBuyPrice,
             'profit' => $profit,
             'fee' => $fee,
             'vat' => $vat,
-            'total_amount' => $amount - $fee - $vat
+            'total_amount' => $amount - $fee - $vat,
+            'buy_fee' => $buyFee,
+            'exit_fee' => $exitFee,
+            'managementFee' => $managementFee,
+            'notaryFee' => $notaryFee,
+            'total_profit' => $buyFee + $exitFee - $managementFee - $notaryFee
         ];
+    }
+
+    public static function getBuyFee($amount)
+    {
+        $fee = $amount * 0.04;
+        return max(500, $fee * 0.21);
     }
 
 }
