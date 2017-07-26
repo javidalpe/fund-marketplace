@@ -7,26 +7,28 @@
         </h1>
     </section>
     <div class="content">
-        @if(count($bids) > 0)
-            @component('components.box')
-                @slot('title')
-                    Pujas
-                @endslot
-                @include('bids.table')
-            @endcomponent
-        @endif
 
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row" style="padding-left: 20px">
-                    @include('offers.show_fields')
-                    @can('bid', $offer)
-                        <a href="{!! route('bids.create', ['offer' => $offer->id]) !!}" class="btn btn-primary">Pujar por estas acciones</a>
-                    @endcan
-                    <a href="{!! route('offers.index') !!}" class="btn btn-default">Atrás</a>
-                </div>
-            </div>
-        </div>
+        @component('components.box')
+            @slot('title')
+                Pujas
+            @endslot
+            @if(count($bids) > 0)
+                @include('bids.table')
+            @else
+                Nadie ha pujado por esta oferta
+            @endif
+        @endcomponent
+
+        @component('components.box')
+            @slot('title')
+                Datos generales de la oferta
+            @endslot
+            @include('offers.show_fields')
+            @can('bid', $offer)
+                <a href="{!! route('bids.create', ['offer' => $offer->id]) !!}" class="btn btn-primary">Pujar por estas acciones</a>
+            @endcan
+            <a href="{!! route('offers.index') !!}" class="btn btn-default">Atrás</a>
+        @endcomponent
 
         @can('view', $offer)
             @component('components.box')

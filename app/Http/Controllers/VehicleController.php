@@ -100,7 +100,7 @@ class VehicleController extends AppBaseController
             $operations = $vehicle->operations;
             $position = false;
             $users = $vehicle->operations()
-                    ->select('user_id', DB::raw('SUM(amount) as amount'))
+                    ->select('user_id', DB::raw('SUM(amount) as amount'), DB::raw('SUM(amount)*100/' . $vehicle->shares_amount . ' as percentage'))
                     ->groupBy('user_id')
                     ->havingRaw('SUM(amount) > 0')
                     ->with('user')

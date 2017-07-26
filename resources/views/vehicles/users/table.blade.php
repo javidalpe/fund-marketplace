@@ -9,7 +9,7 @@
         <tr>
             <td><a href="{{route('users.show', $user->user) }}">{!! $user->user->name !!}</a></td>
             <td>{!! $user->user->email !!}</td>
-            <td>{!! $user['amount'] !!}</td>
+            <td>{!! $user['amount'] !!} (@shares($user['percentage']))</td>
         </tr>
     @endforeach
     </tbody>
