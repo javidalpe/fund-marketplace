@@ -6,57 +6,46 @@ class FinService {
 
     public static function getPositionForOperations($operations, $number, $sellPrice)
     {
-        $stocks = [];
-        $total = 0;
-        foreach ($operations as $key => $operation) {
-            $total = $total + $operation->amount;
-            if ($operation->amount > 0) {
-                $stocks[] = [
-                    'amount' => $operation->amount,
-                    'stock_price' => $operation->stock_price
-                ];
-            } else {
-                $toRemove = $operation->amount * -1;
-                while($toRemove > 0) {
-                    $remainingShares = $stocks[0]['amount'];
-                    $canRemove = min($toRemove, $remainingShares);
-                    if ($canRemove == $remainingShares) {
-                        array_shift($stocks);
-                    } else {
-                        $stocks[0]['amount'] = $remainingShares - $canRemove;
-                    }
-                    $toRemove = $toRemove - $canRemove;
-                }
-            }
-        }
+        $stocks = MarketplaceService::getActualPositionAtVehicle($operations);
+        return self::getPositionForStocks($stocks, $number, $sellPrice);
+    }
 
+    public static function getPositionForStocks($stocks, $sellingAmount, $sellingStockPrice)
+    {
         $profitability = 0;
         $totalBuyPrice = 0;
-        $left = $number;
+        $left = $sellingAmount;
+        $stockWithProfitability = collect();
+
         foreach ($stocks as $key => $stock) {
             $amount = min($left, $stock['amount']);
             $left = $left - $amount;
             $operationPrice = $stock['stock_price'];
-            $profit = $amount == 0 ? 0:($sellPrice / $operationPrice);
+            $profit = $amount == 0 ? 0:($sellingStockPrice / $operationPrice);
             $buyPrice = $amount * $operationPrice;
             $totalBuyPrice = $totalBuyPrice + $buyPrice;
-            $stocks[$key]['stock_amount'] = $amount;
-            $stocks[$key]['buy_price'] = $buyPrice;
-            $stocks[$key]['sell_price'] = $amount * $sellPrice;
-            $stocks[$key]['profitability'] = $profit;
 
-            $percentage = $amount / $number;
+            $stockWithProfitability->push([
+                'amount' => $stock['amount'],
+                'stock_price' => $operationPrice,
+                'stock_amount' => $amount,
+                'buy_price' => $buyPrice,
+                'sell_price' => $amount * $sellingStockPrice,
+                'profitability' => $profit
+            ]);
+
+            $percentage = $amount / $sellingAmount;
             $profitability = $profitability + $percentage * $profit;
         }
 
         return [
-            'total_amount' => $total,
-            'amount' => $number,
-            'stock_price' => $sellPrice,
+            'total_amount' => $stocks->sum('amount'),
+            'amount' => $sellingAmount,
+            'stock_price' => $sellingStockPrice,
             'profitability' => $profitability,
             'total_buy_price' => $totalBuyPrice,
-            'total_price' => $number * $sellPrice,
-            'stocks' => $stocks
+            'total_price' => $sellingAmount * $sellingStockPrice,
+            'stocks' => $stockWithProfitability
         ];
     }
 

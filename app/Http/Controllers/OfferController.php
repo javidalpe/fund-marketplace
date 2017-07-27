@@ -16,6 +16,7 @@ use App\Models\Offer;
 use App\Models\Vehicle;
 use App\Events\OfferCreated;
 use App\Services\FinService;
+use App\Services\MarketplaceService;
 
 class OfferController extends AppBaseController
 {
@@ -148,14 +149,17 @@ class OfferController extends AppBaseController
         }
 
         $vehicle = $offer->vehicle;
+        $bids = $offer->bids()->with('user')->get();
         $operations = $vehicle->operations()->where('user_id', $offer->user_id)->get();
-        $position = FinService::getPositionForOperations($operations, $offer->amount, $offer->stock_price);
+
+
+        $finalBids = MarketplaceService::getFinalBids($operations, $offer->amount, $bids);
+
         $data = [
-            'position' => $position,
-            'resume' => FinService::getResumeForPosition($position),
+            'finalBids' => $finalBids,
             'offer' => $offer,
             'vehicle' => $offer->vehicle,
-            'bids' => $offer->bids()->with('user')->get()
+            'bids' => $bids
         ];
 
         return view('offers.show', $data);
@@ -200,7 +204,7 @@ class OfferController extends AppBaseController
         }
 
         $vehicle = $offer->vehicle;
-        $user = User::find($request->user_id);
+        $user = User::find($offer->user_id);
 
         $stock_amount = $vehicle->operations()->where('user_id', $user->id)->sum('amount');
         if ($stock_amount < $request->amount) {

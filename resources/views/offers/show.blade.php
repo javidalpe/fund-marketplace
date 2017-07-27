@@ -19,6 +19,19 @@
             @endif
         @endcomponent
 
+        @can('view', $offer)
+            @component('components.box')
+                @slot('title')
+                    Posición sobre las pujas
+                @endslot
+                @foreach ($finalBids as $key => $bid)
+                    Cálculo de venta de {{ $bid['position']['amount'] }} acciones a @money($bid['position']['stock_price']) por acción
+                    @include('vehicles.position', ['position' => $bid['position']])
+                    Desglose final de la operación
+                @endforeach
+            @endcomponent
+        @endcan
+
         @component('components.box')
             @slot('title')
                 Datos generales de la oferta
@@ -30,20 +43,5 @@
             <a href="{!! route('offers.index') !!}" class="btn btn-default">Atrás</a>
         @endcomponent
 
-        @can('view', $offer)
-            @component('components.box')
-                @slot('title')
-                    Cálculo de venta de {{ $position['amount'] }} acciones a @money($position['stock_price']) por acción
-                @endslot
-                @include('vehicles.position')
-
-            @endcomponent
-            @component('components.box')
-                @slot('title')
-                    Desglose final de la operación
-                @endslot
-                @include('offers.resume')
-            @endcomponent
-        @endcan
     </div>
 @endsection
