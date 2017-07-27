@@ -16,12 +16,14 @@ class MarketplaceService {
 
             $stocks = self::getActualPositionAtVehicle($operations, $amount);
             $position = FinService::getPositionForStocks($stocks, $amount, $price);
+            $resume = FinService::getResumeForPosition($position);
 
             $finalBids->push([
                 'amount' => $amount,
                 'bid' => $bid,
                 'stocks' => $stocks,
-                'position' => $position
+                'position' => $position,
+                'resume' => $resume
             ]);
 
             $sellOperation = new \App\Models\Operation;

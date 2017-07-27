@@ -28,6 +28,7 @@
                     Cálculo de venta de {{ $bid['position']['amount'] }} acciones a @money($bid['position']['stock_price']) por acción
                     @include('vehicles.position', ['position' => $bid['position']])
                     Desglose final de la operación
+                    @include('offers.resume', ['resume' => $bid['resume']])
                 @endforeach
             @endcomponent
         @endcan
