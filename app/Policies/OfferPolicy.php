@@ -65,7 +65,7 @@ class OfferPolicy
 
     public function bid(User $user, Offer $offer)
     {
-        if (!$offer->status == Offer::STATUS_VEHICLE_PHASE && !$offer->status == Offer::STATUS_CLUB_PHASE) return false;
+        if ($offer->status != Offer::STATUS_VEHICLE_PHASE && $offer->status != Offer::STATUS_CLUB_PHASE) return false;
 
         if ($user->isManager()) return true;
 
