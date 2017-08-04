@@ -111,7 +111,7 @@ class OfferController extends AppBaseController
             $position = FinService::getPositionForOperations($operations, $request->amount, $request->stock_price);
             $data = [
                 'position' => $position,
-                'resume' => FinService::getResumeForPosition($position),
+                'resume' => FinService::getResumeForPosition($user, $vehicle->fund, $position),
                 'vehicle' => $vehicle
             ];
             return view('offers.confirm', $data);
@@ -153,7 +153,7 @@ class OfferController extends AppBaseController
         $operations = $vehicle->operations()->where('user_id', $offer->user_id)->get();
 
 
-        $finalBids = MarketplaceService::getFinalBids($operations, $offer->amount, $bids);
+        $finalBids = MarketplaceService::getFinalBids($offer->user, $vehicle->fund, $operations, $offer->amount, $bids);
 
         $data = [
             'finalBids' => $finalBids,

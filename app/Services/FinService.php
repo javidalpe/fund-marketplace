@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+use App\User;
+use App\Models\Fund;
 
 class FinService {
 
@@ -49,15 +51,16 @@ class FinService {
         ];
     }
 
-    public static function getResumeForPosition($position)
+    public static function getResumeForPosition(User $seller, Fund $fund, $position)
     {
         $amount = $position['total_price'];
         $totalBuyPrice = $position['total_buy_price'];
         $profit = $amount - $totalBuyPrice;
-        $fee = $profit * 0.17;
-        $vat = $fee * 0.21;
+        $fee = FeeService::getFeeForInvestorAndProfit($seller, $fund, $profit, $position['profitability']);
+        $feeAmount = $fee['amount'];
+        $vat = $feeAmount * 0.21;
 
-        $exitFee = $fee + $vat;
+        $exitFee = $fee['amount'] + $vat;
         $buyFee = self::getBuyFee($amount);
         $managementFee = 100;
         $notaryFee = 250;
@@ -68,7 +71,7 @@ class FinService {
             'profit' => $profit,
             'fee' => $fee,
             'vat' => $vat,
-            'total_amount' => $amount - $fee - $vat,
+            'total_amount' => $amount - $feeAmount - $vat,
             'buy_fee' => $buyFee,
             'exit_fee' => $exitFee,
             'managementFee' => $managementFee,

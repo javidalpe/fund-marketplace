@@ -2,10 +2,12 @@
 
 namespace App\Services;
 use Carbon\Carbon;
+use App\User;
+use App\Models\Fund;
 
 class MarketplaceService {
 
-    public static function getFinalBids($operations, $sharesSellingAmount, $bids)
+    public static function getFinalBids(User $seller, Fund $fund, $operations, $sharesSellingAmount, $bids)
     {
         $bidsOrdered = $bids->sortByDesc('stock_price');
         $finalBids = collect();
@@ -16,7 +18,7 @@ class MarketplaceService {
 
             $stocks = self::getActualPositionAtVehicle($operations, $amount);
             $position = FinService::getPositionForStocks($stocks, $amount, $price);
-            $resume = FinService::getResumeForPosition($position);
+            $resume = FinService::getResumeForPosition($seller, $fund, $position);
 
             $finalBids->push([
                 'amount' => $amount,

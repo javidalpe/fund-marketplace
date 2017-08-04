@@ -17,8 +17,8 @@
                     <td align="right">@money($resume['profit'])</td>
                 </tr>
                 <tr>
-                    <td>Comisión de venta (17%)</td>
-                    <td align="right">@money($resume['fee'])</td>
+                    <td>Comisión de venta ({!! $resume['fee']['explanation'] !!})</td>
+                    <td align="right">@money($resume['fee']['amount'])</td>
                 </tr>
 
                 <tr>
@@ -28,7 +28,7 @@
                 <tfoot>
                     <tr>
                         <th>Comisión total</th>
-                        <th style="text-align:right">@money($resume['fee'] + $resume['vat'])</th>
+                        <th style="text-align:right">@money($resume['fee']['amount'] + $resume['vat'])</th>
                     </tr>
                 </tfoot>
         </table>
@@ -43,7 +43,7 @@
                 </tr>
                 <tr>
                     <td>Comisión de venta</td>
-                    <td align="right">-@money($resume['fee'] + $resume['vat'])</td>
+                    <td align="right">-@money($resume['fee']['amount'] + $resume['vat'])</td>
                 </tr>
             </tbody>
             <tfoot>
