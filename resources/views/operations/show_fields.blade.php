@@ -1,55 +1,30 @@
+<dl class="dl-horizontal">
 <!-- Type Field -->
-<div class="form-group">
-    {!! Form::label('type', 'Tipo:') !!}
-    <p>{!! $operation->type !!}</p>
-</div>
+<dt>{!! Form::label('type', 'Tipo:') !!}</dt><dd>{!! $operation->type !!}</dd>
 
 <!-- N. acciones Field -->
-<div class="form-group">
-    {!! Form::label('amount', 'N. acciones:') !!}
-    <p>{!! $operation->amount !!}</p>
-</div>
+<dt>{!! Form::label('amount', 'N. acciones:') !!}</dt><dd>{!! $operation->amount !!}</dd>
 
 <!-- Precio acción Field -->
-<div class="form-group">
-    {!! Form::label('stock_price', 'Precio acción:') !!}
-    <p>@stock($operation->stock_price)</p>
-</div>
+<dt>{!! Form::label('stock_price', 'Precio acción:') !!}</dt><dd>@stock($operation->stock_price)</dd>
 
 <!-- Fecha de la operación Field -->
-<div class="form-group">
-    {!! Form::label('completed_at', 'Fecha de la operación:') !!}
-    <p>{!! $operation->completed_at->format('d M. Y') !!}</p>
-</div>
+<dt>{!! Form::label('completed_at', 'Fecha de la operación:') !!}</dt><dd>{!! $operation->completed_at->format('d M. Y') !!}</dd>
 
 @if (Auth::user()->isManager())
     <!-- Id Field -->
-    <div class="form-group">
-        {!! Form::label('id', 'Id:') !!}
-        <p>{!! $operation->id !!}</p>
-    </div>
+    <dt>{!! Form::label('id', 'Id:') !!}</dt><dd>{!! $operation->id !!}</dd>
 
     <!-- Vehicle Id Field -->
-    <div class="form-group">
-        {!! Form::label('vehicle_id', 'Vehicle Id:') !!}
-        <p>{!! $operation->vehicle_id !!}</p>
-    </div>
+    <dt>{!! Form::label('vehicle_id', 'Vehicle Id:') !!}</dt><dd>{!! $operation->vehicle_id !!}</dd>
 
     <!-- User Id Field -->
-    <div class="form-group">
-        {!! Form::label('user_id', 'Id Inversor:') !!}
-        <p>{!! $operation->user_id !!}</p>
-    </div>
+    <dt>{!! Form::label('user_id', 'Id Inversor:') !!}</dt><dd>{!! $operation->user_id !!}</dd>
 
     <!-- Created At Field -->
-    <div class="form-group">
-        {!! Form::label('created_at', 'Fecha de creación:') !!}
-        <p>{!! $operation->created_at->format('d M. Y') !!}</p>
-    </div>
+    <dt>{!! Form::label('created_at', 'Fecha de creación:') !!}</dt><dd>{!! $operation->created_at->format('d M. Y') !!}</dd>
 
     <!-- Updated At Field -->
-    <div class="form-group">
-        {!! Form::label('updated_at', 'Última actualización:') !!}
-        <p>{!! $operation->updated_at->format('d M. Y') !!}</p>
-</div>
+    <dt>{!! Form::label('updated_at', 'Última actualización:') !!}</dt><dd>{!! $operation->updated_at->format('d M. Y') !!}</dd>
 @endif
+</dl>

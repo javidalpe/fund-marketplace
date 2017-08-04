@@ -1,49 +1,27 @@
+<dl class="dl-horizontal">
 <!-- Name Field -->
-<div class="form-group">
-    {!! Form::label('name', 'Nombre:') !!}
-    <p>{!! $fund->name !!}</p>
-</div>
+<dt>{!! Form::label('name', 'Nombre:') !!}</dt><dd>{!! $fund->name !!}</dd>
 
 <!-- Website Field -->
-<div class="form-group">
-    {!! Form::label('website', 'Sitio web:') !!}
-    <p><a href="{!! $fund->website !!}" target="_blank">{!! $fund->website !!}</a></p>
-</div>
+<dt>{!! Form::label('website', 'Sitio web:') !!}</dt><dd><a href="{!! $fund->website !!}" target="_blank">{!! $fund->website !!}</a></dd>
 
 <!-- Email Field -->
-<div class="form-group">
-    {!! Form::label('email', 'Email de contacto:') !!}
-    <p>{!! $fund->email !!}</p>
-</div>
+<dt>{!! Form::label('email', 'Email de contacto:') !!}</dt><dd>{!! $fund->email !!}</dd>
 
 <!-- Contact Field -->
-<div class="form-group">
-    {!! Form::label('contact', 'Persona de contacto:') !!}
-    <p>{!! $fund->contact !!}</p>
-</div>
+<dt>{!! Form::label('contact', 'Persona de contacto:') !!}</dt><dd>{!! $fund->contact !!}</dd>
 
 <!-- Phone Field -->
-<div class="form-group">
-    {!! Form::label('phone', 'Teléfono de contacto:') !!}
-    <p>{!! $fund->phone !!}</p>
-</div>
+<dt>{!! Form::label('phone', 'Teléfono de contacto:') !!}</dt><dd>{!! $fund->phone !!}</dd>
 
 @if (Auth::user()->isManager())
     <!-- Id Field -->
-    <div class="form-group">
-        {!! Form::label('id', 'Id:') !!}
-        <p>{!! $fund->id !!}</p>
-    </div>
+    <dt>{!! Form::label('id', 'Id:') !!}</dt><dd>{!! $fund->id !!}</dd>
 
     <!-- Created At Field -->
-    <div class="form-group">
-        {!! Form::label('created_at', 'Fecha de creación:') !!}
-        <p>{!! $fund->created_at->format('d M. Y') !!}</p>
-    </div>
+    <dt>{!! Form::label('created_at', 'Fecha de creación:') !!}</dt><dd>{!! $fund->created_at->format('d M. Y') !!}</dd>
 
     <!-- Updated At Field -->
-    <div class="form-group">
-        {!! Form::label('updated_at', 'Última actualización:') !!}
-        <p>{!! $fund->updated_at->format('d M. Y') !!}</p>
-    </div>
+    <dt>{!! Form::label('updated_at', 'Última actualización:') !!}</dt><dd>{!! $fund->updated_at->format('d M. Y') !!}</dd>
 @endif
+</dl>

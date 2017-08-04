@@ -1,68 +1,37 @@
+<dl class="dl-horizontal">
 <!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Identificador de la puja:') !!}
-    <p>#{!! $bid->id !!}</p>
-</div>
+<dt>{!! Form::label('id', 'Identificador de la puja:') !!}</dt><dd>#{!! $bid->id !!}</dd>
 
 <!-- Offer Id Field -->
-<div class="form-group">
-    {!! Form::label('offer_id', 'Identificador de la oferta:') !!}
-    <p><a href="{{ route('offers.show', $bid->offer) }}">#{!! $bid->offer->id !!}</a></p>
-</div>
+<dt>{!! Form::label('offer_id', 'Identificador de la oferta:') !!}</dt><dd><a href="{{ route('offers.show', $bid->offer) }}">#{!! $bid->offer->id !!}</a></dd>
 
 <!-- N. acciones Field -->
-<div class="form-group">
-    {!! Form::label('amount', 'N. acciones:') !!}
-    <p>{!! $bid->amount !!}</p>
-</div>
+<dt>{!! Form::label('amount', 'N. acciones:') !!}</dt><dd>{!! $bid->amount !!}</dd>
 
 <!-- Precio acción Field -->
-<div class="form-group">
-    {!! Form::label('stock_price', 'Precio acción:') !!}
-    <p>@stock($bid->stock_price)</p>
-</div>
+<dt>{!! Form::label('stock_price', 'Precio acción:') !!}</dt><dd>@stock($bid->stock_price)</dd>
 
 <!-- Status Field -->
-<div class="form-group">
-    {!! Form::label('status', 'Status:') !!}
-    <p>@include('bids.status')</p>
-</div>
+<dt>{!! Form::label('status', 'Status:') !!}</dt><dd>@include('bids.status')</dd>
 
 <!-- Buyer Comment Field -->
-<div class="form-group">
-    {!! Form::label('buyer_comment', 'Buyer Comment:') !!}
-    <p>{!! $bid->buyer_comment !!}</p>
-</div>
+<dt>{!! Form::label('buyer_comment', 'Buyer Comment:') !!}</dt><dd>{!! $bid->buyer_comment !!}</dd>
 
 <!-- Seller Comment Field -->
-<div class="form-group">
-    {!! Form::label('seller_comment', 'Seller Comment:') !!}
-    <p>{!! $bid->seller_comment !!}</p>
-</div>
+<dt>{!! Form::label('seller_comment', 'Seller Comment:') !!}</dt><dd>{!! $bid->seller_comment !!}</dd>
 
 <!-- Buy Fee Field -->
-<div class="form-group">
-    {!! Form::label('buy_fee', 'Buy Fee:') !!}
-    <p>@money($bid->buy_fee)</p>
-</div>
+<dt>{!! Form::label('buy_fee', 'Buy Fee:') !!}</dt><dd>@money($bid->buy_fee)</dd>
 
 @if (Auth::user()->isManager() || Auth::user()->id == $bid->user_id)
 
     <!-- User Id Field -->
-    <div class="form-group">
-        {!! Form::label('user_id', 'Inversor (oculto):') !!}
-        <p>{!! $bid->user->name !!}</p>
-    </div>
+    <dt>{!! Form::label('user_id', 'Inversor (oculto):') !!}</dt><dd>{!! $bid->user->name !!}</dd>
 
     <!-- Created At Field -->
-    <div class="form-group">
-        {!! Form::label('created_at', 'Fecha de creación:') !!}
-        <p>{!! $bid->created_at->format('d M. Y') !!}</p>
-    </div>
+    <dt>{!! Form::label('created_at', 'Fecha de creación:') !!}</dt><dd>{!! $bid->created_at->format('d M. Y') !!}</dd>
 @endif
 
 <!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Última actualización:') !!}
-    <p>{!! $bid->updated_at->format('d M. Y') !!}</p>
-</div>
+<dt>{!! Form::label('updated_at', 'Última actualización:') !!}</dt><dd>{!! $bid->updated_at->format('d M. Y') !!}</dd>
+</dl>
