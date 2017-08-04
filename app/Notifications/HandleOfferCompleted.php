@@ -57,6 +57,9 @@ class HandleOfferCompleted extends Notification
             $mailMessage = $mailMessage->line("$investor->name: $bid->amount acciones por " . $bid->amount*$bid->stock_price . "€ (" . $bid->stock_price . "€ por acción)");
         }
 
+        $url = route('offers.show', $this->offer);
+        $mailMessage->action('Ir a la oferta', $url);
+
         return $mailMessage;
     }
 
