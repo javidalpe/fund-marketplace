@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::directive('percentage', function ($percentaje) {
-            return "<?php echo(number_format($percentaje, 0, ',', '.') .'%'); ?>";
+            return "<?php echo(number_format($percentaje, 1, ',', '.') .'%'); ?>";
         });
 
         Blade::directive('fee', function ($percentaje) {

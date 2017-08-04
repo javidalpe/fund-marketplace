@@ -17,21 +17,21 @@
 </div>
 
 <div class="form-group col-sm-6 col-md-4">
+    {!! Form::label('percentage', 'Porcentaje de comisión:') !!}
+    <div class="input-group">
+        {!! Form::number('percentage', null, ['class' => 'form-control', 'step' => '0.1']) !!}
+        <div class="input-group-addon">%</div>
+    </div>
+    <p class="help-block small">Porcentaje (0%-100%) de comisión respecto del beneficio de la venta de acciones.</p>
+</div>
+
+<div class="form-group col-sm-6 col-md-4">
     {!! Form::label('min', 'Comisión mínima:') !!}
     <div class="input-group">
         {!! Form::number('min', null, ['class' => 'form-control']) !!}
         <div class="input-group-addon">€</div>
     </div>
     <p class="help-block small">Comisión mínima aplicable a la venta de accione.</p>
-</div>
-
-<div class="form-group col-sm-6 col-md-4">
-    {!! Form::label('percentage', 'Porcentaje de comisión:') !!}
-    <div class="input-group">
-        {!! Form::number('percentage', null, ['class' => 'form-control']) !!}
-        <div class="input-group-addon">%</div>
-    </div>
-    <p class="help-block small">Porcentaje (0%-100%) de comisión respecto del beneficio de la venta de acciones.</p>
 </div>
 
 <!-- Submit Field -->

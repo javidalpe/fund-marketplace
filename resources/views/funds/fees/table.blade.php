@@ -10,7 +10,12 @@
     @foreach($fees as $fee)
         <tr>
             <td>@percentage($fee->from)</td>
-            <td>@percentage($fee->to)</td>
+            <td>@if($fee->to)
+                    @percentage($fee->to)
+                @else
+                    &infin;
+                @endif
+            </td>
             <td>@percentage($fee->percentage)</td>
             <td>@money($fee->min)</td>
             <td>

@@ -18,7 +18,7 @@ class CreateFeesTable extends Migration
             $table->integer('from')->nullable();
             $table->integer('to')->nullable();
             $table->integer('min')->nullable();
-            $table->integer('percentage');
+            $table->float('percentage');
             $table->integer('fund_id')->unsigned();
             $table->timestamps();
             $table->foreign('fund_id')->references('id')->on('funds');

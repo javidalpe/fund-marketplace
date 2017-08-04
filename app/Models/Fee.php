@@ -31,7 +31,7 @@ class Fee extends Model
         'from' => 'integer',
         'to' => 'integer',
         'min' => 'integer',
-        'percentage' => 'integer',
+        'percentage' => 'float',
         'fund_id' => 'integer'
     ];
 
@@ -48,7 +48,7 @@ class Fee extends Model
         'fund_id' => 'requiered|numeric',
     ];
 
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
