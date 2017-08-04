@@ -75,4 +75,12 @@ class Fund extends Model
     {
         return $this->hasMany(\App\Models\Vehicle::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function fees()
+    {
+        return $this->hasMany(\App\Models\Fee::class);
+    }
 }

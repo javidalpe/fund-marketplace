@@ -95,6 +95,7 @@ class FundController extends AppBaseController
         $data = [
             'fund' => $fund,
             'users' => $fund->users,
+            'fees' => $fund->fees,
             'investors' => array_pluck($users, 'name', 'id'),
         ];
 

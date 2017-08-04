@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group( function() {
 
     Route::resource('funds', 'FundController');
     Route::resource('funds.users', 'FundUserController');
+    Route::resource('funds.fees', 'FundFeeController');
 
     Route::resource('vehicles', 'VehicleController');
 

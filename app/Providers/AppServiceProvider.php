@@ -30,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo($percentaje==0?'-':(number_format($percentaje*100-100, 1, ',', '.') .'% (x'.number_format($percentaje, 0, ',', '.').')')); ?>";
         });
 
+        Blade::directive('percentage', function ($percentaje) {
+            return "<?php echo(number_format($percentaje, 0, ',', '.') .'%'); ?>";
+        });
+
         Blade::directive('fee', function ($percentaje) {
             return "<?php echo(number_format($percentaje*100, 0, ',', '.') .'%'); ?>";
         });

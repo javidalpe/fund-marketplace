@@ -1,4 +1,6 @@
+@if (isset($title))
 <h4>{{ $title }}</h4>
+@endif
 <div class="box box-primary">
     <div class="box-body">
         <div class="row">

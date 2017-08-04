@@ -17,5 +17,6 @@
         </div>
 
         @include('funds.users.index')
+        @include('funds.fees.index')
     </div>
 @endsection

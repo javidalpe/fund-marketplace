@@ -10,12 +10,12 @@
 
         @component('components.box')
             @slot('title')
-                Pujas
+                Pujas para comprar estas acciones
             @endslot
             @if(count($bids) > 0)
                 @include('bids.table')
             @else
-                Nadie ha pujado por esta oferta
+                Ningún inversor ha pujado por esta oferta de acciones
             @endif
         @endcomponent
 
@@ -24,12 +24,14 @@
                 @slot('title')
                     Posición sobre las pujas
                 @endslot
-                @foreach ($finalBids as $key => $bid)
+                @forelse ($finalBids as $key => $bid)
                     Cálculo de venta de {{ $bid['position']['amount'] }} acciones a @money($bid['position']['stock_price']) por acción
                     @include('vehicles.position', ['position' => $bid['position']])
                     Desglose final de la operación
                     @include('offers.resume', ['resume' => $bid['resume']])
-                @endforeach
+                @empty
+                    Nadie ha pujado por esta oferta
+                @endforelse
             @endcomponent
         @endcan
 
