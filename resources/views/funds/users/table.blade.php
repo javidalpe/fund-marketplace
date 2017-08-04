@@ -3,7 +3,7 @@
         <th>Nombre</th>
         <th>Email</th>
         @can('update', $fund)
-            <th colspan="3">Gestionar</th>
+            <th colspan="3" class="hidden-print">Gestionar</th>
         @endcan
     </thead>
     <tbody>
@@ -12,7 +12,7 @@
             <td>{!! $user->name !!}</td>
             <td>{!! $user->email !!}</td>
             @can('update', $fund)
-                <td>
+                <td class="hidden-print">
                     {!! Form::open(['route' => ['funds.users.destroy', $fund->id, $user->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('¿Estás seguro de querer borrarlo?')"]) !!}

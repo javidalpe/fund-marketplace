@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('examples.show_fields')
-                    <a href="{!! route('examples.index') !!}" class="btn btn-default">Back</a>
+                    <a href="{!! route('examples.index') !!}" class="btn btn-default hidden-print">Back</a>
                 </div>
             </div>
         </div>

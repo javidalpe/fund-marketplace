@@ -15,7 +15,7 @@
                     @endslot
                     @include('vehicles.position')
                     @can('offer', $vehicle)
-                        <a href="{!! route('offers.create', ['vehicle' => $vehicle->id]) !!}" class="btn btn-primary">Publicar oferta de venta de acciones</a>
+                        <a href="{!! route('offers.create', ['vehicle' => $vehicle->id]) !!}" class="btn btn-primary hidden-print">Publicar oferta de venta de acciones</a>
                     @endcan
                 @endcomponent
             @endif
@@ -26,7 +26,7 @@
                 @endslot
                 @include('vehicles.users.table')
                 @can('offer', $vehicle)
-                    <a href="{!! route('offers.create', ['vehicle' => $vehicle->id]) !!}" class="btn btn-primary">Publicar oferta de venta de acciones</a>
+                    <a href="{!! route('offers.create', ['vehicle' => $vehicle->id]) !!}" class="btn btn-primary hidden-print">Publicar oferta de venta de acciones</a>
                 @endcan
             @endcomponent
         @endif
@@ -43,7 +43,7 @@
                 Información general
             @endslot
             @include('vehicles.show_fields')
-            <a href="{!! route('vehicles.index') !!}" class="btn btn-default">Atrás</a>
+            <a href="{!! route('vehicles.index') !!}" class="btn btn-default hidden-print">Atrás</a>
         @endcomponent
 
     </div>

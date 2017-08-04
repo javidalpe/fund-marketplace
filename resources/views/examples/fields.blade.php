@@ -59,5 +59,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary hidden-print']) !!}
-    <a href="{!! route('examples.index') !!}" class="btn btn-default">Cancel</a>
+    <a href="{!! route('examples.index') !!}" class="btn btn-default hidden-print">Cancel</a>
 </div>

@@ -4,7 +4,7 @@
         <th>Hasta rent.</th>
         <th>Porcentaje com.</th>
         <th>Mínimo</th>
-        <th colspan="3">Gestionar</th>
+        <th colspan="3" class="hidden-print">Gestionar</th>
     </thead>
     <tbody>
     @foreach($fees as $fee)
@@ -18,7 +18,7 @@
             </td>
             <td>@percentage($fee->percentage)</td>
             <td>@money($fee->min)</td>
-            <td>
+            <td class="hidden-print">
 
                 {!! Form::open(['route' => ['funds.fees.destroy', $fund, $fee], 'method' => 'delete']) !!}
                 <div class='btn-group'>

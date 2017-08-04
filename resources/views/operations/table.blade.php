@@ -6,7 +6,7 @@
         <th>N. acciones</th>
         <th>Precio acción</th>
         <th>Fecha de la operación</th>
-        <th colspan="3">Gestionar</th>
+        <th colspan="3" class="hidden-print">Gestionar</th>
     </thead>
     <tbody>
     @foreach($operations as $operation)
@@ -17,7 +17,7 @@
             <td>{!! $operation->amount !!}</td>
             <td>@stock($operation->stock_price)</td>
             <td>{!! $operation->completed_at->format('d M. Y') !!}</td>
-            <td>
+            <td class="hidden-print">
                 {!! Form::open(['route' => ['operations.destroy', $operation->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
                     @can('update', $operation)

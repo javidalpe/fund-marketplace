@@ -4,7 +4,7 @@
         <th>Oferta</th>
         <th>N. acciones</th>
         <th>Precio acción</th>
-        <th colspan="3">Gestionar</th>
+        <th colspan="3" class="hidden-print">Gestionar</th>
     </thead>
     <tbody>
     @foreach($bids as $bid)
@@ -13,8 +13,7 @@
             <td><a href="{{ route('offers.show', $bid->offer) }}">#{!! $bid->offer->id !!}</a></td>
             <td>{!! $bid->amount !!}</td>
             <td>@stock($bid->stock_price)</td>
-            <td>
-
+            <td class="hidden-print">
                 {!! Form::open(['route' => ['bids.destroy', $bid->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
                     @can('decline', $bid)

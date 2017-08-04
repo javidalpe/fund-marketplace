@@ -1,4 +1,4 @@
-<h4>{{ $title }} (Admin solo)</h4>
+<h4>{{ $title }} <span class="pull-right">(Admin solo)</span></h4>
 <div class="box box-danger">
     <div class="box-body">
         <div class="row">

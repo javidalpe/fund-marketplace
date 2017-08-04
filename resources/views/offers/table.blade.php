@@ -5,7 +5,7 @@
         <th>N. acciones</th>
         <th>Precio acción</th>
         <th>Antigüedad</th>
-        <th colspan="3">Gestionar</th>
+        <th colspan="3" class="hidden-print">Gestionar</th>
     </thead>
     <tbody>
     @foreach($offers as $offer)
@@ -15,7 +15,7 @@
             <td>{!! $offer->amount !!}</td>
             <td>@stock($offer->stock_price)</td>
             <td>{!! $offer->updated_at->diffForHumans() !!}</td>
-            <td>
+            <td class="hidden-print">
                 {!! Form::open(['route' => ['offers.destroy', $offer->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
                     @can('update', $offer)

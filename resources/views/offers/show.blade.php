@@ -41,9 +41,9 @@
             @endslot
             @include('offers.show_fields')
             @can('bid', $offer)
-                <a href="{!! route('bids.create', ['offer' => $offer->id]) !!}" class="btn btn-primary">Pujar por estas acciones</a>
+                <a href="{!! route('bids.create', ['offer' => $offer->id]) !!}" class="btn btn-primary hidden-print">Pujar por estas acciones</a>
             @endcan
-            <a href="{!! route('offers.index') !!}" class="btn btn-default">Atrás</a>
+            <a href="{!! route('offers.index') !!}" class="btn btn-default hidden-print">Atrás</a>
         @endcomponent
 
     </div>

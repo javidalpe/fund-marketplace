@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('bids.show_fields')
-                    <a href="{!! route('bids.index') !!}" class="btn btn-default">Atrás</a>
+                    <a href="{!! route('bids.index') !!}" class="btn btn-default hidden-print">Atrás</a>
                 </div>
             </div>
         </div>

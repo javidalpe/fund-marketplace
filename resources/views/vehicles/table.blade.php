@@ -3,7 +3,7 @@
         <th>Nombre</th>
         <th>Nombre de la compañía</th>
         <th>Sitio web</th>
-        <th colspan="3">Gestionar</th>
+        <th colspan="3" class="hidden-print">Gestionar</th>
     </thead>
     <tbody>
     @foreach($vehicles as $vehicle)
@@ -11,7 +11,7 @@
             <td><a href="{{route('vehicles.show', $vehicle)}}">{!! $vehicle->name !!}</a></td>
             <td>{!! $vehicle->company !!}</td>
             <td><a href="{!! $vehicle->website !!}" target="_blank">{!! $vehicle->website !!}</a></td>
-            <td>
+            <td class="hidden-print">
                 {!! Form::open(['route' => ['vehicles.destroy', $vehicle->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
                     @can('update', $vehicle)
